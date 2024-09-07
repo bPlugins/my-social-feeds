@@ -1,0 +1,236 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "ifb/instagram",
+  "title": "Instagram Feed",
+  "description": "Display Instagram feed in you page.",
+  "category": "widgets",
+  "keywords": [
+    "instagram feed",
+    "instagram",
+    "feed"
+  ],
+  "textdomain": "instagram-feed",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": ""
+    },
+    "cId": {
+      "type": "string",
+      "default": ""
+    },
+    "accounts": {
+      "type": "array",
+      "default": []
+    },
+    "accessToken": {
+      "type": "array",
+      "default": [
+        ""
+      ]
+    },
+    "cacheTime": {
+      "type": "number",
+      "default": 30
+    },
+    "cacheTimePeriod": {
+      "type": "string",
+      "default": "minutes"
+    },
+    "itemVisible": {
+      "type": "number",
+      "default": 12
+    },
+    "isPopup": {
+      "type": "boolean",
+      "default": false
+    },
+    "popup": {
+      "type": "object",
+      "default": {
+        "isProfile": true,
+        "isCarousel": true,
+        "isVideo": true,
+        "isCaption": true,
+        "isLink": true,
+        "isLikeCount": true,
+        "isCommentsCount": true,
+        "isComments": true
+      }
+    },
+    "isLink": {
+      "type": "boolean",
+      "default": true
+    },
+    "isLinkNewTab": {
+      "type": "boolean",
+      "default": true
+    },
+    "isProfile": {
+      "type": "boolean",
+      "default": true
+    },
+    "profileImg": {
+      "type": "string",
+      "default": "https://i.ibb.co/9pfnwXH/bplugins-logo.png"
+    },
+    "profileInfo": {
+      "type": "object",
+      "default": {
+        "isPhoto": true,
+        "photoSize": "55px",
+        "popupPhotoSize": "40px",
+        "userNameColor": "#4527a4",
+        "isFollowers": false,
+        "followersColor": "#4b4f58",
+        "isFollows": false,
+        "followsColor": "#4b4f58",
+        "isName": false,
+        "name": "",
+        "nameColor": "#333",
+        "isBio": false,
+        "bio": "",
+        "bioColor": "#4b4f58"
+      }
+    },
+    "isFollowBtn": {
+      "type": "boolean",
+      "default": true
+    },
+    "isFollowBtnInFooter": {
+      "type": "boolean",
+      "default": false
+    },
+    "isCaption": {
+      "type": "boolean",
+      "default": true
+    },
+    "isRemCaptionHash": {
+      "type": "boolean",
+      "default": false
+    },
+    "captionLength": {
+      "type": "number",
+      "default": 65
+    },
+    "isLoadMore": {
+      "type": "boolean",
+      "default": true
+    },
+    "columns": {
+      "type": "object",
+      "default": {
+        "desktop": 4,
+        "tablet": 2,
+        "mobile": 1
+      }
+    },
+    "columnGap": {
+      "type": "string",
+      "default": "15px"
+    },
+    "rowGap": {
+      "type": "string",
+      "default": "15px"
+    },
+    "background": {
+      "type": "object",
+      "default": {
+        "color": "#0000"
+      }
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "vertical": "15px",
+        "horizontal": "15px"
+      }
+    },
+    "border": {
+      "type": "object",
+      "default": {
+        "radius": "5px"
+      }
+    },
+    "followBtnColors": {
+      "type": "object",
+      "default": {
+        "color": "#fff",
+        "bg": "#4527a4"
+      }
+    },
+    "followBtnHovColors": {
+      "type": "object",
+      "default": {
+        "color": "#fff",
+        "bg": "#8344c5"
+      }
+    },
+    "imgHoverEffect": {
+      "type": "string",
+      "default": "zoomIn"
+    },
+    "captionBG": {
+      "type": "object",
+      "default": {
+        "color": "#0006"
+      }
+    },
+    "captionStyle": {
+      "type": "string",
+      "default": "overlayCenter"
+    },
+    "captionTypo": {
+      "type": "object",
+      "default": {
+        "fontSize": {
+          "desktop": 22,
+          "tablet": 20,
+          "mobile": 18
+        }
+      }
+    },
+    "captionColor": {
+      "type": "string",
+      "default": "#fff"
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "example": {
+    "attributes": {
+      "preview": true,
+      "columns": {
+        "desktop": 1,
+        "tablet": 1,
+        "mobile": 1
+      }
+    }
+  },
+  "editorScript": [
+    "file:./index.js",
+    "fancyapps",
+    "ttp-script"
+  ],
+  "editorStyle": [
+    "file:./index.css",
+    "fancyapps"
+  ],
+  "style": [
+    "file:./view.css",
+    "fancyapps"
+  ],
+  "render": "file:./render.php",
+  "viewScript": [
+    "file:./view.js",
+    "fancyapps",
+    "jquery",
+    "ttp-script"
+  ]
+}

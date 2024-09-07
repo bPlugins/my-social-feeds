@@ -1,0 +1,272 @@
+$primaryColor: #4527a4;
+
+.wp-block-bpf-b-pinterest-feed {
+	box-sizing: border-box;
+
+	* {
+		box-sizing: border-box;
+	}
+
+	p {
+		margin: 0;
+	}
+
+	a {
+		display: inline-block;
+		text-decoration: none;
+	}
+
+	.loadingArea {
+		text-align: center;
+	}
+
+	.noticeArea {
+		background: #000;
+		color: #fff;
+		padding: 5px 10px;
+		text-align: center;
+		text-transform: capitalize;
+		font-size: 20px;
+	}
+
+	.mainLayout {
+		.profile {
+			padding: 15px 15px;
+			text-align: center;
+
+			.profile_image {
+				a {
+					display: inline-block;
+
+					img {
+						width: 50px;
+						height: 50px;
+						object-fit: cover;
+						border-radius: 50%;
+					}
+				}
+			}
+
+			.name {
+
+				a {
+					text-decoration: none;
+
+					span {
+
+						font-size: 18px;
+						font-weight: 500;
+						color: #000;
+					}
+				}
+			}
+
+			.about {
+				p {}
+			}
+
+			.count-area {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 5px;
+
+				.follower {
+					span {}
+				}
+
+				.spin {
+					span {}
+				}
+
+				span {
+					font-size: 14px;
+					font-weight: 400;
+					color: #000;
+				}
+			}
+
+			.followBtn {
+				margin-top: 10px;
+
+				a {
+					text-decoration: none;
+					text-decoration: none;
+					font-size: 16px;
+					background: #000;
+					color: #fff;
+					padding: 5px 10px;
+					transition: 0.3s;
+
+				}
+			}
+		}
+
+		.layout {
+
+			.single-pin {
+				a {
+					display: flex;
+					height: 100%;
+
+					.imgArea {
+						width: 100%;
+						height: 100%;
+						position: relative;
+						overflow: hidden;
+
+						&::after {
+							content: "";
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							background: #0000002e;
+							opacity: 0;
+							transition: 0.3s;
+						}
+
+						img {
+							height: 100%;
+							width: 100%;
+							backface-visibility: hidden;
+							transform: translateZ(0);
+							transition: transform 0.3s ease-out;
+						}
+
+						&:hover::after {
+							opacity: 1;
+							transition: 0.3s;
+						}
+					}
+				}
+			}
+
+			&.default {
+				display: grid;
+				position: relative;
+
+				.single-pin {
+					.imgArea {
+						width: 100%;
+
+						img {
+							position: absolute;
+							top: 0;
+							left: 0;
+							bottom: 0;
+							right: 0;
+							width: 100%;
+							height: 100%;
+							object-fit: cover;
+						}
+					}
+				}
+			}
+
+			&.masonry {
+				// position: relative;
+				display: initial;
+
+				.single-pin {
+
+					// position: absolute;
+					a {
+						height: 100%;
+
+						.imgArea {
+							img {}
+						}
+					}
+
+
+				}
+			}
+
+			&.slider {
+				height: 100% !important;
+				width: 100% !important;
+				display: flex;
+
+				.swiper {
+					height: 100% !important;
+					width: 100% !important;
+
+					.swiper-wrapper {
+						display: flex;
+						height: 100% !important;
+
+						.swiper-slide {
+							height: auto !important;
+
+							.single-pin {
+								height: 100%;
+								width: 100%;
+
+								.imgArea {
+									img {
+										position: absolute;
+										top: 0;
+										left: 0;
+										bottom: 0;
+										right: 0;
+										width: 100%;
+										height: 100%;
+										object-fit: cover;
+									}
+								}
+							}
+						}
+					}
+				}
+
+			}
+
+			&.justified {
+
+				display: grid;
+
+				.single-pin {
+					a {
+						height: 100%;
+
+						.imgArea {
+							img {}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+/*
+*
+*column set
+*/
+@for $i from 1 through 12 {
+	.columns-#{$i} {
+		grid-template-columns: repeat(#{$i}, 1fr);
+		columns: $i;
+	}
+}
+
+@media (max-width: 768px) {
+	@for $i from 1 through 12 {
+		.columns-tablet-#{$i} {
+			grid-template-columns: repeat(#{$i}, 1fr);
+			columns: $i;
+		}
+	}
+}
+
+@media (max-width: 576px) {
+	@for $i from 1 through 12 {
+		.columns-mobile-#{$i} {
+			grid-template-columns: repeat(#{$i}, 1fr);
+			columns: $i;
+		}
+	}
+}

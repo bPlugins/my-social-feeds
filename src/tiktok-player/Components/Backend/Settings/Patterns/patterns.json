@@ -1,0 +1,100 @@
+[
+    {
+        "name": "ttp/landscape-profile-default-center",
+        "title": "Landscape profile default center",
+        "description": "Landscape profile default center",
+        "keywords": [
+            "tiktok block",
+            "tiktok player",
+            "landscape profile default center"
+        ],
+        "blockTypes": [
+            "ttp/tiktok-player"
+        ],
+        "content": "<!-- wp:ttp/tiktok-player {\"cId\":\"f54b799a\",\"isBtn\":{\"viewOn\":true,\"loadMore\":true},\"videoCoverImage\":{\"ratio\":\"16:9\"}} /-->"
+    },
+    {
+        "name": "ttp/horizontal-profile-default-center",
+        "title": "Horizontal profile default center",
+        "description": "Horizontal profile default center",
+        "keywords": [
+            "tiktok block",
+            "tiktok player",
+            "horizontal profile default center"
+        ],
+        "blockTypes": [
+            "ttp/tiktok-player"
+        ],
+        "content": "<!-- wp:ttp/tiktok-player {\"cId\":\"b0d27bd9\",\"isBtn\":{\"viewOn\":true,\"loadMore\":true},\"videoCoverImage\":{\"ratio\":\"4:3\"}} /-->"
+    },
+    {
+        "name": "ttp/potrait-profile-default-center",
+        "title": "Potrait profile default center",
+        "description": "Potrait profile default center",
+        "keywords": [
+            "tiktok block",
+            "tiktok player",
+            "potrait profile default center"
+        ],
+        "blockTypes": [
+            "ttp/tiktok-player"
+        ],
+        "content": "<!-- wp:ttp/tiktok-player {\"cId\":\"b0d27bd9\",\"isBtn\":{\"viewOn\":true,\"loadMore\":true},\"videoCoverImage\":{\"ratio\":\"9:16\"}} /-->"
+    },
+    {
+        "name": "ttp/vertical-profile-default-center",
+        "title": "Vertical profile default center",
+        "description": "Vertical profile default center",
+        "keywords": [
+            "tiktok block",
+            "tiktok player",
+            "Vertical profile default center"
+        ],
+        "blockTypes": [
+            "ttp/tiktok-player"
+        ],
+        "content": "<!-- wp:ttp/tiktok-player {\"cId\":\"b0d27bd9\",\"isBtn\":{\"viewOn\":true,\"loadMore\":true},\"nameTypo\":{\"fontSize\":32,\"fontWeight\":700,\"lineHeight\":\"135%\"},\"btnPadding\":{\"top\":\"4px\",\"right\":\"8px\",\"bottom\":\"4px\",\"left\":\"8px\"},\"shareBtnTypo\":{\"fontSize\":18,\"fontWeight\":600,\"lineHeight\":\"135%\"},\"countNumColor\":\"#ffffffe6\",\"videoCoverImage\":{\"ratio\":\"3:4\"}} /-->"
+    },
+    {
+        "name": "ttp/default-profile-slider-landscape",
+        "title": "Default profile slider landscape",
+        "description": "Default profile slider landscape",
+        "keywords": [
+            "tiktok block",
+            "tiktok player",
+            "Default profile slider landscape"
+        ],
+        "blockTypes": [
+            "ttp/tiktok-player"
+        ],
+        "content": "<!-- wp:ttp/tiktok-player {\"cId\":\"b0d27bd9\",\"isBtn\":{\"viewOn\":true,\"loadMore\":true},\"nameTypo\":{\"fontSize\":32,\"fontWeight\":700,\"lineHeight\":\"135%\"},\"btnPadding\":{\"top\":\"4px\",\"right\":\"8px\",\"bottom\":\"4px\",\"left\":\"8px\"},\"shareBtnTypo\":{\"fontSize\":18,\"fontWeight\":600,\"lineHeight\":\"135%\"},\"feedLayoutStyle\":\"slider\",\"countNumColor\":\"#ffffffe6\",\"videoCoverImage\":{\"ratio\":\"16: 9\"}} /-->"
+    },
+    {
+        "name": "ttp/default-profile-slider-horizontal",
+        "title": "Default profile slider horizontal",
+        "description": "Default profile slider horizontal",
+        "keywords": [
+            "tiktok block",
+            "tiktok player",
+            "Default profile slider horizontal"
+        ],
+        "blockTypes": [
+            "ttp/tiktok-player"
+        ],
+        "content": "<!-- wp:ttp/tiktok-player {\"cId\":\"b0d27bd9\",\"isBtn\":{\"viewOn\":true,\"loadMore\":true},\"nameTypo\":{\"fontSize\":32,\"fontWeight\":700,\"lineHeight\":\"135%\"},\"btnPadding\":{\"top\":\"4px\",\"right\":\"8px\",\"bottom\":\"4px\",\"left\":\"8px\"},\"shareBtnTypo\":{\"fontSize\":18,\"fontWeight\":600,\"lineHeight\":\"135%\"},\"feedLayoutStyle\":\"slider\",\"countNumColor\":\"#ffffffe6\",\"videoCoverImage\":{\"ratio\":\"4: 3\"}} /-->"
+    },
+    {
+        "name": "ttp/default-profile-slider-square",
+        "title": "Default profile slider square",
+        "description": "Default profile slider square",
+        "keywords": [
+            "tiktok block",
+            "tiktok player",
+            "Default profile slider square"
+        ],
+        "blockTypes": [
+            "ttp/tiktok-player"
+        ],
+        "content": "<!-- wp:ttp/tiktok-player {\"cId\":\"b0d27bd9\",\"isBtn\":{\"viewOn\":true,\"loadMore\":true},\"nameTypo\":{\"fontSize\":32,\"fontWeight\":700,\"lineHeight\":\"135%\"},\"btnPadding\":{\"top\":\"4px\",\"right\":\"8px\",\"bottom\":\"4px\",\"left\":\"8px\"},\"shareBtnTypo\":{\"fontSize\":18,\"fontWeight\":600,\"lineHeight\":\"135%\"},\"feedLayoutStyle\":\"slider\",\"countNumColor\":\"#ffffffe6\",\"videoCoverImage\":{\"ratio\":\"1: 1\"}} /-->"
+    }
+]

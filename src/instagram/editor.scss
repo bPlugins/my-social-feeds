@@ -1,0 +1,138 @@
+$primaryColor: #4527a4;
+$secondaryColor: #8344c5;
+
+.ifbBtn {
+	font-size: 16px;
+	font-weight: 600;
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	color: #fff;
+	background: $primaryColor;
+	padding: 8px 10px;
+	border: none;
+	border-radius: 3px;
+	outline: none;
+	cursor: pointer;
+
+	&:hover,
+	&:focus {
+		color: #fff;
+	}
+}
+
+.ifbSaveInfo {
+	text-align: center;
+}
+
+.bPlPanelBody {
+	.ifbProfileNameWrap {
+		.components-base-control__field {
+			margin: 10px 0;
+		}
+	}
+
+	.ifbConnect {
+		text-align: center;
+	}
+
+	.ifbConnectBtn {
+		background: #dd2a7b;
+	}
+
+	.ifbCacheTimeRow {
+		.components-number-control {
+			width: 30%;
+		}
+	}
+}
+
+.wp-block-ifb-instagram {
+	.ifbInsertAccess {
+		font-size: 24px;
+		font-weight: 600;
+		text-align: center;
+		color: red;
+		margin: 0;
+	}
+}
+
+.ifbProfileNameWrap {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	border-radius: 3px;
+	border: 1px solid #E7E7E9;
+	padding: 5px 10px;
+
+	.removeAccount {
+		margin-left: auto;
+	}
+}
+
+.ifbProfileName {
+	font-weight: 600;
+	color: $primaryColor;
+	margin: 0;
+
+	span {
+		font-size: 85%;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+}
+
+.ifbUserLoading {
+	width: 65%;
+	height: 20px;
+	display: inline-block;
+
+	// Animation
+	animation: userAnimate 2.8s linear infinite forwards;
+	background: #f6f7f8;
+	background: linear-gradient(to right, #eee 2%, #ddd 18%, #eee 33%);
+	background-size: 280px;
+}
+
+@keyframes userAnimate {
+	0% {
+		background-position: -280px 0;
+	}
+
+	100% {
+		background-position: 280px 0;
+	}
+}
+
+
+
+.ifbProModal {
+	h3 {
+		margin: 0 0 15px 0;
+	}
+
+	.text {
+		font-size: 15px;
+		margin: 25px 0 0 0;
+	}
+
+	.upgradeNow {
+		display: inline-block;
+		font-size: 16px;
+		font-weight: 500;
+		color: #fff;
+		background-color: $primaryColor;
+		text-decoration: none;
+		padding: 12px 20px;
+		margin-top: 20px;
+		border-radius: 50px;
+
+		&:hover,
+		&:focus {
+			color: #fff;
+			background-color: $secondaryColor;
+		}
+	}
+}
