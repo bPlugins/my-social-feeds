@@ -272,7 +272,7 @@ const Style = ({
 			margin-bottom: ${rowGap};
 		}
 
-		${profileSl} .profileImg,  {
+		${profileSl} .profileImg  {
 			width: ${photoSize};
 			min-width: ${photoSize};
 			height: ${photoSize};
@@ -377,6 +377,7 @@ const Profile = ({
   attributes,
   user
 }) => {
+  console.log(user);
   const {
     isProfile,
     profileImg,
@@ -416,13 +417,7 @@ const Profile = ({
     href: link,
     target: "_blank",
     rel: "noreferrer"
-  }, "@", username), isFollowers || isFollows ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "follow"
-  }, isFollowers && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "followers"
-  }, followers_count, " followers"), isFollows && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "following"
-  }, follows_count, " following")) : '', isName && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, "@", username), isName && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "name"
   }, name ? name : nameText), isBio && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "biography"
@@ -598,7 +593,7 @@ const Item = ({
     href: permalink,
     target: "_blank",
     rel: "noreferrer nofollow noopener"
-  }, " ", (0,_utils_icons__WEBPACK_IMPORTED_MODULE_3__.instagramIcon)('#333', 18), " View on Instagram"))))) : null, isPopup ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }, " ", (0,_utils_icons__WEBPACK_IMPORTED_MODULE_3__.instagramIcon)('#fff', 18), " View on Instagram"))))) : null, isPopup ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: 'VIDEO' === media_type ? thumbnail_url : media_url,
     "data-fancybox": `ifbPopup-${cId}`,
     "data-src": `#ifbPopupContent-${cId}-${id}`,
@@ -616,19 +611,21 @@ const CarouselItem = ({
   const carousel = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const slidePrev = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const slideNext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (carousel.current && slidePrev.current && slideNext.current) {
-      new Swiper(carousel.current, {
-        speed: 400,
-        slidesPerView: 1,
-        spaceBetween: 0,
-        navigation: {
-          prevEl: slidePrev.current,
-          nextEl: slideNext.current
-        }
-      });
-    }
-  }, [carousel.current, slidePrev.current, slideNext.current]);
+
+  // useEffect(() => {
+  // 	if (carousel?.current && slidePrev?.current && slideNext?.current) {
+  // 		new Swiper(carousel?.current, {
+  // 			speed: 400,
+  // 			slidesPerView: 1,
+  // 			spaceBetween: 0,
+  // 			navigation: {
+  // 				prevEl: slidePrev?.current,
+  // 				nextEl: slideNext?.current,
+  // 			}
+  // 		});
+  // 	}
+  // }, [carousel?.current, slidePrev?.current, slideNext?.current]);
+
   const Slide = ({
     child
   }) => {
@@ -645,7 +642,7 @@ const CarouselItem = ({
       src: media_url
     })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       src: media_url,
-      alt: caption.split(' ').slice(0, 12).join(' ')
+      alt: caption?.split(' ').slice(0, 12).join(' ')
     }));
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

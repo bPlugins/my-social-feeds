@@ -27,7 +27,7 @@ const Style = ({ attributes, clientId }) => {
 			margin-bottom: ${rowGap};
 		}
 
-		${profileSl} .profileImg,  {
+		${profileSl} .profileImg  {
 			width: ${photoSize};
 			min-width: ${photoSize};
 			height: ${photoSize};

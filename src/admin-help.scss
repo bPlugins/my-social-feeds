@@ -1,0 +1,72 @@
+.msfAdminHelpPage {
+	.bplContainer {
+		width: 1230px;
+		max-width: 100%;
+		padding: 0 15px;
+		margin: 0 auto;
+	}
+
+	.box {
+		background: #fff;
+		padding: 20px;
+		border-radius: 4px;
+		// box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; // Choose
+		box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+	}
+
+	.header {
+		padding: 40px 20px;
+		margin-bottom: 20px;
+
+		.heading {
+			text-align: center;
+			color: #1d2327;
+			font-size: 26px;
+			margin: 0;
+		}
+	}
+
+	.features {
+		width: 100%;
+		display: grid;
+		grid-gap: 30px 30px;
+
+		&.col-3 {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		&.col-tab-2 {
+			@media (max-width: 768px) {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		&.col-mob-1 {
+			@media (max-width: 576px) {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		.feature {
+			text-align: center;
+
+			i {
+				font-size: 30px;
+				color: #4527a4;
+			}
+
+			h3 {
+				font-size: 17px;
+				color: #1d2327;
+				margin: 17px 0 10px 0;
+			}
+
+			p {
+				font-size: 13px;
+				font-weight: 400;
+				line-height: 1.5;
+				margin: 0 0 13px 0;
+			}
+		}
+	}
+}

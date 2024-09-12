@@ -15,7 +15,7 @@ export const fetchTransientData = () => new Promise((resolve, reject) => {
 
 export const clearCache = () => {
 	$.ajax({
-		url: ifbLocal?.ajaxURL,
+		url: ifbLocal?.ajaxURL, 
 		type: 'POST',
 		data: {
 			action: 'ifbDeleteTransient'

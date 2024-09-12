@@ -1,4 +1,6 @@
 const Profile = ({ attributes, user }) => {
+	console.log(user);
+	
 	const { isProfile, profileImg, profileInfo } = attributes;
 	const { isFollowers, isFollows, isName, name: nameText, isBio, bio } = profileInfo || {};
 	const { username, profile_picture_url, name, biography, followers_count, follows_count } = user;
@@ -13,10 +15,10 @@ const Profile = ({ attributes, user }) => {
 		<div className='profileText'>
 			<a className='userName' href={link} target='_blank' rel='noreferrer'>@{username}</a>
 
-			{isFollowers || isFollows ? <div className='follow'>
+			{/* {isFollowers || isFollows ? <div className='follow'>
 				{isFollowers && <p className='followers'>{followers_count} followers</p>}
 				{isFollows && <p className='following'>{follows_count} following</p>}
-			</div> : ''}
+			</div> : ''} */}
 
 			{isName && <p className='name'>{name ? name : nameText}</p>}
 

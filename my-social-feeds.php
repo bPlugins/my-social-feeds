@@ -30,6 +30,7 @@ if ( function_exists('msfbp_fs') ) {
 	define( 'MSFBP_DIR_URL', plugin_dir_url( __FILE__ ) );
 	define( 'MSFBP_DIR_PATH', plugin_dir_path( __FILE__ ) );
 	define( 'MSFBP_PUBLIC_URL', MSFBP_DIR_URL . 'public/');
+	define( 'MSFBP_ADMIN_URL', MSFBP_DIR_URL . 'admin/');
 
 	if ( ! function_exists( 'msfbp_fs' ) ) {
 		// Create a helper function for easy SDK access.
@@ -75,7 +76,7 @@ if ( function_exists('msfbp_fs') ) {
 
 	if( function_exists( 'msfbp_fs' ) ){
 		msfbp_fs()->add_filter( 'freemius_pricing_js_path', function() {
-			return MSFBP_DIR_PATH . '/inc/freemius-pricing/freemius-pricing.js';
+			return MSFBP_DIR_PATH . '/includes/freemius-pricing/freemius-pricing.js';
 		} );
 	}
 

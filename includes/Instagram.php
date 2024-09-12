@@ -132,3 +132,4 @@ class IFBInstagramFeed{
 	}
 }
 new IFBInstagramFeed;
+require_once MSFBP_DIR_PATH . 'includes/custom-post/ifbinstagram-cpt.php';

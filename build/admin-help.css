@@ -1,0 +1,63 @@
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../plugin-slug/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!../plugin-slug/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../plugin-slug/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/admin-help.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+.msfAdminHelpPage .bplContainer {
+  width: 1230px;
+  max-width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.msfAdminHelpPage .box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
+.msfAdminHelpPage .header {
+  padding: 40px 20px;
+  margin-bottom: 20px;
+}
+.msfAdminHelpPage .header .heading {
+  text-align: center;
+  color: #1d2327;
+  font-size: 26px;
+  margin: 0;
+}
+.msfAdminHelpPage .features {
+  width: 100%;
+  display: grid;
+  grid-gap: 30px 30px;
+}
+.msfAdminHelpPage .features.col-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+@media (max-width: 768px) {
+  .msfAdminHelpPage .features.col-tab-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 576px) {
+  .msfAdminHelpPage .features.col-mob-1 {
+    grid-template-columns: 1fr;
+  }
+}
+.msfAdminHelpPage .features .feature {
+  text-align: center;
+}
+.msfAdminHelpPage .features .feature i {
+  font-size: 30px;
+  color: #4527a4;
+}
+.msfAdminHelpPage .features .feature h3 {
+  font-size: 17px;
+  color: #1d2327;
+  margin: 17px 0 10px 0;
+}
+.msfAdminHelpPage .features .feature p {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0 0 13px 0;
+}
+
+/*# sourceMappingURL=admin-help.css.map*/

@@ -5096,6 +5096,333 @@ const MultiShadowControl = props => {
 
 /***/ }),
 
+/***/ "../Components/Pro/AboutPro/AboutPro.js":
+/*!**********************************************!*\
+  !*** ../Components/Pro/AboutPro/AboutPro.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _AboutPro_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AboutPro.scss */ "../Components/Pro/AboutPro/AboutPro.scss");
+
+
+
+
+const AboutPro = ({
+  aboutProOpen,
+  setAboutProOpen,
+  link,
+  children
+}) => aboutProOpen && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Modal, {
+  className: "bplAboutPro",
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Upgrade to PRO', 'bplugins'),
+  onRequestClose: () => setAboutProOpen(false)
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Explore new features in Pro', 'bplugins')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+  className: "features"
+}, children), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", {
+  className: "text"
+}, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('To unlock those features! Upgrade to Pro')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  className: "upgradeNow",
+  href: link,
+  target: "_blank",
+  rel: "noreferrer"
+}, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Upgrade Now', 'advanced-post-block')));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AboutPro);
+
+/***/ }),
+
+/***/ "../Components/Pro/BControlPro/BControlPro.js":
+/*!****************************************************!*\
+  !*** ../Components/Pro/BControlPro/BControlPro.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _BControlPro_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BControlPro.scss */ "../Components/Pro/BControlPro/BControlPro.scss");
+
+
+
+const BControlPro = ({
+  label,
+  className,
+  onChange,
+  isPremium = false,
+  Component,
+  setOpen = () => {},
+  ...restProps
+}) => {
+  const labelMiddleWare = label => isPremium ? label : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "bplOpacity75"
+  }, label), " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "labelPro"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Pro", "bplugins")));
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Component, {
+    className: `${className} ${isPremium ? '' : 'bplProIdentifier'}`,
+    label: labelMiddleWare(label),
+    onChange: val => isPremium ? onChange(val) : setOpen(true),
+    isPremium: isPremium,
+    ...restProps
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BControlPro);
+
+/***/ }),
+
+/***/ "../Components/Pro/BtnGroupPro/BtnGroupPro.js":
+/*!****************************************************!*\
+  !*** ../Components/Pro/BtnGroupPro/BtnGroupPro.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Components */ "../Components/index.js");
+/* harmony import */ var _BtnGroupPro_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BtnGroupPro.scss */ "../Components/Pro/BtnGroupPro/BtnGroupPro.scss");
+
+/**
+ * @props className (optional): 'mt20' (String)
+ * @props value (String)
+ * @props onChange: (Function)
+ * @return Value (String)
+ */
+
+
+
+
+const BtnGroupPro = props => {
+  const {
+    className,
+    label,
+    value,
+    onChange,
+    options,
+    isIcon = false,
+    isTextIcon = false,
+    size,
+    isPremium = false,
+    setOpen = () => {},
+    proValues
+  } = props;
+  const newOptions = options.map(o => ({
+    ...o,
+    className: proValues?.includes(o.value) && !isPremium ? 'bplProGroupBtn' : ''
+  }));
+  const Buttons = ({
+    className = ''
+  }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ButtonGroup, {
+    className: `bPlBtnGroup ${className || null}`
+  }, newOptions?.map(obj => {
+    const {
+      className = '',
+      value: val,
+      icon = '',
+      label = '',
+      def = ''
+    } = obj;
+    const isActive = value === val;
+    const isSm = size === 'small';
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+      key: val,
+      className: className,
+      label: label,
+      showTooltip: true,
+      tooltipPosition: "top",
+      icon: isIcon ? icon : null,
+      variant: isActive ? 'primary' : '',
+      "aria-pressed": isActive,
+      isSmall: isSm,
+      isMedium: !isSm,
+      onClick: () => isPremium ? onChange(val, def && def) : proValues?.includes(val) ? setOpen(true) : onChange(val, def && def)
+    }, isTextIcon ? icon : isIcon ? '' : label);
+  }));
+  return label ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+    className: className
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_2__.Label, {
+    className: ""
+  }, label), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Buttons, null)) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Buttons, {
+    className: className
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BtnGroupPro);
+
+/***/ }),
+
+/***/ "../Components/Pro/FrontShortCode/FrontShortCode.js":
+/*!**********************************************************!*\
+  !*** ../Components/Pro/FrontShortCode/FrontShortCode.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _FrontShortCode_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FrontShortCode.scss */ "../Components/Pro/FrontShortCode/FrontShortCode.scss");
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../index */ "../Components/index.js");
+
+
+
+
+
+
+const FrontShortCode = ({
+  postType,
+  shortCode,
+  currentPostType
+}) => {
+  const tooltip = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const handleCopyShortCode = e => {
+    const input = e.target;
+    input.select();
+    input.setSelectionRange(0, 30);
+    document.execCommand('copy');
+    tooltip.current.innerHTML = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Copied Successfully!', 'bplugins');
+    setTimeout(() => {
+      tooltip.current.innerHTML = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Copy To Clipboard', 'bplugins');
+    }, 1500);
+  };
+  return postType === currentPostType && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bPlFrontShortCode"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_index__WEBPACK_IMPORTED_MODULE_4__.Label, {
+    className: "mb5"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Copy the shortcode and use it anywhere.', 'bplugins')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bPlFrontShortCodeInput"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    onClick: handleCopyShortCode,
+    value: shortCode
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    ref: tooltip,
+    className: "tooltip"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Copy To Clipboard', 'bplugins'))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)(select => {
+  return {
+    currentPostType: select('core/editor').getCurrentPostType()
+  };
+})(FrontShortCode));
+
+/***/ }),
+
+/***/ "../Components/Pro/SelectControlPro/SelectControlPro.js":
+/*!**************************************************************!*\
+  !*** ../Components/Pro/SelectControlPro/SelectControlPro.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _SelectControlPro_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SelectControlPro.scss */ "../Components/Pro/SelectControlPro/SelectControlPro.scss");
+
+
+
+
+const SelectControlPro = ({
+  className,
+  onChange,
+  isPremium = false,
+  setOpen = () => {},
+  options = [],
+  proValues = [],
+  ...restProps
+}) => {
+  const newOptions = options.map(o => ({
+    ...o,
+    label: proValues?.includes(o.value) && !isPremium ? `${o.label} - Pro` : o.label
+  }));
+  const selectRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const selectEl = selectRef?.current;
+    if (selectEl && !isPremium) {
+      const optEls = selectEl?.childNodes;
+      optEls?.forEach(optEl => {
+        if (proValues?.includes(optEl.value)) {
+          optEl.classList.add('proOption');
+        }
+      });
+    }
+  }, [selectRef, proValues]);
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    ref: selectRef,
+    className: `${className} ${isPremium ? '' : 'bplPorSelect'}`,
+    onChange: val => isPremium ? onChange(val) : proValues?.includes(val) ? setOpen(true) : onChange(val),
+    options: newOptions,
+    ...restProps
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SelectControlPro);
+
+/***/ }),
+
+/***/ "../Components/Pro/index.js":
+/*!**********************************!*\
+  !*** ../Components/Pro/index.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AboutPro: () => (/* reexport safe */ _AboutPro_AboutPro__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   BControlPro: () => (/* reexport safe */ _BControlPro_BControlPro__WEBPACK_IMPORTED_MODULE_2__["default"]),
+/* harmony export */   BtnGroupPro: () => (/* reexport safe */ _BtnGroupPro_BtnGroupPro__WEBPACK_IMPORTED_MODULE_4__["default"]),
+/* harmony export */   FrontShortCode: () => (/* reexport safe */ _FrontShortCode_FrontShortCode__WEBPACK_IMPORTED_MODULE_5__["default"]),
+/* harmony export */   SelectControlPro: () => (/* reexport safe */ _SelectControlPro_SelectControlPro__WEBPACK_IMPORTED_MODULE_3__["default"])
+/* harmony export */ });
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ "../Components/Pro/style.scss");
+/* harmony import */ var _AboutPro_AboutPro__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AboutPro/AboutPro */ "../Components/Pro/AboutPro/AboutPro.js");
+/* harmony import */ var _BControlPro_BControlPro__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BControlPro/BControlPro */ "../Components/Pro/BControlPro/BControlPro.js");
+/* harmony import */ var _SelectControlPro_SelectControlPro__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SelectControlPro/SelectControlPro */ "../Components/Pro/SelectControlPro/SelectControlPro.js");
+/* harmony import */ var _BtnGroupPro_BtnGroupPro__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./BtnGroupPro/BtnGroupPro */ "../Components/Pro/BtnGroupPro/BtnGroupPro.js");
+/* harmony import */ var _FrontShortCode_FrontShortCode__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FrontShortCode/FrontShortCode */ "../Components/Pro/FrontShortCode/FrontShortCode.js");
+
+
+
+
+
+
+
+
+/***/ }),
+
 /***/ "../Components/SelectPureControl/SelectPureControl.js":
 /*!************************************************************!*\
   !*** ../Components/SelectPureControl/SelectPureControl.js ***!
@@ -10863,6 +11190,46 @@ const bgTypes = [{
 
 /***/ }),
 
+/***/ "./src/hooks/usePremiumInEditor.js":
+/*!*****************************************!*\
+  !*** ./src/hooks/usePremiumInEditor.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _react_utils_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../react-utils/hooks */ "../react-utils/hooks/index.js");
+
+
+const usePremiumInEditor = () => {
+  const {
+    data: msfbpUtils
+  } = (0,_react_utils_hooks__WEBPACK_IMPORTED_MODULE_1__.useWPOptionQuery)('msfbpUtils');
+  const {
+    data = null,
+    refetch,
+    isLoading = true
+  } = (0,_react_utils_hooks__WEBPACK_IMPORTED_MODULE_1__.useWPAjax)('msfbPipeChecker', {
+    _wpnonce: msfbpUtils?.nonce
+  }, true);
+  const isPremium = !isLoading && data?.isPipe || false;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    refetch();
+  }, [msfbpUtils]);
+  return {
+    isPremium,
+    isLoading
+  };
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (usePremiumInEditor);
+
+/***/ }),
+
 /***/ "./src/instagram/Components/Backend/Edit.js":
 /*!**************************************************!*\
   !*** ./src/instagram/Components/Backend/Edit.js ***!
@@ -10943,6 +11310,361 @@ const Edit = props => {
 
 /***/ }),
 
+/***/ "./src/instagram/Components/Backend/Settings/Elements/Elements.js":
+/*!************************************************************************!*\
+  !*** ./src/instagram/Components/Backend/Settings/Elements/Elements.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../Components */ "../Components/index.js");
+/* harmony import */ var _Components_Pro__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../../Components/Pro */ "../Components/Pro/index.js");
+
+
+
+
+
+const Elements = ({
+  attributes,
+  setAttributes,
+  isPremium,
+  setProModalOpen,
+  updateObj,
+  isBusiness
+}) => {
+  const {
+    isProfile,
+    profileImg,
+    isFollowBtn,
+    isFollowBtnInFooter,
+    isRemCaptionHash,
+    captionLength,
+    isLoadMore,
+    isCaption,
+    profileInfo
+  } = attributes;
+  const {
+    isFollowers,
+    isFollows,
+    isName,
+    name,
+    isBio,
+    bio
+  } = profileInfo || {};
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    className: "bPlPanelBody",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile', 'instagram-feed')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Profile', 'instagram-feed'),
+    checked: isProfile,
+    onChange: val => setAttributes({
+      isProfile: val
+    })
+  }), isProfile && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, !isBusiness && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile Photo:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.InlineMediaUpload, {
+    value: profileImg,
+    types: ['image'],
+    onChange: val => setAttributes({
+      profileImg: val
+    }),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Upload Profile Picture', 'instagram-feed')
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("small", {
+    className: isBusiness ? 'mt20' : ''
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('For business connect, profile photo will show from instagram account!')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Pro__WEBPACK_IMPORTED_MODULE_4__.BControlPro, {
+    className: "mt20",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Name', 'instagram-feed'),
+    checked: isName,
+    onChange: val => updateObj('profileInfo', 'isName', val),
+    isPremium: isPremium,
+    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl,
+    setOpen: setProModalOpen
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("small", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('For business connect, name will show from instagram account!')), !isBusiness && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Pro__WEBPACK_IMPORTED_MODULE_4__.BControlPro, {
+    value: name,
+    onChange: val => updateObj('profileInfo', 'name', val),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter Name', 'instagram-feed'),
+    isPremium: isPremium,
+    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl,
+    setOpen: setProModalOpen
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Pro__WEBPACK_IMPORTED_MODULE_4__.BControlPro, {
+    className: "mt20",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Biography', 'instagram-feed'),
+    checked: isBio,
+    onChange: val => updateObj('profileInfo', 'isBio', val),
+    isPremium: isPremium,
+    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl,
+    setOpen: setProModalOpen
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("small", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('For business connect, biography will show from instagram account!')), !isBusiness && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Pro__WEBPACK_IMPORTED_MODULE_4__.BControlPro, {
+    value: bio,
+    onChange: val => updateObj('profileInfo', 'bio', val),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter Biography', 'instagram-feed'),
+    isPremium: isPremium,
+    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl,
+    setOpen: setProModalOpen
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    className: "bPlPanelBody",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Follow Button', 'instagram-feed'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Follow Button', 'instagram-feed'),
+    checked: isFollowBtn,
+    onChange: val => setAttributes({
+      isFollowBtn: val
+    })
+  }), isFollowBtn && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Pro__WEBPACK_IMPORTED_MODULE_4__.BControlPro, {
+    className: "mt10",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Follow Button In Footer', 'instagram-feed'),
+    checked: isFollowBtnInFooter,
+    onChange: val => setAttributes({
+      isFollowBtnInFooter: val
+    }),
+    isPremium: isPremium,
+    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl,
+    setOpen: setProModalOpen
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    className: "bPlPanelBody",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Caption', 'instagram-feed'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Caption', 'instagram-feed'),
+    checked: isCaption,
+    onChange: val => setAttributes({
+      isCaption: val
+    })
+  }), isCaption && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Pro__WEBPACK_IMPORTED_MODULE_4__.BControlPro, {
+    className: "mt10",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Remove Caption Hashtag', 'instagram-feed'),
+    checked: isRemCaptionHash,
+    onChange: val => setAttributes({
+      isRemCaptionHash: val
+    }),
+    isPremium: isPremium,
+    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl,
+    setOpen: setProModalOpen
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, {
+    className: ""
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Caption length:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNumberControl, {
+    value: captionLength,
+    onChange: val => setAttributes({
+      captionLength: parseInt(val)
+    }),
+    min: 0
+  })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    className: "bPlPanelBody",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Load More Button', 'instagram-feed'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Load More', 'instagram-feed'),
+    checked: isLoadMore,
+    onChange: val => setAttributes({
+      isLoadMore: val
+    })
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Elements);
+
+/***/ }),
+
+/***/ "./src/instagram/Components/Backend/Settings/General/General.js":
+/*!**********************************************************************!*\
+  !*** ./src/instagram/Components/Backend/Settings/General/General.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../Components */ "../Components/index.js");
+/* harmony import */ var _Components_utils_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../../Components/utils/options */ "../Components/utils/options.js");
+/* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../utils/options */ "./src/instagram/utils/options.js");
+/* harmony import */ var _not_used_services__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../not_used/services */ "./src/instagram/not_used/services.js");
+/* harmony import */ var _Components_Pro__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../../Components/Pro */ "../Components/Pro/index.js");
+
+
+
+
+
+
+
+
+
+const General = ({
+  attributes,
+  setAttributes,
+  setProModalOpen,
+  setPageNumber,
+  isPremium
+}) => {
+  const {
+    accessToken,
+    itemVisible,
+    isPopup,
+    isLink,
+    isLinkNewTab,
+    columns,
+    columnGap,
+    rowGap,
+    cacheTime,
+    cacheTimePeriod,
+    cId
+  } = attributes;
+  const [device, setDevice] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('desktop');
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    className: "bPlPanelBody help",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Help', 'instagram-feed'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "helpItem"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "https://bblockswp.com/docs/instagram-feed-block/",
+    target: "_blank",
+    rel: "noreferrer"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dashicon, {
+    icon: "book"
+  }), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Read Documentation', 'instagram-feed'))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "helpItem rateUs"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "https://wordpress.org/support/plugin/social-feed-block/reviews/#new-post",
+    target: "_blank",
+    rel: "noreferrer"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dashicon, {
+    icon: "star-filled"
+  }), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Would you please rate us?', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('We are new and we need your help to grow!🙏', 'instagram-feed'))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    className: "bPlPanelBody",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Instagram Settings', 'instagram-feed')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, {
+    className: "mb5"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Access Token:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    value: accessToken[0],
+    onChange: val => setAttributes({
+      accessToken: [val]
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
+    className: "ifbCacheTimeRow mt20"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, {
+    className: ""
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Cache Time:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNumberControl, {
+    value: cacheTime,
+    onChange: val => {
+      setAttributes({
+        cacheTime: parseInt(val)
+      });
+      (0,_not_used_services__WEBPACK_IMPORTED_MODULE_6__.remLocal)(`ifbData-${cId}`);
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+    value: cacheTimePeriod,
+    onChange: val => {
+      setAttributes({
+        cacheTimePeriod: val
+      });
+      (0,_not_used_services__WEBPACK_IMPORTED_MODULE_6__.remLocal)(`ifbData-${cId}`);
+    },
+    options: _utils_options__WEBPACK_IMPORTED_MODULE_5__.timePeriods
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    className: "bPlPanelBody",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Layout Settings', 'instagram-feed'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, {
+    className: "mb5"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Item Visible:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+    value: itemVisible,
+    onChange: val => {
+      setAttributes({
+        itemVisible: val
+      });
+      setPageNumber(1);
+    },
+    min: 1,
+    max: 100,
+    step: 1
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
+    className: "mt20"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, {
+    className: "mb5"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Columns:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BDevice, {
+    device: device,
+    onChange: val => setDevice(val)
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+    value: columns[device],
+    onChange: val => {
+      setAttributes({
+        columns: {
+          ...columns,
+          [device]: val
+        }
+      });
+    },
+    min: 1,
+    max: 6,
+    step: 1,
+    beforeIcon: "grid-view"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
+    className: "mt20",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Gap:', 'instagram-feed'),
+    labelPosition: "left",
+    value: columnGap,
+    onChange: val => setAttributes({
+      columnGap: val
+    }),
+    units: [(0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_4__.pxUnit)(), (0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_4__.perUnit)(), (0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_4__.emUnit)()]
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
+    className: "mt20",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Row Gap:', 'instagram-feed'),
+    labelPosition: "left",
+    value: rowGap,
+    onChange: val => setAttributes({
+      rowGap: val
+    }),
+    units: [(0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_4__.pxUnit)(), (0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_4__.perUnit)(), (0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_4__.emUnit)()]
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    className: "bPlPanelBody",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Features', 'instagram-feed'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Pro__WEBPACK_IMPORTED_MODULE_7__.BControlPro, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enable Popup', 'instagram-feed'),
+    checked: isPopup,
+    onChange: val => setAttributes({
+      isPopup: val
+    }),
+    isPremium: isPremium,
+    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl,
+    setOpen: setProModalOpen
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("small", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Gallery Item link will not work if popup is enabled! Link will be in the popup area.')), !isPopup && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+    className: "mt20",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enable Gallery Item Link', 'instagram-feed'),
+    checked: isLink,
+    onChange: val => setAttributes({
+      isLink: val
+    })
+  }), isLink && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+    className: "mt10",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Gallery Item Link in New Tab', 'instagram-feed'),
+    checked: isLinkNewTab,
+    onChange: val => setAttributes({
+      isLinkNewTab: val
+    })
+  }))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (General);
+
+/***/ }),
+
 /***/ "./src/instagram/Components/Backend/Settings/Settings.js":
 /*!***************************************************************!*\
   !*** ./src/instagram/Components/Backend/Settings/Settings.js ***!
@@ -10962,18 +11684,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! immer */ "../plugin-slug/node_modules/immer/dist/immer.mjs");
 /* harmony import */ var _Components_utils_functions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../Components/utils/functions */ "../Components/utils/functions.js");
-/* harmony import */ var _Components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../Components */ "../Components/index.js");
-/* harmony import */ var _Components_utils_options__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../Components/utils/options */ "../Components/utils/options.js");
-/* harmony import */ var _ProModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../ProModal */ "./src/instagram/Components/ProModal.js");
-/* harmony import */ var _Loading__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Loading */ "./src/instagram/Components/Loading.js");
-/* harmony import */ var _hooks_useAllAccounts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../hooks/useAllAccounts */ "./src/instagram/hooks/useAllAccounts.js");
-/* harmony import */ var _hooks_useBlockAccounts__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../hooks/useBlockAccounts */ "./src/instagram/hooks/useBlockAccounts.js");
-/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../utils/functions */ "./src/instagram/utils/functions.js");
-/* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../utils/options */ "./src/instagram/utils/options.js");
-/* harmony import */ var _not_used_services__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../not_used/services */ "./src/instagram/not_used/services.js");
-
+/* harmony import */ var _ProModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../ProModal */ "./src/instagram/Components/ProModal.js");
+/* harmony import */ var _hooks_usePremiumInEditor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../hooks/usePremiumInEditor */ "./src/hooks/usePremiumInEditor.js");
+/* harmony import */ var _Loading__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Loading */ "./src/instagram/Components/Loading.js");
+/* harmony import */ var _hooks_useAllAccounts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../hooks/useAllAccounts */ "./src/instagram/hooks/useAllAccounts.js");
+/* harmony import */ var _hooks_useBlockAccounts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../hooks/useBlockAccounts */ "./src/instagram/hooks/useBlockAccounts.js");
+/* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../utils/functions */ "./src/instagram/utils/functions.js");
+/* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../utils/options */ "./src/instagram/utils/options.js");
+/* harmony import */ var _General_General__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./General/General */ "./src/instagram/Components/Backend/Settings/General/General.js");
+/* harmony import */ var _Elements_Elements__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Elements/Elements */ "./src/instagram/Components/Backend/Settings/Elements/Elements.js");
+/* harmony import */ var _Style_Style__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Style/Style */ "./src/instagram/Components/Backend/Settings/Style/Style.js");
 
 
 
@@ -10991,75 +11712,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 const Settings = ({
   attributes,
   setAttributes,
   setPageNumber
 }) => {
   const {
-    isPremium,
     accounts,
-    accessToken,
-    itemVisible,
-    isPopup,
-    isLink,
-    isLinkNewTab,
-    isProfile,
-    profileImg,
-    profileInfo,
-    isFollowBtn,
-    isFollowBtnInFooter,
-    isCaption,
-    isRemCaptionHash,
-    captionLength,
-    isLoadMore,
-    columns,
-    columnGap,
-    rowGap,
-    background,
-    padding,
-    border,
-    followBtnColors,
-    followBtnHovColors,
-    imgHoverEffect,
-    captionStyle,
-    captionBG,
-    captionTypo,
-    captionColor,
-    cacheTime,
-    cacheTimePeriod,
-    cId
+    accessToken
   } = attributes;
-  const {
-    photoSize,
-    popupPhotoSize,
-    userNameColor,
-    isFollowers,
-    followersColor,
-    isFollows,
-    isName,
-    name,
-    nameColor,
-    isBio,
-    bio,
-    bioColor
-  } = profileInfo || {};
   const {
     allAccounts,
     loading: allAccLoading
-  } = (0,_hooks_useAllAccounts__WEBPACK_IMPORTED_MODULE_9__["default"])(accessToken);
+  } = (0,_hooks_useAllAccounts__WEBPACK_IMPORTED_MODULE_8__["default"])(accessToken);
   const {
     accounts: blockAccounts,
     loading
-  } = (0,_hooks_useBlockAccounts__WEBPACK_IMPORTED_MODULE_10__["default"])(allAccounts, attributes);
-  const [device, setDevice] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('desktop');
+  } = (0,_hooks_useBlockAccounts__WEBPACK_IMPORTED_MODULE_9__["default"])(allAccounts, attributes);
   const [proModalOpen, setProModalOpen] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     window.addEventListener('ifbEvent', () => {
       if (!allAccLoading) {
         const allAccountsIds = allAccounts?.map(a => a?.user_id);
         const filtered = accounts?.filter(bA => allAccountsIds?.includes(bA?.user_id));
-        if (!(0,_utils_functions__WEBPACK_IMPORTED_MODULE_11__.isSameArray)(accounts, filtered, 'user_id')) {
+        if (!(0,_utils_functions__WEBPACK_IMPORTED_MODULE_10__.isSameArray)(accounts, filtered, 'user_id')) {
           setAttributes({
             accounts: filtered
           });
@@ -11074,275 +11751,106 @@ const Settings = ({
     }
   });
   if (loading) {
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Loading__WEBPACK_IMPORTED_MODULE_8__["default"], null);
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Loading__WEBPACK_IMPORTED_MODULE_7__["default"], null);
   }
   const isBusiness = 'business' === blockAccounts[0]?.connectType;
-  console.log(allAccounts);
+  const {
+    isPremium
+  } = (0,_hooks_usePremiumInEditor__WEBPACK_IMPORTED_MODULE_6__["default"])();
+  const globalAttr = {
+    attributes,
+    setAttributes,
+    isPremium,
+    setProModalOpen
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TabPanel, {
     className: "bPlTabPanel",
     activeClass: "activeTab",
-    tabs: _utils_options__WEBPACK_IMPORTED_MODULE_12__.generalStyleTabs,
+    tabs: _utils_options__WEBPACK_IMPORTED_MODULE_11__.generalStyleTabs,
     onSelect: _Components_utils_functions__WEBPACK_IMPORTED_MODULE_4__.tabController
-  }, tab => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, 'general' === tab.name && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    className: "bPlPanelBody help",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Help', 'instagram-feed'),
-    initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "helpItem"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: "https://bblockswp.com/docs/instagram-feed-block/",
-    target: "_blank",
-    rel: "noreferrer"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Dashicon, {
-    icon: "book"
-  }), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Read Documentation', 'instagram-feed'))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "helpItem rateUs"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: "https://wordpress.org/support/plugin/social-feed-block/reviews/#new-post",
-    target: "_blank",
-    rel: "noreferrer"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Dashicon, {
-    icon: "star-filled"
-  }), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Would you please rate us?', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('We are new and we need your help to grow!🙏', 'instagram-feed'))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    className: "bPlPanelBody",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Instagram Settings', 'instagram-feed')
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.Label, {
-    className: "mb5"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Access Token:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    value: accessToken[0],
-    onChange: val => setAttributes({
-      accessToken: [val]
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
-    className: "ifbCacheTimeRow mt20"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.Label, {
-    className: ""
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Cache Time:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalNumberControl, {
-    value: cacheTime,
-    onChange: val => {
-      setAttributes({
-        cacheTime: parseInt(val)
-      });
-      (0,_not_used_services__WEBPACK_IMPORTED_MODULE_13__.remLocal)(`ifbData-${cId}`);
-    }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-    value: cacheTimePeriod,
-    onChange: val => {
-      setAttributes({
-        cacheTimePeriod: val
-      });
-      (0,_not_used_services__WEBPACK_IMPORTED_MODULE_13__.remLocal)(`ifbData-${cId}`);
-    },
-    options: _utils_options__WEBPACK_IMPORTED_MODULE_12__.timePeriods
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    className: "bPlPanelBody",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Layout Settings', 'instagram-feed'),
-    initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.Label, {
-    className: "mb5"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Item Visible:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-    value: itemVisible,
-    onChange: val => {
-      setAttributes({
-        itemVisible: val
-      });
-      setPageNumber(1);
-    },
-    min: 1,
-    max: 100,
-    step: 1
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
-    className: "mt20"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.Label, {
-    className: "mb5"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Columns:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.BDevice, {
-    device: device,
-    onChange: val => setDevice(val)
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-    value: columns[device],
-    onChange: val => {
-      setAttributes({
-        columns: {
-          ...columns,
-          [device]: val
-        }
-      });
-    },
-    min: 1,
-    max: 6,
-    step: 1,
-    beforeIcon: "grid-view"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalUnitControl, {
-    className: "mt20",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Gap:', 'instagram-feed'),
-    labelPosition: "left",
-    value: columnGap,
-    onChange: val => setAttributes({
-      columnGap: val
-    }),
-    units: [(0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_6__.pxUnit)(), (0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_6__.perUnit)(), (0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_6__.emUnit)()]
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalUnitControl, {
-    className: "mt20",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Row Gap:', 'instagram-feed'),
-    labelPosition: "left",
-    value: rowGap,
-    onChange: val => setAttributes({
-      rowGap: val
-    }),
-    units: [(0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_6__.pxUnit)(), (0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_6__.perUnit)(), (0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_6__.emUnit)()]
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    className: "bPlPanelBody",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Features', 'instagram-feed'),
-    initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enable Popup', 'instagram-feed'),
-    checked: isPopup,
-    onChange: val => setAttributes({
-      isPopup: val
-    }),
-    isPremium: isPremium,
-    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl,
-    setOpen: setProModalOpen
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("small", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Gallery Item link will not work if popup is enabled! Link will be in the popup area.')), !isPopup && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    className: "mt20",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enable Gallery Item Link', 'instagram-feed'),
-    checked: isLink,
-    onChange: val => setAttributes({
-      isLink: val
-    })
-  }), isLink && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    className: "mt10",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Gallery Item Link in New Tab', 'instagram-feed'),
-    checked: isLinkNewTab,
-    onChange: val => setAttributes({
-      isLinkNewTab: val
-    })
-  })))), 'elements' === tab.name && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    className: "bPlPanelBody",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile', 'instagram-feed')
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Profile', 'instagram-feed'),
-    checked: isProfile,
-    onChange: val => setAttributes({
-      isProfile: val
-    })
-  }), isProfile && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, !isBusiness && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.Label, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile Photo:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.InlineMediaUpload, {
-    value: profileImg,
-    types: ['image'],
-    onChange: val => setAttributes({
-      profileImg: val
-    }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Upload Profile Picture', 'instagram-feed')
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("small", {
-    className: isBusiness ? 'mt20' : ''
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('For business connect, profile photo will show from instagram account!')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    className: "mt20",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Followers Count', 'instagram-feed'),
-    checked: isFollowers,
-    onChange: val => updateObj('profileInfo', 'isFollowers', val),
-    isPremium: isPremium,
-    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl,
-    setOpen: setProModalOpen
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    className: "mt20",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Following Count', 'instagram-feed'),
-    checked: isFollows,
-    onChange: val => updateObj('profileInfo', 'isFollows', val),
-    isPremium: isPremium,
-    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl,
-    setOpen: setProModalOpen
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    className: "mt20",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Name', 'instagram-feed'),
-    checked: isName,
-    onChange: val => updateObj('profileInfo', 'isName', val),
-    isPremium: isPremium,
-    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl,
-    setOpen: setProModalOpen
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("small", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('For business connect, name will show from instagram account!')), !isBusiness && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    value: name,
-    onChange: val => updateObj('profileInfo', 'name', val),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter Name', 'instagram-feed'),
-    isPremium: isPremium,
-    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl,
-    setOpen: setProModalOpen
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    className: "mt20",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Biography', 'instagram-feed'),
-    checked: isBio,
-    onChange: val => updateObj('profileInfo', 'isBio', val),
-    isPremium: isPremium,
-    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl,
-    setOpen: setProModalOpen
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("small", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('For business connect, biography will show from instagram account!')), !isBusiness && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    value: bio,
-    onChange: val => updateObj('profileInfo', 'bio', val),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter Biography', 'instagram-feed'),
-    isPremium: isPremium,
-    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl,
-    setOpen: setProModalOpen
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    className: "bPlPanelBody",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Follow Button', 'instagram-feed'),
-    initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Follow Button', 'instagram-feed'),
-    checked: isFollowBtn,
-    onChange: val => setAttributes({
-      isFollowBtn: val
-    })
-  }), isFollowBtn && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    className: "mt10",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Follow Button In Footer', 'instagram-feed'),
-    checked: isFollowBtnInFooter,
-    onChange: val => setAttributes({
-      isFollowBtnInFooter: val
-    }),
-    isPremium: isPremium,
-    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl,
-    setOpen: setProModalOpen
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    className: "bPlPanelBody",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Caption', 'instagram-feed'),
-    initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Caption', 'instagram-feed'),
-    checked: isCaption,
-    onChange: val => setAttributes({
-      isCaption: val
-    })
-  }), isCaption && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    className: "mt10",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Remove Caption Hashtag', 'instagram-feed'),
-    checked: isRemCaptionHash,
-    onChange: val => setAttributes({
-      isRemCaptionHash: val
-    }),
-    isPremium: isPremium,
-    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl,
-    setOpen: setProModalOpen
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.Label, {
-    className: ""
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Caption length:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalNumberControl, {
-    value: captionLength,
-    onChange: val => setAttributes({
-      captionLength: parseInt(val)
-    }),
-    min: 0
-  })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    className: "bPlPanelBody",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Load More Button', 'instagram-feed'),
-    initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Load More', 'instagram-feed'),
-    checked: isLoadMore,
-    onChange: val => setAttributes({
-      isLoadMore: val
-    })
-  }))), 'style' === tab.name && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+  }, tab => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, 'general' === tab.name && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_General_General__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    ...globalAttr,
+    setPageNumber: setPageNumber
+  }), 'elements' === tab.name && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Elements_Elements__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    ...globalAttr,
+    isBusiness: isBusiness,
+    updateObj: updateObj
+  })), 'style' === tab.name && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Style_Style__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    ...globalAttr,
+    updateObj: updateObj
+  }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ProModal__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    proModalOpen: proModalOpen,
+    setProModalOpen: setProModalOpen
+  }));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Settings);
+
+/***/ }),
+
+/***/ "./src/instagram/Components/Backend/Settings/Style/Style.js":
+/*!******************************************************************!*\
+  !*** ./src/instagram/Components/Backend/Settings/Style/Style.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! immer */ "../plugin-slug/node_modules/immer/dist/immer.mjs");
+/* harmony import */ var _Components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../Components */ "../Components/index.js");
+/* harmony import */ var _Components_utils_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../../Components/utils/options */ "../Components/utils/options.js");
+/* harmony import */ var _utils_options__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../utils/options */ "./src/instagram/utils/options.js");
+/* harmony import */ var _Components_Pro__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../../Components/Pro */ "../Components/Pro/index.js");
+
+
+
+
+
+
+
+
+const Style = ({
+  attributes,
+  setAttributes,
+  updateObj,
+  isPremium,
+  setProModalOpen
+}) => {
+  const {
+    isProfile,
+    profileInfo,
+    isCaption,
+    background,
+    padding,
+    border,
+    followBtnColors,
+    followBtnHovColors,
+    imgHoverEffect,
+    captionStyle,
+    captionBG,
+    captionTypo,
+    captionColor
+  } = attributes;
+  const {
+    photoSize,
+    popupPhotoSize,
+    userNameColor,
+    followersColor,
+    nameColor,
+    bioColor
+  } = profileInfo || {};
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Feed', 'instagram-feed')
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.Background, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Background, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background:', 'instagram-feed'),
     value: background,
     onChange: val => setAttributes({
@@ -11351,7 +11859,7 @@ const Settings = ({
     defaults: {
       color: '#0000'
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.SpaceControl, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.SpaceControl, {
     className: "mt20",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding:', 'instagram-feed'),
     value: padding,
@@ -11362,7 +11870,7 @@ const Settings = ({
       vertical: '15px',
       horizontal: '15px'
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.BorderControl, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BorderControl, {
     className: "mt20",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Border:', 'instagram-feed'),
     value: border,
@@ -11372,57 +11880,58 @@ const Settings = ({
     defaults: {
       radius: '5px'
     }
-  })), isProfile && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+  })), isProfile && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile', 'instagram-feed'),
     initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalUnitControl, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Photo Size:', 'instagram-feed'),
     labelPosition: "left",
     value: photoSize,
     onChange: val => updateObj('profileInfo', 'photoSize', val),
-    units: [(0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_6__.pxUnit)(55), (0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_6__.emUnit)(3.5)]
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalUnitControl, {
+    units: [(0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_4__.pxUnit)(55), (0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_4__.emUnit)(3.5)],
+    isPremium: isPremium,
+    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl,
+    setOpen: setProModalOpen
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl, {
     className: "mt15",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Photo Size in Popup:', 'instagram-feed'),
     labelPosition: "left",
     value: popupPhotoSize,
     onChange: val => updateObj('profileInfo', 'popupPhotoSize', val),
-    units: [(0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_6__.pxUnit)(55), (0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_6__.emUnit)(3.5)],
+    units: [(0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_4__.pxUnit)(55), (0,_Components_utils_options__WEBPACK_IMPORTED_MODULE_4__.emUnit)(3.5)],
     isPremium: isPremium,
-    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalUnitControl,
+    Component: _wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalUnitControl,
     setOpen: setProModalOpen
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.BColor, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Pro__WEBPACK_IMPORTED_MODULE_6__.BControlPro, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Username Color:', 'instagram-feed'),
     value: userNameColor,
     onChange: val => updateObj('profileInfo', 'userNameColor', val),
-    defaultColor: "#4527a4"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.BColor, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Follow Color:', 'instagram-feed'),
-    value: followersColor,
-    onChange: val => setAttributes({
-      profileInfo: {
-        ...profileInfo,
-        followersColor: val,
-        followsColor: val
-      }
-    }),
-    defaultColor: "#4b4f58"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.BColor, {
+    defaultColor: "#4527a4",
+    isPremium: isPremium,
+    Component: _Components__WEBPACK_IMPORTED_MODULE_3__.BColor,
+    setOpen: setProModalOpen
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Pro__WEBPACK_IMPORTED_MODULE_6__.BControlPro, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Name Color:', 'instagram-feed'),
     value: nameColor,
     onChange: val => updateObj('profileInfo', 'nameColor', val),
-    defaultColor: "#333"
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.BColor, {
+    defaultColor: "#333",
+    isPremium: isPremium,
+    Component: _Components__WEBPACK_IMPORTED_MODULE_3__.BColor,
+    setOpen: setProModalOpen
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Pro__WEBPACK_IMPORTED_MODULE_6__.BControlPro, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Biography Color:', 'instagram-feed'),
     value: bioColor,
     onChange: val => updateObj('profileInfo', 'bioColor', val),
-    defaultColor: "#4b4f58"
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    defaultColor: "#4b4f58",
+    isPremium: isPremium,
+    Component: _Components__WEBPACK_IMPORTED_MODULE_3__.BColor,
+    setOpen: setProModalOpen
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Follow Button', 'instagram-feed'),
     initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.ColorsControl, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Pro__WEBPACK_IMPORTED_MODULE_6__.BControlPro, {
     value: followBtnColors,
     onChange: val => setAttributes({
       followBtnColors: val
@@ -11430,8 +11939,11 @@ const Settings = ({
     defaults: {
       color: '#fff',
       bg: '#4527a4'
-    }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.ColorsControl, {
+    },
+    isPremium: isPremium,
+    Component: _Components__WEBPACK_IMPORTED_MODULE_3__.ColorsControl,
+    setOpen: setProModalOpen
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Pro__WEBPACK_IMPORTED_MODULE_6__.BControlPro, {
     value: followBtnHovColors,
     onChange: val => setAttributes({
       followBtnHovColors: val
@@ -11439,26 +11951,29 @@ const Settings = ({
     defaults: {
       color: '#fff',
       bg: '#8344c5'
-    }
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    },
+    isPremium: isPremium,
+    Component: _Components__WEBPACK_IMPORTED_MODULE_3__.ColorsControl,
+    setOpen: setProModalOpen
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Image', 'instagram-feed'),
     initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.Label, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, {
     className: ""
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Hover Effect:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Hover Effect:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
     value: imgHoverEffect,
     onChange: val => setAttributes({
       imgHoverEffect: val
     }),
-    options: _utils_options__WEBPACK_IMPORTED_MODULE_12__.imgHoverEffects
-  }))), isCaption && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    options: _utils_options__WEBPACK_IMPORTED_MODULE_5__.imgHoverEffects
+  }))), isCaption && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Caption', 'instagram-feed'),
     initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.Label, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Label, {
     className: ""
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Caption Style:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Caption Style:', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
     value: captionStyle,
     onChange: val => setAttributes({
       captionStyle: val,
@@ -11473,8 +11988,8 @@ const Settings = ({
         color: '#0006'
       }
     }),
-    options: [..._utils_options__WEBPACK_IMPORTED_MODULE_12__.captionStyles, ..._utils_options__WEBPACK_IMPORTED_MODULE_12__.captionStylesPro]
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.Background, {
+    options: [..._utils_options__WEBPACK_IMPORTED_MODULE_5__.captionStyles, ..._utils_options__WEBPACK_IMPORTED_MODULE_5__.captionStylesPro]
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Background, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background:', 'instagram-feed'),
     value: captionBG,
     onChange: val => setAttributes({
@@ -11484,7 +11999,7 @@ const Settings = ({
       color: '#0006'
     },
     isImage: false
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.Typography, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.Typography, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Typography:', 'instagram-feed'),
     value: captionTypo,
     onChange: val => setAttributes({
@@ -11497,20 +12012,17 @@ const Settings = ({
         mobile: 18
       }
     },
-    produce: immer__WEBPACK_IMPORTED_MODULE_14__.produce
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_5__.BColor, {
+    produce: immer__WEBPACK_IMPORTED_MODULE_7__.produce
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components__WEBPACK_IMPORTED_MODULE_3__.BColor, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Color:', 'instagram-feed'),
     value: captionColor,
     onChange: val => setAttributes({
       captionColor: val
     }),
     defaultColor: "#fff"
-  })))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ProModal__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    proModalOpen: proModalOpen,
-    setProModalOpen: setProModalOpen
-  }));
+  })));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Settings);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Style);
 
 /***/ }),
 
@@ -11580,7 +12092,7 @@ const Style = ({
 			margin-bottom: ${rowGap};
 		}
 
-		${profileSl} .profileImg,  {
+		${profileSl} .profileImg  {
 			width: ${photoSize};
 			min-width: ${photoSize};
 			height: ${photoSize};
@@ -11687,6 +12199,7 @@ const Profile = ({
   attributes,
   user
 }) => {
+  console.log(user);
   const {
     isProfile,
     profileImg,
@@ -11726,13 +12239,7 @@ const Profile = ({
     href: link,
     target: "_blank",
     rel: "noreferrer"
-  }, "@", username), isFollowers || isFollows ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "follow"
-  }, isFollowers && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "followers"
-  }, followers_count, " followers"), isFollows && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "following"
-  }, follows_count, " following")) : '', isName && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, "@", username), isName && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "name"
   }, name ? name : nameText), isBio && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "biography"
@@ -11910,7 +12417,7 @@ const Item = ({
     href: permalink,
     target: "_blank",
     rel: "noreferrer nofollow noopener"
-  }, " ", (0,_utils_icons__WEBPACK_IMPORTED_MODULE_3__.instagramIcon)('#333', 18), " View on Instagram"))))) : null, isPopup ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }, " ", (0,_utils_icons__WEBPACK_IMPORTED_MODULE_3__.instagramIcon)('#fff', 18), " View on Instagram"))))) : null, isPopup ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: 'VIDEO' === media_type ? thumbnail_url : media_url,
     "data-fancybox": `ifbPopup-${cId}`,
     "data-src": `#ifbPopupContent-${cId}-${id}`,
@@ -11928,19 +12435,21 @@ const CarouselItem = ({
   const carousel = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const slidePrev = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const slideNext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (carousel.current && slidePrev.current && slideNext.current) {
-      new Swiper(carousel.current, {
-        speed: 400,
-        slidesPerView: 1,
-        spaceBetween: 0,
-        navigation: {
-          prevEl: slidePrev.current,
-          nextEl: slideNext.current
-        }
-      });
-    }
-  }, [carousel.current, slidePrev.current, slideNext.current]);
+
+  // useEffect(() => {
+  // 	if (carousel?.current && slidePrev?.current && slideNext?.current) {
+  // 		new Swiper(carousel?.current, {
+  // 			speed: 400,
+  // 			slidesPerView: 1,
+  // 			spaceBetween: 0,
+  // 			navigation: {
+  // 				prevEl: slidePrev?.current,
+  // 				nextEl: slideNext?.current,
+  // 			}
+  // 		});
+  // 	}
+  // }, [carousel?.current, slidePrev?.current, slideNext?.current]);
+
   const Slide = ({
     child
   }) => {
@@ -11957,7 +12466,7 @@ const CarouselItem = ({
       src: media_url
     })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       src: media_url,
-      alt: caption.split(' ').slice(0, 12).join(' ')
+      alt: caption?.split(' ').slice(0, 12).join(' ')
     }));
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -12044,7 +12553,7 @@ const ProModal = ({
   onRequestClose: () => setProModalOpen(false)
 }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Explore new features in Pro', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
   className: "features"
-}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Popup: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show feed details in the popup modal.', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Followers count: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Followers count in profile area.', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Following count: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Following count in profile area.', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Name: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Name in profile area.', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Biography: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Biography in profile area.', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Follow Button: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Set Follow button in footer area.', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile Photo: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Set different Profile Photo size in popup area.', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Caption: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Remove Caption hashtag', 'instagram-feed'))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", {
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Popup: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show feed details in the popup modal.', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Name: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Name in profile area.', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Biography: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Biography in profile area.', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Follow Button: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Set Follow button in footer area.', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile Photo: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Set different Profile Photo size in popup area.', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Caption: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Remove Caption hashtag', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Username: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Change username color', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Name: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Change name color', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Biography: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Change biography color', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, "\u2003", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Follow Button: ', 'instagram-feed')), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Colors set follow button', 'instagram-feed'))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", {
   className: "text"
 }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('To unlock those features! Upgrade to Pro')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
   className: "upgradeNow",
@@ -12775,6 +13284,138 @@ const generalStyleTabs = [{
 
 /***/ }),
 
+/***/ "../react-utils/hooks/index.js":
+/*!*************************************!*\
+  !*** ../react-utils/hooks/index.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useWPAjax: () => (/* reexport safe */ _useWPAjax__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   useWPOptionQuery: () => (/* reexport safe */ _useWPOptionQuery__WEBPACK_IMPORTED_MODULE_1__["default"])
+/* harmony export */ });
+/* harmony import */ var _useWPAjax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./useWPAjax */ "../react-utils/hooks/useWPAjax.js");
+/* harmony import */ var _useWPOptionQuery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useWPOptionQuery */ "../react-utils/hooks/useWPOptionQuery.js");
+
+
+
+
+/***/ }),
+
+/***/ "../react-utils/hooks/useWPAjax.js":
+/*!*****************************************!*\
+  !*** ../react-utils/hooks/useWPAjax.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const useWPAjax = (action, params = {}, set = false) => {
+  const [isLoading, setIsLoading] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [isError, setIsError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [data, setData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  if (!wp.ajax) {
+    // eslint-disable-next-line no-console
+    console.error('Please use wp-util as a dependency');
+    return;
+  }
+  const sendRequest = (payload = {}) => {
+    setIsLoading(true);
+    setIsError(false);
+    setError(null);
+    wp.ajax.post(action, {
+      ...params,
+      ...payload
+    }).done(res => {
+      setIsLoading(false);
+      setData(res);
+    }).fail(error => {
+      setIsLoading(false);
+      setIsError(true);
+      setError(error);
+    });
+  };
+  const request = async (payload = {}) => {
+    sendRequest(payload);
+  };
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (!set) {
+      sendRequest(params);
+    }
+  }, []);
+  return {
+    data,
+    saveData: request,
+    refetch: request,
+    isLoading,
+    isError,
+    error
+  };
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useWPAjax);
+
+/***/ }),
+
+/***/ "../react-utils/hooks/useWPOptionQuery.js":
+/*!************************************************!*\
+  !*** ../react-utils/hooks/useWPOptionQuery.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const useWPOptionQuery = key => {
+  const [isLoading, setIsLoading] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  const [isError, setIsError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [data, setData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    setIsError(false);
+    setError(null);
+    wp.api.loadPromise.then(() => {
+      const settings = new wp.api.models.Settings();
+      settings.fetch().then(response => {
+        setData(prepareData(response[key]));
+        setIsLoading(false);
+      });
+    });
+  }, []);
+  const prepareData = data => {
+    let newData = data;
+    try {
+      newData = JSON.parse(data);
+    } catch (error) {
+      setIsError(true);
+      setError(error.message);
+    }
+    return newData;
+  };
+  return {
+    data,
+    isLoading,
+    isError,
+    error
+  };
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useWPOptionQuery);
+
+/***/ }),
+
 /***/ "../Components/BColor/BColor.scss":
 /*!****************************************!*\
   !*** ../Components/BColor/BColor.scss ***!
@@ -12870,6 +13511,84 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************!*\
   !*** ../Components/MediaControl/MediaControl.scss ***!
   \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "../Components/Pro/AboutPro/AboutPro.scss":
+/*!************************************************!*\
+  !*** ../Components/Pro/AboutPro/AboutPro.scss ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "../Components/Pro/BControlPro/BControlPro.scss":
+/*!******************************************************!*\
+  !*** ../Components/Pro/BControlPro/BControlPro.scss ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "../Components/Pro/BtnGroupPro/BtnGroupPro.scss":
+/*!******************************************************!*\
+  !*** ../Components/Pro/BtnGroupPro/BtnGroupPro.scss ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "../Components/Pro/FrontShortCode/FrontShortCode.scss":
+/*!************************************************************!*\
+  !*** ../Components/Pro/FrontShortCode/FrontShortCode.scss ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "../Components/Pro/SelectControlPro/SelectControlPro.scss":
+/*!****************************************************************!*\
+  !*** ../Components/Pro/SelectControlPro/SelectControlPro.scss ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "../Components/Pro/style.scss":
+/*!************************************!*\
+  !*** ../Components/Pro/style.scss ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";

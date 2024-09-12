@@ -5,11 +5,11 @@ if( !class_exists( 'bPinterestFeed' ) ){
 
         function __construct(){
             add_action( 'init', [$this, 'onInit'] );
-            add_action( 'wp_ajax_bPinterestAjaxRequest', [$this, 'ajaxRequest'] );
-            add_action( 'wp_ajax_nopriv_bPinterestAjaxRequest', [$this, 'ajaxRequest'] );
-        }
+            add_action( 'wp_ajax_bPinterestAjaxRequest', [$this, 'bpinterest_ajaxRequest'] );
+            add_action( 'wp_ajax_nopriv_bPinterestAjaxRequest', [$this, 'bpinterest_ajaxRequest'] );
+        }         
 
-        public function ajaxRequest() {
+        public function bpinterest_ajaxRequest() {
             if (!wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'wp_rest')) {
                 wp_send_json_error('Invalid request');
             }
@@ -69,4 +69,5 @@ if( !class_exists( 'bPinterestFeed' ) ){
         }
     }
     new bPinterestFeed;
+    require_once MSFBP_DIR_PATH . 'includes/custom-post/bpinterest-cpt.php';
 }

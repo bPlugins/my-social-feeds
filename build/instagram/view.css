@@ -302,6 +302,12 @@
   margin: 0;
   border-radius: 50%;
 }
+.ifbProfile .profileImg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .ifbProfile .userName {
   font-size: 18px;
   font-weight: bold;
@@ -389,6 +395,7 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  color: #fff;
 }
 @media (max-width: 992px) {
   .ifbPopupContent .contentArea .media {

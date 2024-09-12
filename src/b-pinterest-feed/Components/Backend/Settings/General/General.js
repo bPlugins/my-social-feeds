@@ -6,7 +6,9 @@ import { effectOpt, layoutOpt, ratioOpt } from '../../../../utils/options';
 import { BDevice, Label } from '../../../../../../../Components';
 import { emUnit, perUnit, pxUnit } from '../../../../../../../Components/utils/options';
 
-const General = ({attributes, updateObject, getData, setAttributes}) => {
+import { BControlPro } from '../../../../../../../Components/Pro';
+
+const General = ({attributes, updateObject, getData, setAttributes, isPremium, setProModalOpen}) => {
     const [device, setDevice] = useState('desktop');
     
     const {accountInfo, elements, layout, columns, columnGap, rowGap,pinCoverImage, fancyApps, slider } = attributes;
@@ -31,7 +33,8 @@ const General = ({attributes, updateObject, getData, setAttributes}) => {
         <PanelBody className="bPlPanelBody" title={__("Elements", "bpinterest")} initialOpen={false}>
 
             <ToggleControl label={__("Profile", "bpinterest")} checked={isProfile} onChange={val => updateObject("elements", "isProfile", val)}/>
-            <ToggleControl className='mt10' label={__("Pins", "bpinterest")} checked={isPins} onChange={val => updateObject("elements", "isPins", val)}/>
+
+            <BControlPro className='mt10' label={__("Pins", "bpinterest")} checked={isPins} onChange={val => updateObject("elements", "isPins", val)} isPremium={isPremium} setOpen={setProModalOpen} Component={ToggleControl}/>
 
             {isProfile && <> 
                 <ToggleControl className='mt10' label={__("Image", "bpinterest")} checked={isImage} onChange={val => updateObject("elements", "isImage", val)}/>
@@ -44,10 +47,10 @@ const General = ({attributes, updateObject, getData, setAttributes}) => {
         </PanelBody>
 
         <PanelBody className="bPlPanelBody" title={__("Layout", "bpinterest")} initialOpen={false}>
-            <SelectControl label={__("Select", "bpinterest")} value={layout} options={layoutOpt } onChange={ ( val ) => setAttributes({layout:val}) } />
+            <BControlPro label={__("Select", "bpinterest")} value={layout} options={layoutOpt } onChange={ ( val ) => setAttributes({layout:val}) } isPremium={isPremium} setOpen={setProModalOpen} Component={SelectControl} />
 
             {(isPins && (layout === 'default' || layout === 'slider')) &&
-			    <SelectControl className="mt15" label={__('Ratio', 'bpinterest')} labelPosition="side" value={pinCoverImage?.ratio} options={ratioOpt} onChange={(val) => { updateObject("pinCoverImage", "ratio", val) }} />
+			    <BControlPro className="mt15" label={__('Ratio', 'bpinterest')} labelPosition="side" value={pinCoverImage?.ratio} options={ratioOpt} onChange={(val) => { updateObject("pinCoverImage", "ratio", val) }} isPremium={isPremium} setOpen={setProModalOpen} Component={SelectControl}/>
 		    }
 
             {/* column define option  */}
@@ -66,16 +69,27 @@ const General = ({attributes, updateObject, getData, setAttributes}) => {
         </PanelBody>
 
         <PanelBody className="bPlPanelBody" title={__("Lightbox", "bpinterest")} initialOpen={false}> 
+
             <ToggleControl className='mt10' label={__("Info Bar", "bpinterest")} checked={infobar} onChange={val => setAttributes({fancyApps:{...fancyApps, left:{...left, infobar:val}}})}/>
-            <ToggleControl className='mt10' label={__("Zoom In", "bpinterest")} checked={zoomIn} onChange={val => setAttributes({fancyApps:{...fancyApps, middle:{...middle, zoomIn:val}}})}/>
-            <ToggleControl className='mt10' label={__("Zoom Out", "bpinterest")} checked={zoomOut} onChange={val => setAttributes({fancyApps:{...fancyApps, middle:{...middle, zoomOut:val}}})}/>
-            <ToggleControl className='mt10' label={__("Toggle1to1", "bpinterest")} checked={toggle1to1} onChange={val => setAttributes({fancyApps:{...fancyApps, middle:{...middle, toggle1to1:val}}})}/>
-            <ToggleControl className='mt10' label={__("RotateCCW", "bpinterest")} checked={rotateCCW} onChange={val => setAttributes({fancyApps:{...fancyApps, middle:{...middle, rotateCCW:val}}})}/>
-            <ToggleControl className='mt10' label={__("RotateCW", "bpinterest")} checked={rotateCW} onChange={val => setAttributes({fancyApps:{...fancyApps, middle:{...middle, rotateCW:val}}})}/>
-            <ToggleControl className='mt10' label={__("FlipX", "bpinterest")} checked={flipX} onChange={val => setAttributes({fancyApps:{...fancyApps, middle:{...middle, flipX:val}}})}/>
-            <ToggleControl className='mt10' label={__("FlipY", "bpinterest")} checked={flipY} onChange={val => setAttributes({fancyApps:{...fancyApps, middle:{...middle, flipY:val}}})}/>
+
+            <BControlPro className='mt10' label={__("Zoom In", "bpinterest")} checked={zoomIn} onChange={val => setAttributes({fancyApps:{...fancyApps, middle:{...middle, zoomIn:val}}})} isPremium={isPremium} setOpen={setProModalOpen} Component={ToggleControl}/>
+                
+            <BControlPro className='mt10' label={__("Zoom Out", "bpinterest")} checked={zoomOut} onChange={val => setAttributes({fancyApps:{...fancyApps, middle:{...middle, zoomOut:val}}})} isPremium={isPremium} setOpen={setProModalOpen} Component={ToggleControl}/>
+
+            <BControlPro className='mt10' label={__("Toggle1to1", "bpinterest")} checked={toggle1to1} onChange={val => setAttributes({fancyApps:{...fancyApps, middle:{...middle, toggle1to1:val}}})}  isPremium={isPremium} setOpen={setProModalOpen} Component={ToggleControl}/>
+
+            <BControlPro className='mt10' label={__("RotateCCW", "bpinterest")} checked={rotateCCW} onChange={val => setAttributes({fancyApps:{...fancyApps, middle:{...middle, rotateCCW:val}}})} isPremium={isPremium} setOpen={setProModalOpen} Component={ToggleControl}/>
+
+            <BControlPro className='mt10' label={__("RotateCW", "bpinterest")} checked={rotateCW} onChange={val => setAttributes({fancyApps:{...fancyApps, middle:{...middle, rotateCW:val}}})} isPremium={isPremium} setOpen={setProModalOpen} Component={ToggleControl}/>
+
+            <BControlPro className='mt10' label={__("FlipX", "bpinterest")} checked={flipX} onChange={val => setAttributes({fancyApps:{...fancyApps, middle:{...middle, flipX:val}}})} isPremium={isPremium} setOpen={setProModalOpen} Component={ToggleControl}/>
+
+            <BControlPro className='mt10' label={__("FlipY", "bpinterest")} checked={flipY} onChange={val => setAttributes({fancyApps:{...fancyApps, middle:{...middle, flipY:val}}})} isPremium={isPremium} setOpen={setProModalOpen} Component={ToggleControl}/>
+
             <ToggleControl className='mt10' label={__("Slide show", "bpinterest")} checked={slideshow} onChange={val => setAttributes({fancyApps:{...fancyApps, right:{...right, slideshow:val}}})}/>
-            <ToggleControl className='mt10' label={__("Thumbs", "bpinterest")} checked={thumbs} onChange={val => setAttributes({fancyApps:{...fancyApps, right:{...right, thumbs:val}}})}/>
+
+            <BControlPro className='mt10' label={__("Thumbs", "bpinterest")} checked={thumbs} onChange={val => setAttributes({fancyApps:{...fancyApps, right:{...right, thumbs:val}}})} isPremium={isPremium} setOpen={setProModalOpen} Component={ToggleControl}/>
+
             <ToggleControl className='mt10' label={__("Close", "bpinterest")} checked={close} onChange={val => setAttributes({fancyApps:{...fancyApps, right:{...right, close:val}}})}/>
         </PanelBody>
 

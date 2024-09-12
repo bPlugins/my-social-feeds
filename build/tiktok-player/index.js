@@ -11854,19 +11854,15 @@ __webpack_require__.r(__webpack_exports__);
 const ProModal = ({
   proModalOpen,
   setProModalOpen
-}) => {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, proModalOpen && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Modal, {
-    className: "ttpProModal",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pro Feature', 'tiktok'),
-    onRequestClose: () => setProModalOpen(false)
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "ttpProFeature"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Unlock Tiktok Player Feature', 'tiktok')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    target: "_blank",
-    rel: "noreferrer",
-    href: "https://wptiktokfeed.com/#pricing"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Upgrade to Pro', 'tiktok')))));
-};
+}) => proModalOpen && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Modal, {
+  className: "ifbProModal",
+  title: "Upgrade to PRO",
+  onRequestClose: () => setProModalOpen(false)
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Explore new features in Pro', 'instagram-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+  className: "features"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Videos per page', 'tiktok-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Hide Video Overly like,share and view', 'tiktok-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Video overly icon style', 'tiktok-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Share button text change', 'tiktok-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Share button style', 'tiktok-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Cache time set profile and video', 'tiktok-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile 3 layout', 'tiktok-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile name style', 'tiktok-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Info style', 'tiktok-feed')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Load more button text change', 'tiktok-feed'))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", {
+  className: "text"
+}, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('To unlock those features! Upgrade to Pro')));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProModal);
 
 /***/ }),

@@ -1206,6 +1206,146 @@
   height: 32px;
   width: 73px;
 }
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../plugin-slug/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!../plugin-slug/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../plugin-slug/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../Components/Pro/style.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../plugin-slug/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!../plugin-slug/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../plugin-slug/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../Components/Pro/AboutPro/AboutPro.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+.bplAboutPro h3 {
+  margin: 0 0 15px 0;
+}
+.bplAboutPro .text {
+  font-size: 15px;
+  margin: 25px 0 0 0;
+}
+.bplAboutPro .upgradeNow {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #4527a4;
+  text-decoration: none;
+  padding: 12px 20px;
+  margin-top: 20px;
+  border-radius: 50px;
+}
+.bplAboutPro .upgradeNow:hover, .bplAboutPro .upgradeNow:focus {
+  color: #fff;
+  background-color: #8344c5;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../plugin-slug/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!../plugin-slug/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../plugin-slug/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../Components/Pro/BControlPro/BControlPro.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************/
+.bplProIdentifier .labelPro {
+  padding: 0px 5px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #4527a4;
+}
+.bplProIdentifier .components-input-control__container {
+  opacity: 0.75;
+}
+.bplProIdentifier .bplOpacity75 {
+  opacity: 0.75;
+}
+.bplProIdentifier .components-form-toggle {
+  opacity: 0.75;
+}
+
+.bplOpacity50 {
+  opacity: 0.5;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../plugin-slug/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!../plugin-slug/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../plugin-slug/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../Components/Pro/SelectControlPro/SelectControlPro.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
+.bplPorSelect .proOption {
+  color: #fff;
+  background-color: #4527a4;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../plugin-slug/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!../plugin-slug/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../plugin-slug/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../Components/Pro/BtnGroupPro/BtnGroupPro.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************/
+.bplProGroupBtn {
+  position: relative;
+}
+.bplProGroupBtn::before {
+  content: "Pro";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  background: #4527a4;
+  padding: 2px 8px;
+  border-radius: 50px;
+  z-index: 10;
+  display: none;
+}
+.bplProGroupBtn:hover::before {
+  display: block;
+}
+.bplProGroupBtn svg {
+  opacity: 0.75;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../plugin-slug/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!../plugin-slug/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../plugin-slug/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../Components/Pro/FrontShortCode/FrontShortCode.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************/
+.bPlFrontShortCode {
+  text-align: center;
+  padding: 0 0 10px 0;
+}
+.bPlFrontShortCode label {
+  display: inline-block;
+  box-sizing: border-box;
+}
+.bPlFrontShortCode .bPlFrontShortCodeInput {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.bPlFrontShortCode .bPlFrontShortCodeInput input {
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  outline: none;
+  background-color: #4527a4;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+.bPlFrontShortCode .bPlFrontShortCodeInput .tooltip {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.bPlFrontShortCode .bPlFrontShortCodeInput .tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+.bPlFrontShortCode .bPlFrontShortCodeInput:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ../plugin-slug/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!../plugin-slug/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../plugin-slug/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/instagram/editor.scss ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************/

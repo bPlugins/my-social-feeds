@@ -224,3 +224,5 @@ class TTPTiktokAPI
     }
 }
 new TTPTiktokAPI();
+
+require_once MSFBP_DIR_PATH . 'includes/custom-post/ttptiktokplayer-cpt.php';

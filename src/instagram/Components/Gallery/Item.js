@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-
+ 
 import Profile from '../Elements/Profile';
 import { addHashtagLinks, remHashtag, truncate } from '../../utils/functions';
 import { instagramIcon, carouselIcon, playIcon } from '../../utils/icons';
@@ -70,7 +70,7 @@ const Item = ({ attributes, user, feed, index }) => {
 					<div className='caption' dangerouslySetInnerHTML={{ __html: addHashtagLinks(caption) }} />
 
 					<div className='info'>
-						<a className='link' href={permalink} target='_blank' rel='noreferrer nofollow noopener'> {instagramIcon('#333', 18)} View on Instagram</a>
+						<a className='link' href={permalink} target='_blank' rel='noreferrer nofollow noopener'> {instagramIcon('#fff', 18)} View on Instagram</a>
 					</div>
 				</div>
 			</div>
@@ -92,19 +92,19 @@ const CarouselItem = ({ feed }) => {
 	const slidePrev = useRef(null);
 	const slideNext = useRef(null);
 
-	useEffect(() => {
-		if (carousel.current && slidePrev.current && slideNext.current) {
-			new Swiper(carousel.current, {
-				speed: 400,
-				slidesPerView: 1,
-				spaceBetween: 0,
-				navigation: {
-					prevEl: slidePrev.current,
-					nextEl: slideNext.current,
-				}
-			});
-		}
-	}, [carousel.current, slidePrev.current, slideNext.current]);
+	// useEffect(() => {
+	// 	if (carousel?.current && slidePrev?.current && slideNext?.current) {
+	// 		new Swiper(carousel?.current, {
+	// 			speed: 400,
+	// 			slidesPerView: 1,
+	// 			spaceBetween: 0,
+	// 			navigation: {
+	// 				prevEl: slidePrev?.current,
+	// 				nextEl: slideNext?.current,
+	// 			}
+	// 		});
+	// 	}
+	// }, [carousel?.current, slidePrev?.current, slideNext?.current]);
 
 	const Slide = ({ child }) => {
 		const { media_url, thumbnail_url = '' } = child;
@@ -114,7 +114,7 @@ const CarouselItem = ({ feed }) => {
 				<video controls poster={thumbnail_url}>
 					<source src={media_url} />
 				</video> :
-				<img src={media_url} alt={caption.split(' ').slice(0, 12).join(' ')} />}
+				<img src={media_url} alt={caption?.split(' ').slice(0, 12).join(' ')} />}
 		</div>
 	}
 

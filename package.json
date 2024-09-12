@@ -27,5 +27,12 @@
 		"@wordpress/scripts": "^27.9.0",
 		"eslint-webpack-plugin": "^4.2.0"
 	},
-	"files":["build", "languages", "public", "my-social-feeds.php", "Instagram.php", "TiktokAPI.php"]
+	"files": [
+		"build",
+		"languages",
+		"public",
+		"my-social-feeds.php",
+		"Instagram.php",
+		"TiktokAPI.php"
+	]
 }
