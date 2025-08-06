@@ -1,6 +1,4 @@
 <?php
-namespace LBB\Inc;
-
 class AdminMenu
 {
     public function __construct()
@@ -26,40 +24,50 @@ class AdminMenu
             __('My social feeds', 'my-social-feeds'),
             __('My social feeds', 'my-social-feeds'),
             'manage_options',
-            'my-social-feeds.php',
+            'my-social-feeds',
             [$this, 'helpPage'],
             'data:image/svg+xml;base64,' . base64_encode($menuIcon),
             6
         );
 
-        add_submenu_page(
-            'my-social-feeds.php',
-            __('Tiktok Feed', 'tiktok'),
-            __('Tiktok Feed', 'tiktok'),
-            'manage_options',
-            'edit.php?post_type=ttp-tiktok-feed'
-        );
-    
-        add_submenu_page(
-            'my-social-feeds.php',
-            __('Pinterest Feed', 'b-pinterest-feed'),
-            __('Pinterest Feed', 'b-pinterest-feed'),
-            'manage_options',
-            'edit.php?post_type=b_pinterest_feed'
-        );
-    
-        add_submenu_page(
-            'my-social-feeds.php',
-            __('Instagram Feed', 'ifb-instagram-feed'),
-            __('Instagram Feed', 'ifb-instagram-feed'),
-            'manage_options',
-            'edit.php?post_type=ifbinstagram_feed'
-        );
+        if( msfbp_fs()->can_use_premium_code() ){
+            add_submenu_page(
+                'my-social-feeds',
+                __('Tiktok Feed', 'tiktok'),
+                __('Tiktok Feed', 'tiktok'),
+                'manage_options',
+                'edit.php?post_type=ttp-tiktok-feed'
+            );
+         
+            add_submenu_page(
+                'my-social-feeds',
+                __('Pinterest Feed', 'b-pinterest-feed'),
+                __('Pinterest Feed', 'b-pinterest-feed'),
+                'manage_options',
+                'edit.php?post_type=b_pinterest_feed'
+            );
+        
+            add_submenu_page(
+                'my-social-feeds',
+                __('Instagram Feed', 'ifb-instagram-feed'),
+                __('Instagram Feed', 'ifb-instagram-feed'),
+                'manage_options',
+                'edit.php?post_type=ifbinstagram_feed'
+            );
+
+            add_submenu_page(
+                'my-social-feeds',
+                __('Pinterest Feed (Old User)', 'b-pinterest-feed'),
+                __('Pinterest Feed (Old User)', 'b-pinterest-feed'),
+                'manage_options',
+                'edit.php?post_type=kpp_pinterest'
+            );
+        }
     }
 
     public function helpPage()
     {?>
-		<!-- <div class='msfAdminHelpPage'></div> -->
+		<div class='msfAdminHelpPage'></div>
 	<?php }
 }
 new AdminMenu();

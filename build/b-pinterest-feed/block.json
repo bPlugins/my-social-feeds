@@ -5,15 +5,14 @@
   "version": "1.0.0",
   "title": "B Pinterest Feed",
   "category": "widgets",
-  "description": "Short description of the block",
+  "description": "Embed Pinterest Pins In Your Webiste",
   "keywords": [
     "pinterest",
     "feed",
     "social",
-    "media",
-    "key5"
+    "media"
   ],
-  "textdomain": "b-blocks",
+  "textdomain": "b-pinterest-feed",
   "attributes": {
     "align": {
       "type": "string",

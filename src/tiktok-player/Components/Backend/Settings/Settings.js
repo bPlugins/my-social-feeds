@@ -3,7 +3,7 @@ import { useState, useEffect } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import {  TabPanel, Button, Spinner } from '@wordpress/components';
 
-import ProModal from './ProModal';
+import ProModal from '../../../../Pro-modal/ProModal';
 
 import { tabController, generateString } from '../../../utils/functions';
 import { btnTiktok, comment, heart, playCount } from '../../../utils/icons';
@@ -108,7 +108,18 @@ const Settings = ({ attributes,  elId, setAttributes, clientId }) => {
 			</>}</TabPanel>}
 		</InspectorControls> 
 		{/* Moadal  */}
-		<ProModal setProModalOpen={setProModalOpen} proModalOpen={proModalOpen} />
+		<ProModal isProModal={proModalOpen} setIsProModal={setProModalOpen} block='B TikTok Feeds'> 
+			<li>{__('Videos per page', 'tiktok-feed')}</li>
+			<li>{__('Show Hide Video Overly like,share and view', 'tiktok-feed')}</li>
+			<li>{__('Video overly icon style', 'tiktok-feed')}</li>
+			<li>{__('Share button text change', 'tiktok-feed')}</li>
+			<li>{__('Share button style', 'tiktok-feed')}</li>
+			<li>{__('Cache time set profile and video', 'tiktok-feed')}</li>
+			<li>{__('Profile 3 layout', 'tiktok-feed')}</li> 
+			<li>{__('Profile name style', 'tiktok-feed')}</li>
+			<li>{__('Info style', 'tiktok-feed')}</li>
+			<li>{__('Load more button text change', 'tiktok-feed')}</li> 
+		</ProModal>
 
 	</>;
 };

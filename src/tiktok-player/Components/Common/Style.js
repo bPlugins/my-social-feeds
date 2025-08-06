@@ -1,13 +1,11 @@
 
 import { getBoxValue, ratioCheck } from '../../utils/functions';
-import { getColorsCSS, getTypoCSS } from '../../../../../Components/utils/getCSS';
+import { getColorsCSS, getTypoCSS } from '../../../../../bpl-tools/utils/getCSS';
 
-const Style = ({ attributes, elId}) => {
-	const { profilebgColor, profileAlignment, profilePadding, columnGap, rowGap,  profilebgCTop, profilebgCbottom, displayNameColor, nameTypo, btnPadding, shareBtnTypo, layoutColors, sharebtnColors, sharebtnHoverColors, countNumColor, TextColor, InfoTypo, borderColor, bioColor, bioTypo, overlyColor, overlyIconColor, btnTypo, loadMoreBtnColors, videoCoverImage, viewLoadBtnPadding, loadMoreBtnHoverColors, videosInfo } = attributes;
+const Style = ({ attributes, elId }) => {
+	const { profilebgColor, profileAlignment, profilePadding, columnGap, rowGap, profilebgCTop, profilebgCbottom, displayNameColor, nameTypo, btnPadding, shareBtnTypo, layoutColors, sharebtnColors, sharebtnHoverColors, countNumColor, TextColor, InfoTypo, borderColor, bioColor, bioTypo, overlyColor, overlyIconColor, btnTypo, loadMoreBtnColors, videoCoverImage, viewLoadBtnPadding, loadMoreBtnHoverColors, videosInfo } = attributes;
 
 	const mainEl = `#${elId}`;
-	console.log(mainEl);
-	
 	const modalMainEl = `.dialog-content-${elId}`;
 
 	return <style dangerouslySetInnerHTML={{

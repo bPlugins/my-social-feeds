@@ -1,4 +1,4 @@
-import { getBackgroundCSS, getBorderCSS, getColorsCSS, getSpaceCSS, getTypoCSS } from '../../../../../Components/utils/getCSS';
+import { getBackgroundCSS, getBorderCSS, getColorsCSS, getSpaceCSS, getTypoCSS } from '../../../../../bpl-tools/utils/getCSS';
 
 const Style = ({ attributes, clientId }) => {
 	const { cId, columnGap, rowGap, profileInfo, background, padding, border, followBtnColors, followBtnHovColors, captionBG, captionTypo, captionColor } = attributes;

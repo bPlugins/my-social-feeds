@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import { PanelBody, PanelRow, TabPanel, RangeControl, ToggleControl, SelectControl, __experimentalUnitControl as UnitControl, __experimentalNumberControl as NumberControl, Dashicon, CheckboxControl, TextControl } from '@wordpress/components';
-import { BDevice, Label } from '../../../../../../../Components';
-import { emUnit, perUnit, pxUnit } from '../../../../../../../Components/utils/options';
-import {  timePeriods } from '../../../../utils/options';
+import { Label } from '../../../../../../../bpl-tools/Components';
+import { BDevice } from '../../../../../../../bpl-tools/Components/Deprecated';
+import { emUnit, perUnit, pxUnit } from '../../../../../../../bpl-tools/utils/options';
+import { timePeriods } from '../../../../utils/options';
 import { remLocal } from '../../../../not_used/services';
-import { BControlPro } from '../../../../../../../Components/Pro';
+import { BControlPro } from '../../../../../../../bpl-tools/ProControls';
 
-const General = ({attributes, setAttributes, setProModalOpen, setPageNumber, isPremium}) => {
+const General = ({ attributes, setAttributes, setProModalOpen, setPageNumber, isPremium }) => {
 
-    const {accessToken, itemVisible, isPopup, isLink, isLinkNewTab, columns, columnGap, rowGap, cacheTime,
-         cacheTimePeriod, cId } = attributes;
+    const { accessToken, itemVisible, isPopup, isLink, isLinkNewTab, columns, columnGap, rowGap, cacheTime,
+        cacheTimePeriod, cId } = attributes;
 
     const [device, setDevice] = useState('desktop');
     return <>
@@ -25,7 +26,7 @@ const General = ({attributes, setAttributes, setProModalOpen, setPageNumber, isP
                     <span>{__('We are new and we need your help to grow!🙏', 'instagram-feed')}</span>
                 </a>
             </div>
-		</PanelBody>
+        </PanelBody>
 
         <PanelBody className='bPlPanelBody' title={__('Instagram Settings', 'instagram-feed')}>
 
@@ -40,7 +41,7 @@ const General = ({attributes, setAttributes, setProModalOpen, setPageNumber, isP
                     </div>
                 })}
             </div> : null} */}
-            
+
             <Label className='mb5'>{__('Access Token:', 'instagram-feed')}</Label>
             <TextControl value={accessToken[0]} onChange={val => setAttributes({ accessToken: [val] })} />
 
@@ -79,7 +80,7 @@ const General = ({attributes, setAttributes, setProModalOpen, setPageNumber, isP
         </PanelBody>
 
         <PanelBody className='bPlPanelBody' title={__('Features', 'instagram-feed')} initialOpen={false}>
-            <BControlPro label={__('Enable Popup', 'instagram-feed')} checked={isPopup} onChange={val => setAttributes({ isPopup: val })} isPremium={isPremium} Component={ToggleControl} setOpen={setProModalOpen} />
+            <BControlPro label={__('Enable Popup', 'instagram-feed')} checked={isPopup} onChange={val => setAttributes({ isPopup: val })} isPremium={isPremium} Component={ToggleControl} setIsProModalOpen={setProModalOpen} />
             <small>{__('Gallery Item link will not work if popup is enabled! Link will be in the popup area.')}</small>
 
             {!isPopup && <>

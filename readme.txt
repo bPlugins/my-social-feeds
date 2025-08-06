@@ -1,10 +1,10 @@
 === Plugin Name ===
-Contributors:		bplugins
-Donate link:		https://gum.co/wpdonate/
-Tags:				block, key1, key2, key3, key4
-Requires at least:	6.3+
-Tested up to:		6.5.5
-Stable tag:			1.0.0
+Contributors:		blugins
+Donate link: https://www.buymeacoffee.com/abuhayat
+Tags:				pinterest, instagram, tiktok, feeds, block
+Requires at least:	6.5+
+Tested up to:		6.7.1
+Stable tag:			1.0.1
 Requires PHP:		7.2
 License:			GPLv3 or later
 License URI:		http://www.gnu.org/licenses/gpl-3.0.html
@@ -114,30 +114,17 @@ You can post your questions on the [support forum here](https://wordpress.org/su
 
 == Changelog ==
 
+= 1.0.1 - 27 Jan, 2025 =
+* Freemius sdk update
+
 = 1.0.0 =
 * Initial Release
 
 
 == Upgrade Notice ==
 
+= 1.0.1 - 27 Jan, 2025 =
+* Freemius sdk update
+
 = 1.0.0 =
 * Initial Release
-
-
-== External Service Integration ==
-
-= Service Name: package.js =
-- Docs link: package docs link
-
-
-== Developer Notes ==
-
-* Assets file name
-assets file destination. ex: public/js/*.min.js
-
-
-* Public source code GitHub link for review, study, and contribute.
-
-https://github.com/bplugins/plugin-slug
-
-For more information on how to contribute to this plugin, please visit our GitHub repository.

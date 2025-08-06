@@ -1,10 +1,10 @@
-import { getBoxValue } from '../../../../../Components/utils/functions';
-import { getBackgroundCSS, getBorderCSS, getColorsCSS, getTypoCSS } from '../../../../../Components/utils/getCSS';
+import { getBoxValue } from '../../../../../bpl-tools/utils/functions';
+import { getBackgroundCSS, getBorderCSS, getColorsCSS, getTypoCSS } from '../../../../../bpl-tools/utils/getCSS';
 import { ratioCheck } from '../../utils/functions';
 
 const Style = ({ attributes, eleId }) => {
 	const { profileWrapper, name, about, countArea, button, columnGap, rowGap, pinCoverImage, image } = attributes;
-	const {background} = profileWrapper;
+	const { background } = profileWrapper;
 
 	const mainSl = `#${eleId}`;
 	return <style dangerouslySetInnerHTML={{

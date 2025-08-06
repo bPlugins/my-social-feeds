@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useBlockProps } from '@wordpress/block-editor';
-
-import { tabController } from '../../../../../Components/utils/functions';
 
 import Settings from './Settings/Settings';
 import Style from '../Common/Style';

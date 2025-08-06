@@ -59,5 +59,9 @@
   line-height: 1.5;
   margin: 0 0 13px 0;
 }
+.msfAdminHelpPage .features .feature .buttonArea {
+  display: flex;
+  gap: 10px;
+}
 
 /*# sourceMappingURL=admin-help.css.map*/

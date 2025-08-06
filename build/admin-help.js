@@ -148,7 +148,6 @@ __webpack_require__.r(__webpack_exports__);
 
 document.addEventListener('DOMContentLoaded', () => {
   const adminEl = document.querySelector('.msfAdminHelpPage');
-  console.log(adminEl);
   const features = [{
     title: 'Need any Assistance?',
     description: 'Our Expert Support Team is always ready to help you out promptly.',
@@ -159,15 +158,17 @@ document.addEventListener('DOMContentLoaded', () => {
     title: 'Looking for Documentation?',
     description: 'We have detailed documentation on every aspects of the plugin.',
     iconClass: 'fa fa-file-text',
-    link: 'https://bplugins.com/docs/lightbox-block',
+    link: 'https://bplugins.com/docs/my-social-feeds/',
     linkText: 'Documentation'
-  }, {
-    title: 'Liked This Plugin?',
-    description: 'Glad to know that, you can support us by leaving a 5 &#11088; rating.',
-    iconClass: 'fa fa-thumbs-up',
-    link: 'https://wordpress.org/support/plugin/lightbox-block/reviews/#new-post',
-    linkText: 'Rate the Plugin'
-  }];
+  }
+  // {
+  // 	title: 'Liked This Plugin?',
+  // 	description: 'Glad to know that, you can support us by leaving a 5 &#11088; rating.',
+  // 	iconClass: 'fa fa-thumbs-up',
+  // 	link: 'https://wordpress.org/support/plugin/lightbox-block/reviews/#new-post',
+  // 	linkText: 'Rate the Plugin'
+  // }
+  ];
   (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(adminEl).render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "bplContainer"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -181,7 +182,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }, features.map((feature, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Feature, {
     key: index,
     feature: feature
-  }))))));
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "feature box"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+    className: "fa fa-thumbs-up"
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Liked This Plugin?"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Glad to know that, you can support us by leaving a 5 \u2B50 rating."), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "buttonArea"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "https://wordpress.org/support/plugin/b-tiktok-feed/reviews/#new-post",
+    target: "_blank",
+    rel: "noreferrer",
+    className: "button button-primary"
+  }, "B TikTok Feed"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "https://wordpress.org/support/plugin/social-feed-block/reviews/#new-post",
+    target: "_blank",
+    rel: "noreferrer",
+    className: "button button-primary"
+  }, "Instagram Feed"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "https://wordpress.org/support/plugin/b-pinterest-feed/reviews/#new-post",
+    target: "_blank",
+    rel: "noreferrer",
+    className: "button button-primary"
+  }, "B Pinterest Feed")))))));
 });
 const Feature = ({
   feature
