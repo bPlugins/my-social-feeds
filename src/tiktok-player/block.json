@@ -5,6 +5,9 @@
 	"title": "B TikTok Feed",
 	"description": "Embed Tiktok feed in your website",
 	"category": "widgets",
+	"parent": [
+		"msfbp/my-social-feeds"
+	],
 	"keywords": [
 		"tiktok",
 		"feed",

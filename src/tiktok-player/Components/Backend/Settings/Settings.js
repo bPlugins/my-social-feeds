@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import {  TabPanel, Button, Spinner } from '@wordpress/components';
+import { TabPanel, Button, Spinner } from '@wordpress/components';
 
 import ProModal from '../../../../Pro-modal/ProModal';
 
@@ -17,11 +17,11 @@ import Style from './Style/Style';
 import Patterns from './Patterns/Patterns';
 const { generalStyleTabs } = options;
 
-const Settings = ({ attributes,  elId, setAttributes, clientId }) => {
-	const {  videosLists,  overlyIconColor, overlyIcon, viewLoadBtnIcon, loadMoreBtnColors, authorized, clearCache, profileCacheT, videoCacheT } = attributes;
+const Settings = ({ attributes, elId, setAttributes, clientId }) => {
+	const { videosLists, overlyIconColor, overlyIcon, viewLoadBtnIcon, loadMoreBtnColors, authorized, clearCache, profileCacheT, videoCacheT } = attributes;
 
 	const { isPremium } = usePremiumInEditor();
-	
+
 	const [loading, setLoading] = useState(false);
 	const [proModalOpen, setProModalOpen] = useState(false);
 	const [postId, setPostId] = useState(null);
@@ -73,7 +73,7 @@ const Settings = ({ attributes,  elId, setAttributes, clientId }) => {
 		btnTiktok(loadMoreBtnColors?.color, viewLoadBtnIcon?.size);
 	}, [viewLoadBtnIcon]);
 
-	const requireAtt= { attributes, setAttributes, isPremium, setProModalOpen }
+	const requireAtt = { attributes, setAttributes, isPremium, setProModalOpen, clientId }
 
 	return <>
 		<InspectorControls>
@@ -101,24 +101,24 @@ const Settings = ({ attributes,  elId, setAttributes, clientId }) => {
 
 				{'general' === tab.name && <General {...requireAtt} videosLists={videosLists} handleCacheClear={handleCacheClear} />}
 
-				{'style' === tab.name && <Style {...requireAtt}/>}
+				{'style' === tab.name && <Style {...requireAtt} />}
 
-				{'patterns' === tab.name && <Patterns setProModalOpen={setProModalOpen} isPremium={isPremium} clientId={clientId} /> }
+				{'patterns' === tab.name && <Patterns setProModalOpen={setProModalOpen} isPremium={isPremium} clientId={clientId} />}
 
 			</>}</TabPanel>}
-		</InspectorControls> 
+		</InspectorControls>
 		{/* Moadal  */}
-		<ProModal isProModal={proModalOpen} setIsProModal={setProModalOpen} block='B TikTok Feeds'> 
+		<ProModal isProModal={proModalOpen} setIsProModal={setProModalOpen} block='B TikTok Feeds'>
 			<li>{__('Videos per page', 'tiktok-feed')}</li>
 			<li>{__('Show Hide Video Overly like,share and view', 'tiktok-feed')}</li>
 			<li>{__('Video overly icon style', 'tiktok-feed')}</li>
 			<li>{__('Share button text change', 'tiktok-feed')}</li>
 			<li>{__('Share button style', 'tiktok-feed')}</li>
 			<li>{__('Cache time set profile and video', 'tiktok-feed')}</li>
-			<li>{__('Profile 3 layout', 'tiktok-feed')}</li> 
+			<li>{__('Profile 3 layout', 'tiktok-feed')}</li>
 			<li>{__('Profile name style', 'tiktok-feed')}</li>
 			<li>{__('Info style', 'tiktok-feed')}</li>
-			<li>{__('Load more button text change', 'tiktok-feed')}</li> 
+			<li>{__('Load more button text change', 'tiktok-feed')}</li>
 		</ProModal>
 
 	</>;

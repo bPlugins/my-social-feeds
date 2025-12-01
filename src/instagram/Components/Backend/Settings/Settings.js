@@ -18,7 +18,7 @@ import General from './General/General';
 import Elements from './Elements/Elements';
 import Style from './Style/Style';
 
-const Settings = ({ attributes, setAttributes, setPageNumber }) => {
+const Settings = ({ attributes, setAttributes, setPageNumber, clientId }) => {
 	const { accounts, accessToken, } = attributes;
 
 	const { allAccounts, loading: allAccLoading } = useAllAccounts(accessToken);
@@ -49,7 +49,7 @@ const Settings = ({ attributes, setAttributes, setPageNumber }) => {
 
 	const isBusiness = 'business' === blockAccounts[0]?.connectType;
 	const { isPremium } = usePremiumInEditor();
-	const globalAttr = { attributes, setAttributes, isPremium, setProModalOpen }
+	const globalAttr = { attributes, setAttributes, isPremium, setProModalOpen, clientId }
 
 	return <><InspectorControls>
 		<TabPanel className='bPlTabPanel' activeClass='activeTab' tabs={generalStyleTabs} onSelect={tabController}>{tab => <>

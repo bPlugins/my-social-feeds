@@ -23,35 +23,37 @@ register_activation_hook(__FILE__, function () {
 		deactivate_plugins('b-tiktok-feed/index.php');
 	}
 
-	if (is_plugin_active('social-feed-block/index.php')) {
-		deactivate_plugins('social-feed-block/index.php');
-	}
-
 	if (is_plugin_active('b-pinterest-feed/b-pinterest-feed.php')) {
 		deactivate_plugins('b-pinterest-feed/b-pinterest-feed.php');
 	}
 	 
 });
 
-if ( ! function_exists('msfbp_fs') ) {
-	// Constant
+if ( function_exists( 'msfbp_fs' ) ) {
+    msfbp_fs()->set_basename( false, __FILE__ );
+} else {
+
 	define( 'MSFBP_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.1' );
 	define( 'MSFBP_DIR_URL', plugin_dir_url( __FILE__ ) );
 	define( 'MSFBP_DIR_PATH', plugin_dir_path( __FILE__ ) );
 	define( 'MSFBP_PUBLIC_URL', MSFBP_DIR_URL . 'public/');
 	define( 'MSFBP_ADMIN_URL', MSFBP_DIR_URL . 'admin/');
+	define( 'MSFBP_IS_PRO', file_exists( dirname( __FILE__ ) . '/freemius/start.php' ) );
 
-	if ( ! function_exists( 'msfbp_fs' ) ) {
-		// Create a helper function for easy SDK access.
-		function msfbp_fs() {
-			global $msfbp_fs;
-	
-			if ( ! isset( $msfbp_fs ) ) {
-				 // Include Freemius SDK.
-				require_once dirname(__FILE__) . '/freemius/start.php';
-	
-				$msfbp_fs = fs_dynamic_init( array(
-					'id'                  => '16150',
+	if ( !function_exists( 'msfbp_fs' ) ) {
+        // Create a helper function for easy SDK access.
+        function msfbp_fs() {
+            global $msfbp_fs;
+            if ( !isset( $msfbp_fs ) ) {
+                // Include Freemius SDK.
+                if ( MSFBP_IS_PRO ) {
+                    require_once dirname( __FILE__ ) . '/freemius/start.php';
+                } else {
+                    require_once dirname( __FILE__ ) . '/freemius-lite/start.php';
+                }
+
+                $msfbpConfig = array(
+                    'id'                  => '16150',
 					'slug'                => 'my-social-feeds',
 					'premium_slug'        => 'my-social-feeds-pro',
 					'type'                => 'plugin',
@@ -66,30 +68,36 @@ if ( ! function_exists('msfbp_fs') ) {
 						'days'               => 7,
 						'is_require_payment' => true,
 					),
-					'menu'                => array(
-						'slug'           => 'my-social-feeds',
-						'contact'        => false,
-						'support'        => false,
-					),
-				) );
-			}
-	
-			return $msfbp_fs;
-		}
-	
-		// Init Freemius.
-		msfbp_fs();
-		// Signal that SDK was initiated.
-		do_action( 'msfbp_fs_loaded' );
-	}
+					'menu' => MSFBP_IS_PRO ?
+						array(
+							'slug'        => 'my-social-feeds',
+							// 'first-path'  =>  'admin.php?page=my-social-feeds#/pricing',
+							'support'     => false,
+						)
+						: array(
+							'slug'           => 'my-social-feeds',
+							'first-path'     => 'tools.php?page=my-social-feeds#/pricing',
+							'support'        => false,
+							'parent'         => array(
+								'slug' => 'tools.php',
+							),
+						),
+                );
+                $msfbp_fs = ( MSFBP_IS_PRO ? fs_dynamic_init( $msfbpConfig ) : fs_lite_dynamic_init( $msfbpConfig ) );
+            }
+            return $msfbp_fs;
+        }
 
-	if( function_exists( 'msfbp_fs' ) ){
-		msfbp_fs()->add_filter( 'freemius_pricing_js_path', function() {
-			return MSFBP_DIR_PATH . '/includes/freemius-pricing/freemius-pricing.js';
-		} );
-	}
+        // // Init Freemius.
+        msfbp_fs();
+        // Signal that SDK was initiated.
+        do_action( 'msfbp_fs_loaded' );
+    }
 
-    require_once MSFBP_DIR_PATH . 'includes/AdminMenu.php';
+    function msfbpIsPremium() {
+        return ( MSFBP_IS_PRO ? msfbp_fs()->can_use_premium_code() : false );
+    }
+	
 	require_once MSFBP_DIR_PATH . 'includes/TiktokAPI.php';
 	require_once MSFBP_DIR_PATH . 'includes/Instagram.php';
 	require_once MSFBP_DIR_PATH . 'includes/Pinterest.php';
@@ -98,6 +106,7 @@ if ( ! function_exists('msfbp_fs') ) {
 	if( !class_exists( 'MSFBPPlugin' ) ){
 		class MSFBPPlugin{
 			function __construct(){
+				$this->load_classes();
 				add_action( 'init', [ $this, 'onInit' ] );
 				add_action('enqueue_block_assets', [$this, 'enqueueTiktokAssets']);
 				add_action('admin_footer', [$this, 'load_tiktok_script'], 10);
@@ -134,6 +143,21 @@ if ( ! function_exists('msfbp_fs') ) {
                 ]);
             }
 
+			//Class loaded
+			public function load_classes () {
+				
+				// check premium 
+				
+				if( MSFBP_IS_PRO ) {
+					require_once MSFBP_DIR_PATH . 'includes/menu/admin-menu-pro.php'; 
+				}else {
+					require_once MSFBP_DIR_PATH . 'includes/menu/admin-menu-free.php';  
+				}
+
+				if ( MSFBP_IS_PRO && msfbpIsPremium()) {
+				}
+			}
+
 			public function load_tiktok_script()
 			{
 			?>
@@ -162,6 +186,7 @@ if ( ! function_exists('msfbp_fs') ) {
 			}
 
 			function onInit(){
+				register_block_type( __DIR__ . '/build' );
 				register_block_type( __DIR__ . '/build/instagram' );
 				register_block_type( __DIR__ . '/build/tiktok-player' );
 				register_block_type( __DIR__ . '/build/b-pinterest-feed' );

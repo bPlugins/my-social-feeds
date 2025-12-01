@@ -10,7 +10,7 @@ if ( ! function_exists( 'kp_pinterest_free_shortcode' ) ) :
 			shortcode_atts(
 				array(
 					'id' => null
-				), $atts, 'pinterest-free'
+				), $atts, 'b-pinterest-feed'
 			)
 		);
 
@@ -30,8 +30,6 @@ if ( ! function_exists( 'kp_pinterest_free_shortcode' ) ) :
 
 			while ( $pinterest_query->have_posts() ) :
 				$pinterest_query->the_post();
-
-
 				
 				$defaultValues  = [
 					'masonry_col' => '4',
@@ -75,11 +73,9 @@ if ( ! function_exists( 'kp_pinterest_free_shortcode' ) ) :
 				
 				// get codestar options
 				$pinterest_data  = wp_parse_args(get_post_meta( get_the_ID(), 'kp_pinterest_options', true ), $defaultValues);
-
-
 				
 				// pinterest container
-				$pinterest_container 		= "pins_".esc_attr(get_the_ID());
+				$pinterest_container = "pins_".esc_attr(get_the_ID());
 
 
 				// template
@@ -111,14 +107,15 @@ if ( ! function_exists( 'kp_pinterest_free_shortcode' ) ) :
 					'justified_margin'      => $pinterest_data['bpinterest_justified_margin'],
 					'isCssAnimation'        => $pinterest_data['isCssAnimation'],
 					'lastrow'        		=> $pinterest_data['lastrow'],
+					'layout' 				=> $pinterest_data['layout']
 				);
 
 				// json encode options
 				$kp_pinterest_options = json_encode($kp_pinterest_args);	
 
-				$setting_options 		= get_option( '_kp_pinterest_options' );
+				$setting_options 		= get_option( '_kp_pinterest_options', [] );
 
-				$kp_allow_popup 		= $setting_options['kp-pinterest-allow-popup'] == true ? 'allow-popup' : '';
+				$kp_allow_popup 		= $setting_options['kp-pinterest-allow-popup'] ?? true == true ? 'allow-popup' : '';
 
 				$ratio = $pinterest_data['ratio'];
 				$border = $pinterest_data['border'];

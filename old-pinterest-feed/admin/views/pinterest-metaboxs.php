@@ -19,11 +19,13 @@ endif;
 // Metabox of the pinterest post type.
 // Set a unique slug-like ID.
 //
-$prefix_shortcode_opts = 'kp_pinterest_options';
 
-CSF::createMetabox(
+
+add_action('init', function(){
+$prefix_shortcode_opts = 'kp_pinterest_options';
+  CSF::createMetabox(
   $prefix_shortcode_opts, array(
-    'title'     => esc_html__( 'Pinterest Settings', 'pinterest-free' ),
+    'title'     => esc_html__( 'Pinterest Settings', 'b-pinterest-feed' ),
     'class'     => 'kpp-main-class',
     'post_type' => 'kpp_pinterest',
     'context'   => 'normal',
@@ -43,8 +45,8 @@ CSF::createMetabox(
       array(
         'id'       => 'kp-pinterest-username',
         'type'     => 'text',
-        'title'    => esc_html__( 'Username', 'pinterest-free' ),
-        'subtitle' => esc_html__( 'This text field is required, Enter Username.', 'pinterest-free' ),
+        'title'    => esc_html__( 'Username', 'b-pinterest-feed' ),
+        'subtitle' => esc_html__( 'This text field is required, Enter Username.', 'b-pinterest-feed' ),
         'validate' => 'csf_validate_required',
         'after'    => ' <small class="csf-text-error">( * required )</small>',
       ),
@@ -52,8 +54,8 @@ CSF::createMetabox(
       array(
         'id'       => 'kp-pinterest-boardName',
         'type'     => 'text',
-        'title'    => esc_html__( 'BoardName', 'pinterest-free' ),
-        'subtitle' => esc_html__( 'This text field is required, Enter boardName.', 'pinterest-free' ),
+        'title'    => esc_html__( 'BoardName', 'b-pinterest-feed' ),
+        'subtitle' => esc_html__( 'This text field is required, Enter boardName.', 'b-pinterest-feed' ),
         'validate' => 'csf_validate_required',
         'after'    => ' <small class="csf-text-error">( * required )</small>',
       ),
@@ -68,33 +70,36 @@ CSF::createMetabox(
           'slider'   => 'Carousel',
           'justified' => 'Justified'
         ),
-        'default'     => 'default'
+        'default'     => 'default',
+        'class'       => 'bplugins-meta-readonly'
       ),
       array(
         'id'         => 'bpinterest_justified_margin',
         'type'       => 'spinner',
-        'title'   => __('Margin', 'pinterest-free'),
-        'subtitle'=> __('Space between two items', 'pinterest-free'),
-        'desc'    => __('Working only layout justified', 'pinterest-free'),
+        'title'   => __('Margin', 'b-pinterest-feed'),
+        'subtitle'=> __('Space between two items', 'b-pinterest-feed'),
+        'desc'    => __('Working only layout justified', 'b-pinterest-feed'),
         'default'    => 5,
+        'class'       => 'bplugins-meta-readonly',
         'dependency' =>  array( 'layout', '==', 'justified')
       ),
       array(
         'id'         => 'bpinterest_device',
         'type'       => 'button_set',
-        'title'   => __('Device', 'pinterest-free'),
+        'title'   => __('Device', 'b-pinterest-feed'),
         'options'    => array(
           'desktop'  => 'Desktop',
           'tablet'  => 'Tablet',
           'mobile'  => 'mobile',
         ),
         'default'    => 'desktop',
+        'class'       => 'bplugins-meta-readonly',
         'dependency' => array('layout', '==', 'default')
       ),
       array(
         'id'         => 'column',
         'type'       => 'button_set',
-        'title'   => __('Column', 'pinterest-free'),
+        'title'   => __('Column', 'b-pinterest-feed'),
         'options'    => array(
           '1'  => '1 Col',
           '2'  => '2 Col',
@@ -103,6 +108,7 @@ CSF::createMetabox(
           '5'  => '5 Col',
         ),
         'default'    => '4',
+        'class'       => 'bplugins-meta-readonly',
         'dependency' => array( array( 'bpinterest_device', '==', 'desktop' ), array( 'layout', '==', 'default')),
       ),
       array(
@@ -117,6 +123,7 @@ CSF::createMetabox(
           '5'  => '5 Col',
         ),
         'default'    => '2',
+        'class'       => 'bplugins-meta-readonly',
         'dependency' => array (array('bpinterest_device', '==', 'tablet'), array( 'layout', '==', 'default'))
       ),
       array(
@@ -131,25 +138,27 @@ CSF::createMetabox(
           '5'  => '5 Col',
         ),
         'default'    => '1',
+        'class'       => 'bplugins-meta-readonly',
         'dependency' => array (array('bpinterest_device', '==', 'mobile'), array( 'layout', '==', 'default') ) 
       ),
       // Slider Column 
       array(
         'id'         => 'slider_device',
         'type'       => 'button_set',
-        'title'   => __('Device', 'pinterest-free'),
+        'title'   => __('Device', 'b-pinterest-feed'),
         'options'    => array(
           'desktop'  => 'Desktop',
           'tablet'  => 'Tablet',
           'mobile'  => 'Mobile',
         ),
         'default'    => 'desktop',
+        'class'       => 'bplugins-meta-readonly',
         'dependency' =>  array('layout', '==', 'slider')
       ),
       array(
         'id'         => 'slider_column',
         'type'       => 'button_set',
-        'title'   => __('Item Show', 'pinterest-free'),
+        'title'   => __('Item Show', 'b-pinterest-feed'),
         'options'    => array(
           '1'  => '1 Col',
           '2'  => '2 Col',
@@ -158,12 +167,13 @@ CSF::createMetabox(
           '5'  => '5 Col',
         ),
         'default'    => '4',
+        'class'       => 'bplugins-meta-readonly',
         'dependency' => array( array( 'slider_device', '==', 'desktop' ), array( 'layout', '==', 'slider')),
       ),
       array(
         'id'         => 'slider_col_tablet',
         'type'       => 'button_set',
-        'title'   => __('Item Show ', 'pinterest-free'),
+        'title'   => __('Item Show ', 'b-pinterest-feed'),
         'options'    => array(
           '1'  => '1 Col',
           '2'  => '2 Col',
@@ -172,12 +182,13 @@ CSF::createMetabox(
           '5'  => '5 Col',
         ),
         'default'    => '2',
+        'class'       => 'bplugins-meta-readonly',
         'dependency' => array( array( 'slider_device', '==', 'tablet' ), array( 'layout', '==', 'slider')),
       ),
       array(
         'id'         => 'slider_col_mobile',
         'type'       => 'button_set',
-        'title'   => __('Item Show', 'pinterest-free'),
+        'title'   => __('Item Show', 'b-pinterest-feed'),
         'options'    => array(
           '1'  => '1 Col',
           '2'  => '2 Col',
@@ -186,27 +197,31 @@ CSF::createMetabox(
           '5'  => '5 Col',
         ),
         'default'    => '1',
+        'class'       => 'bplugins-meta-readonly',
         'dependency' => array( array( 'slider_device', '==', 'mobile' ), array( 'layout', '==', 'slider')),
       ),
       array(
         'id'      => 'loop',
         'type'    => 'switcher',
-        'title'   => __('Loop', 'pinterest-free' ),
+        'title'   => __('Loop', 'b-pinterest-feed' ),
         'default' => true,
+        'class'       => 'bplugins-meta-readonly',
         'dependency' =>  array('layout', '==', 'slider')
       ),
       array(
         'id'      => 'mouseWheel',
         'type'    => 'switcher',
-        'title'   => __('MouseWheel', 'pinterest-free' ),
+        'title'   => __('MouseWheel', 'b-pinterest-feed' ),
         'default' => true,
+        'class'       => 'bplugins-meta-readonly',
         'dependency' =>  array('layout', '==', 'slider')
       ),
       array(
         'id'      => 'autoPlay',
         'type'    => 'switcher',
-        'title'   => __('Auto Play', 'pinterest-free' ),
+        'title'   => __('Auto Play', 'b-pinterest-feed' ),
         'default' => true,
+        'class'       => 'bplugins-meta-readonly',
         'dependency' =>  array('layout', '==', 'slider')
       ),
       array(
@@ -214,12 +229,13 @@ CSF::createMetabox(
         'type'    => 'number',
         'title'   => __('Delay', 'bgallery'),
         'default' => 2500,
+        'class'       => 'bplugins-meta-readonly',
         'dependency' =>  array(array('layout', '==', 'slider'),array('autoPlay', '==', true))
       ),
       array(
         'id'          => 'effect',
         'type'        => 'select',
-        'title'       => __('Effect', 'pinterest-free'),
+        'title'       => __('Effect', 'b-pinterest-feed'),
         'placeholder' => 'Select an effect',
         'options'     => array(
           'none'     => 'Default',
@@ -228,6 +244,7 @@ CSF::createMetabox(
           'cards'    => 'Cards'
         ),
         'default'     => 'none',
+        'class'       => 'bplugins-meta-readonly',
         'dependency' =>  array('layout', '==', 'slider')
       ),
       
@@ -244,46 +261,51 @@ CSF::createMetabox(
           '5'  => '5 Col',
         ),
         'default'    => '4',
+        'class'       => 'bplugins-meta-readonly',
         'dependency' =>  array( 'layout', '==', 'masonry')
       ),
       array(
         'id'         => 'bpinterest_row_gap',
         'type'       => 'spinner',
-        'title'   => __('Row Gap', 'pinterest-free'),
-        'subtitle'=> __('Space between two items', 'pinterest-free'),
-        'desc'    => __('Working only layout default and masonry', 'pinterest-free'),
+        'title'   => __('Row Gap', 'b-pinterest-feed'),
+        'subtitle'=> __('Space between two items', 'b-pinterest-feed'),
+        'desc'    => __('Working only layout default and masonry', 'b-pinterest-feed'),
         'default'    => 5,
+        'class'       => 'bplugins-meta-readonly',
         'dependency' =>  array( 'layout', '!=', 'slider')
       ),
       array(
         'id'         => 'bpinterest_col_gap',
         'type'       => 'spinner',
-        'title'   => __('Column Gap', 'pinterest-free'),
-        'subtitle'=> __('Space between two items', 'pinterest-free'),
-        'desc'    => __('Working only layout default and masonry', 'pinterest-free'),
+        'title'   => __('Column Gap', 'b-pinterest-feed'),
+        'subtitle'=> __('Space between two items', 'b-pinterest-feed'),
+        'desc'    => __('Working only layout default and masonry', 'b-pinterest-feed'),
         'default'    => 5,
+        'class'       => 'bplugins-meta-readonly',
         'dependency' =>  array( 'layout', '!=', 'slider')
       ),
       array(
         'id'         => 'slider_item_gap',
         'type'       => 'spinner',
-        'title'   => __('Item Space', 'pinterest-free'),
-        'subtitle'=> __('Item space', 'pinterest-free'),
+        'title'   => __('Item Space', 'b-pinterest-feed'),
+        'subtitle'=> __('Item space', 'b-pinterest-feed'),
         'default'    => 5,
+        'class'       => 'bplugins-meta-readonly',
         'dependency' =>  array( 'layout', '==', 'slider')
       ),
       // Justified
       array(
         'id'      => 'isCssAnimation',
         'type'    => 'switcher',
-        'title'   => __('Css Animation', 'pinterest-free' ),
+        'title'   => __('Css Animation', 'b-pinterest-feed' ),
         'default' => true,
+        'class'       => 'bplugins-meta-readonly',
         'dependency' =>  array( 'layout', '==', 'justified')
       ),
       array(
         'id'          => 'lastrow',
         'type'        => 'select',
-        'title'       => __('Last Row', 'pinterest-free'),
+        'title'       => __('Last Row', 'b-pinterest-feed'),
         'placeholder' => 'Select an Ratio',
         'options'     => array(
           'nojustify'  => 'No Justify',
@@ -293,14 +315,15 @@ CSF::createMetabox(
            
         ),
         'default'     => 'nojustify',
+        'class'       => 'bplugins-meta-readonly',
         'dependency' =>  array( 'layout', '==', 'justified')
       ),
     // all layout needed 
       array(
         'id'          => 'ratio',
         'type'        => 'select',
-        'title'       => __('Ratio', 'pinterest-free'),
-        'desc'        => __('Working only layout default and Carousel', 'pinterest-free'),
+        'title'       => __('Ratio', 'b-pinterest-feed'),
+        'desc'        => __('Working only layout default and Carousel', 'b-pinterest-feed'),
         'placeholder' => 'Select an Ratio',
         'options'     => array(
           'landscape'  => '16:9 - Landscape',
@@ -309,26 +332,30 @@ CSF::createMetabox(
           'vertical'  => '3:4 - Vertical',
           'potrait'  => '9:16 - Potrait',
         ),
-        'default'     => 'square'
+        'default'     => 'square',
+        'class'       => 'bplugins-meta-readonly'
       ),
       array(
         'id'      => 'isOverly',
         'type'    => 'switcher',
-        'title'   => __('Overly', 'pinterest-free' ),
+        'title'   => __('Overly', 'b-pinterest-feed' ),
         'default' => false,
+        'class'       => 'bplugins-meta-readonly',
       ),
       array(
         'id'    => 'overlyColor',
         'type'  => 'color',
-        'title' => __('Color', 'pinterest-free'),
+        'title' => __('Color', 'b-pinterest-feed'),
         'default' => '#00000038',
+        'class'       => 'bplugins-meta-readonly',
         'dependency' =>  array('isOverly', '==', true)
       ),
       array(
         'id'      => 'isTransform',
         'type'    => 'switcher',
-        'title'   => __('Transform', 'pinterest-free' ),
+        'title'   => __('Transform', 'b-pinterest-feed' ),
         'default' => false,
+        'class'       => 'bplugins-meta-readonly',
       ),
       array(
         'id'      => 'border',
@@ -343,16 +370,22 @@ CSF::createMetabox(
           'color'  => '#1e73be',
           'unit'   => 'px',
         ),
+        'class'       => 'bplugins-meta-readonly',
       ),
       array(
         'id'      => 'borderRadius',
         'type'    => 'number',
         'title'   => __('Border Radius', ''),
         'default' => 5,
+        'class'       => 'bplugins-meta-readonly',
         'desc' =>  'only support px'
       ),
     )
   ) );
+
+}, 1);
+
+
 
 
 // metabox for wordpress
@@ -371,10 +404,10 @@ if ( ! function_exists( 'kp_pinterest_shortcode_setup' ) ) :
         ?>
         <div class="kpp-main-class">
           <div class="csf-field csf-field-text">
-            <div class="csf-title"><h4><?php echo esc_html__( 'Shortcode', 'pinterest-free' ) ?></h4></div>
+            <div class="csf-title"><h4><?php echo esc_html__( 'Shortcode', 'b-pinterest-feed' ) ?></h4></div>
             <div class="csf-fieldset">
               <input type='text' id='kp_pinterest_shortcode' onfocus='this.select();' readonly  value='[pinterest id="<?php echo $post->ID; ?>"]' /> 
-              <p><?php echo esc_html__( 'Copy this shortcode and paste it into your post, page, or text widget content', 'pinterest-free' ) ?></p>
+              <p><?php echo esc_html__( 'Copy this shortcode and paste it into your post, page, or text widget content', 'b-pinterest-feed' ) ?></p>
             </div>
           </div>
         </div>

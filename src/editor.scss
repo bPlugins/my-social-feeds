@@ -1,0 +1,85 @@
+.wp-block-msfbp-my-social-feeds {
+
+    .msfb-my-social-feeds {
+        background-color: #146ef5;
+        padding: 20px;
+
+        h2 {
+            color: #fff;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 10px;
+            margin: 0;
+        }
+
+        h3 {
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .items-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            -moz-column-gap: 10px;
+            column-gap: 10px;
+            padding-top: 20px;
+
+            .item {
+                border: 1px solid #ddd;
+                background-color: #fff;
+                border-radius: 4px;
+                text-align: center;
+                padding: 40px 15px;
+                cursor: pointer;
+                position: relative;
+
+                /* 🔥 Smooth animation */
+                transition: all 0.25s ease;
+                transform: translateY(0);
+
+                h3 {
+                    font-size: 20px;
+                    margin: 0;
+                    color: #000;
+                    margin-bottom: 5px;
+                    margin-top: 15px;
+
+                    transition: color 0.25s ease;
+                }
+
+                p {
+                    margin: 0;
+                    font-size: 16px;
+                    color: #0c0b0be3;
+                }
+
+                .icon {
+                    position: absolute;
+                    top: 14px;
+                    right: 10px;
+                    width: 30px;
+                    height: 30px;
+
+                    transition: transform 0.25s ease;
+                }
+            }
+
+            /* 🔥 Hover Effects */
+            .item:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+                border-color: #146ef5;
+            }
+
+            .item:hover h3 {
+                color: #146ef5;
+            }
+
+            .item:hover .icon {
+                transform: scale(1.15);
+            }
+        }
+    }
+}

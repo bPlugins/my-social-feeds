@@ -30,9 +30,6 @@ if ( ! function_exists( 'deactivate_pinterest' ) ) {
 register_activation_hook( __FILE__, 'activate_pinterest' );
 register_deactivation_hook( __FILE__, 'deactivate_pinterest' );
 
-require_once plugin_dir_path( __FILE__ ) . 'admin/views/framework/classes/setup.class.php';
-require_once plugin_dir_path( __FILE__ ) . 'admin/views/pinterest-settings.php';
-require_once plugin_dir_path( __FILE__ ) . 'admin/views/pinterest-metaboxs.php';
 
 if ( ! class_exists( 'KP_Pinterest_FREE' ) ) {
 	 
@@ -191,6 +188,10 @@ if ( ! class_exists( 'KP_Pinterest_FREE' ) ) {
 // 	}
 // 	return $result;
 // }
+
+require_once plugin_dir_path( __FILE__ ) . 'admin/views/framework/classes/setup.class.php';
+require_once plugin_dir_path( __FILE__ ) . 'admin/views/pinterest-settings.php';
+require_once plugin_dir_path( __FILE__ ) . 'admin/views/pinterest-metaboxs.php';
 
  
 

@@ -7,7 +7,7 @@ import Feeds from './Feeds';
 
 // All Instagram Feed
 document.addEventListener('DOMContentLoaded', () => {
-	const ifbEls = document.querySelectorAll('.wp-block-ifb-instagram');
+	const ifbEls = document.querySelectorAll('.wp-block-bpifb-my-social-feeds');
 	ifbEls.forEach(ifbEl => {
 		const attributes = JSON.parse(ifbEl.dataset.attributes);
 		// const accounts = JSON.parse(ifbEl.dataset.accounts);

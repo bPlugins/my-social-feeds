@@ -1,0 +1,77 @@
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/editor.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+.wp-block-msfbp-my-social-feeds .msfb-my-social-feeds {
+  background-color: #146ef5;
+  padding: 20px;
+}
+.wp-block-msfbp-my-social-feeds .msfb-my-social-feeds h2 {
+  color: #fff;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin: 0;
+}
+.wp-block-msfbp-my-social-feeds .msfb-my-social-feeds h3 {
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  font-size: 18px;
+}
+.wp-block-msfbp-my-social-feeds .msfb-my-social-feeds .items-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  -moz-column-gap: 10px;
+  column-gap: 10px;
+  padding-top: 20px;
+}
+.wp-block-msfbp-my-social-feeds .msfb-my-social-feeds .items-list .item {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 4px;
+  text-align: center;
+  padding: 40px 15px;
+  cursor: pointer;
+  position: relative;
+  /* 🔥 Smooth animation */
+  transition: all 0.25s ease;
+  transform: translateY(0);
+}
+.wp-block-msfbp-my-social-feeds .msfb-my-social-feeds .items-list .item h3 {
+  font-size: 20px;
+  margin: 0;
+  color: #000;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  transition: color 0.25s ease;
+}
+.wp-block-msfbp-my-social-feeds .msfb-my-social-feeds .items-list .item p {
+  margin: 0;
+  font-size: 16px;
+  color: rgba(12, 11, 11, 0.8901960784);
+}
+.wp-block-msfbp-my-social-feeds .msfb-my-social-feeds .items-list .item .icon {
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  transition: transform 0.25s ease;
+}
+.wp-block-msfbp-my-social-feeds .msfb-my-social-feeds .items-list {
+  /* 🔥 Hover Effects */
+}
+.wp-block-msfbp-my-social-feeds .msfb-my-social-feeds .items-list .item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  border-color: #146ef5;
+}
+.wp-block-msfbp-my-social-feeds .msfb-my-social-feeds .items-list .item:hover h3 {
+  color: #146ef5;
+}
+.wp-block-msfbp-my-social-feeds .msfb-my-social-feeds .items-list .item:hover .icon {
+  transform: scale(1.15);
+}
+
+/*# sourceMappingURL=index.css.map*/

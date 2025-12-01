@@ -1,17 +1,25 @@
 import { useState, useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import { PanelBody, PanelRow, TabPanel, RangeControl, ToggleControl, SelectControl, __experimentalUnitControl as UnitControl, __experimentalNumberControl as NumberControl, Dashicon, CheckboxControl, TextControl } from '@wordpress/components';
-import { Label } from '../../../../../../../bpl-tools/Components';
+import { BtnGroup, Label } from '../../../../../../../bpl-tools/Components';
 import { BDevice } from '../../../../../../../bpl-tools/Components/Deprecated';
 import { emUnit, perUnit, pxUnit } from '../../../../../../../bpl-tools/utils/options';
-import { timePeriods } from '../../../../utils/options';
+import { blockTypeOpt, timePeriods } from '../../../../utils/options';
 import { remLocal } from '../../../../not_used/services';
 import { BControlPro } from '../../../../../../../bpl-tools/ProControls';
+import { useSelect, dispatch } from "@wordpress/data";
+import InsertFeeds from '../../../../../utils/InsertFeeds';
 
-const General = ({ attributes, setAttributes, setProModalOpen, setPageNumber, isPremium }) => {
+const General = ({ attributes, setAttributes, setProModalOpen, setPageNumber, isPremium, clientId }) => {
 
     const { accessToken, itemVisible, isPopup, isLink, isLinkNewTab, columns, columnGap, rowGap, cacheTime,
-        cacheTimePeriod, cId } = attributes;
+        cacheTimePeriod, cId, blockType } = attributes;
+
+    // const insertBlockType = (type) => {
+    //     const block = wp.blocks.createBlock(type);
+    //     // return dispatch("core/block-editor").insertBlock(block, 0, clientId);
+    //     return dispatch('core/block-editor').replaceBlock(clientId, block);
+    // };
 
     const [device, setDevice] = useState('desktop');
     return <>
@@ -27,6 +35,12 @@ const General = ({ attributes, setAttributes, setProModalOpen, setPageNumber, is
                 </a>
             </div>
         </PanelBody>
+
+        {/* <PanelBody className='bPlPanelBody' title={__('Select Social Feeds', 'instagram-feed')} initialOpen={false}>
+            <BtnGroup value={blockType} onChange={(val) => insertBlockType(val)} options={blockTypeOpt} isIcon={true} size='default' />
+        </PanelBody> */}
+
+        <InsertFeeds blockType={blockType} clientId={clientId} />
 
         <PanelBody className='bPlPanelBody' title={__('Instagram Settings', 'instagram-feed')}>
 

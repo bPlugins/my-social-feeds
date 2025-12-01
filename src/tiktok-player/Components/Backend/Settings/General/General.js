@@ -4,17 +4,20 @@ import { PanelBody, PanelRow, TabPanel, TextControl, ToggleControl, SelectContro
 import { HelpPanel, Label } from '../../../../../../../bpl-tools/Components';
 import { BDevice } from '../../../../../../../bpl-tools/Components/Deprecated';
 import { BControlPro } from '../../../../../../../bpl-tools/ProControls';
+import InsertFeeds from '../../../../../../src/utils/InsertFeeds';
 
 import options from '../../../../utils/options';
 const { emUnit, perUnit, pxUnit, dUnit } = options;
 
-const General = ({ attributes, setAttributes, isPremium, setProModalOpen, videosLists, handleCacheClear }) => {
+const General = ({ attributes, setAttributes, isPremium, setProModalOpen, videosLists, handleCacheClear, clientId }) => {
     const { isProfile, isVideos, feedLayoutStyle, videoCoverImage, isLightbox, isLike, isComment, isView, isProfileImg, isBtn, isPopupContent, columns, columnGap, rowGap, videosInfo, isDisplayName, isShareBtn, isFollowing, isFollowers, isTotalLike, isBio, profileCacheT, videoCacheT } = attributes;
 
     const [feedDevice, setFeedDevice] = useState('desktop');
     const [device, setDevice] = useState('desktop');
     return <>
         <HelpPanel slug="b-tiktok-feed" docsLink="https://wptiktokfeed.com/docs" />
+
+        <InsertFeeds blockType={"ttp/tiktok-player"} clientId={clientId} />
 
         <PanelBody className='bPlPanelBody ttpPanelBody' title={__('Profile', 'tiktok')} initialOpen={false}>
             {/* Profile  */}

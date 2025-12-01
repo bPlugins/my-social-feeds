@@ -14,8 +14,8 @@ import Style from '../Common/Style';
 
 const Edit = props => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
-	const {accountInfo} = attributes;
-	const {userName, boardName} = accountInfo;
+	const { accountInfo } = attributes;
+	const { userName, boardName } = accountInfo;
 	const [pins, setPins] = useState([]);
 	const [status, setStatus] = useState();
 	const [loading, setLoading] = useState(false);
@@ -31,13 +31,11 @@ const Edit = props => {
 		setAttributes({ [obj]: newObj });
 	}
 
-	console.log({userName, boardName});
-	
 	const fetchPins = async () => {
 		setLoading(true);
 		const res = await fetch(`${bPinterestData?.ajaxUrl}?action=bPinterestAjaxRequest&userName=${userName}&boardName=${boardName}&nonce=${bPinterestData?.nonce}`);
 		const response = await res.json();
-		
+
 		setPins(response.data?.data);
 		setStatus(response.data);
 		setLoading(false);
@@ -54,11 +52,11 @@ const Edit = props => {
 	// }
 
 	return <>
-		<Settings attributes={attributes} setAttributes={setAttributes} fetchPins={fetchPins} updateObject={updateObject}/>
+		<Settings clientId={clientId} attributes={attributes} setAttributes={setAttributes} fetchPins={fetchPins} updateObject={updateObject} />
 
 		<div {...useBlockProps()} id={id}>
-			<Style attributes={attributes} eleId={id}/>
-			<Layout attributes={attributes} pins={pins} elId={id} status={status} loading={loading}/>
+			<Style attributes={attributes} eleId={id} />
+			<Layout attributes={attributes} pins={pins} elId={id} status={status} loading={loading} />
 		</div>
 	</>;
 }

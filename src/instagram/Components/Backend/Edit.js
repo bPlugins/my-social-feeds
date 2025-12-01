@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { __ } from '@wordpress/i18n';
-import { useBlockProps } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
 
 import Settings from './Settings/Settings';
 import Style from '../Common/Style';
@@ -10,8 +10,7 @@ import useAllAccounts from '../../hooks/useAllAccounts';
 import useBlockAccounts from '../../hooks/useBlockAccounts';
 
 const Edit = props => {
-	const { className, attributes, setAttributes, clientId } = props;
-	const { cId } = attributes;
+	const { attributes, setAttributes, clientId } = props;
 
 	const [pageNumber, setPageNumber] = useState(1);
 
@@ -33,6 +32,8 @@ const Edit = props => {
 
 			{accounts?.length ? <Feeds attributes={attributes} pageNumber={pageNumber} setPageNumber={setPageNumber} /> : <p className='ifbInsertAccess'>{__('Please Connect with Instagram Account', 'instagram-feed')}</p>}
 		</div>
+
+		<InnerBlocks templateLock={false} allowedBlocks={["bpifb/my-social-feeds", "ttp/tiktok-player", "bpf/b-pinterest-feed"]} />
 	</>;
 };
 export default Edit;

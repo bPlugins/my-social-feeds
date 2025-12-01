@@ -1,10 +1,13 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "ifb/instagram",
+  "name": "bpifb/my-social-feeds",
   "title": "Instagram Feed",
   "description": "Display Instagram feed in you page.",
   "category": "widgets",
+  "parent": [
+    "msfbp/my-social-feeds"
+  ],
   "keywords": [
     "instagram feed",
     "instagram",
@@ -15,6 +18,10 @@
     "align": {
       "type": "string",
       "default": ""
+    },
+    "blockType": {
+      "type": "string",
+      "default": "bpifb/my-social-feeds"
     },
     "cId": {
       "type": "string",

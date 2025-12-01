@@ -9,7 +9,9 @@ import { emUnit, perUnit, pxUnit } from '../../../../../../../bpl-tools/utils/op
 
 import { BControlPro } from '../../../../../../../bpl-tools/ProControls';
 
-const General = ({ attributes, updateObject, getData, setAttributes, isPremium, setProModalOpen }) => {
+import InsertFeeds from '../../../../../utils/InsertFeeds';
+
+const General = ({ attributes, updateObject, getData, setAttributes, isPremium, setProModalOpen, clientId }) => {
 	const [device, setDevice] = useState('desktop');
 
 	const { accountInfo, elements, layout, columns, columnGap, rowGap, pinCoverImage, fancyApps, slider } = attributes;
@@ -22,6 +24,9 @@ const General = ({ attributes, updateObject, getData, setAttributes, isPremium, 
 	const { isLoop, isAutoPlay, autoPlayDelay, isMouseWheel, effect, isGrabCursor } = slider;
 
 	return <>
+
+		<InsertFeeds blockType={'bpf/b-pinterest-feed'} clientId={clientId} />
+
 		<PanelBody className="bPlPanelBody addRemoveItems editItem" title={__("Account Information", "bpinterest")} initialOpen={true}>
 			<TextControl className='' label={__("User Name", 'bpinterest')} labelPosition={__('top', 'bpinterest')} value={userName} placeholder={__('Enter Your User Name', 'bpinterest')}
 				onChange={(val) => updateObject('accountInfo', 'userName', val)} />

@@ -6,6 +6,9 @@
   "title": "B Pinterest Feed",
   "category": "widgets",
   "description": "Embed Pinterest Pins In Your Webiste",
+  "parent": [
+    "msfbp/my-social-feeds"
+  ],
   "keywords": [
     "pinterest",
     "feed",

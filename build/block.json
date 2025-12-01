@@ -1,0 +1,43 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "msfbp/my-social-feeds",
+  "title": "my social feeds",
+  "description": "Display your social media feeds in a beautiful way.",
+  "category": "widgets",
+  "keywords": [
+    "my social feeds",
+    "feeds"
+  ],
+  "textdomain": "my-social-feeds",
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "example": {
+    "attributes": {
+      "preview": true,
+      "columns": {
+        "desktop": 1,
+        "tablet": 1,
+        "mobile": 1
+      }
+    }
+  },
+  "editorScript": [
+    "file:./index.js"
+  ],
+  "editorStyle": "file:./index.css",
+  "style": [],
+  "render": "file:./render.php",
+  "viewScript": []
+}

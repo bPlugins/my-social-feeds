@@ -14,7 +14,7 @@ import { generalStyleTabs } from "../../../utils/options";
 import Style from './Style/Style';
 import General from './General/General';
 
-const Settings = ({ attributes, setAttributes, fetchPins, updateObject }) => {
+const Settings = ({ attributes, setAttributes, fetchPins, updateObject, clientId }) => {
 
   const [proModalOpen, setProModalOpen] = useState(false);
 
@@ -32,7 +32,7 @@ const Settings = ({ attributes, setAttributes, fetchPins, updateObject }) => {
             <>
               {"general" === tab.name && (
                 <>
-                  <General attributes={attributes} updateObject={updateObject} getData={getData} setAttributes={setAttributes} isPremium={isPremium} setProModalOpen={setProModalOpen} />
+                  <General attributes={attributes} clientId={clientId} updateObject={updateObject} getData={getData} setAttributes={setAttributes} isPremium={isPremium} setProModalOpen={setProModalOpen} />
                 </>
               )}
 

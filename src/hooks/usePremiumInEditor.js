@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useWPAjax, useWPOptionQuery } from '../../../react-utils/hooks';
+import { useWPAjax, useWPOptionQuery } from '../../../bpl-tools/hooks';
 
 const usePremiumInEditor = () => {
     const { data: msfbpUtils } = useWPOptionQuery('msfbpUtils');
