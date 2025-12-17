@@ -1,7 +1,7 @@
 import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
 
 import { useSelect, dispatch } from "@wordpress/data";
-import { instagram, pinterest, tiktok } from './utils/icons';
+import { instagram, pinterest, tiktok, twitter } from './utils/icons';
 
 const Edit = ({ clientId }) => {
 
@@ -26,19 +26,26 @@ const Edit = ({ clientId }) => {
                     }}>
                         <h3>Instagram Feed</h3>
                         <p> Display instagram feeds, media and profile </p>
-                        <div className='icon'>{instagram}</div>
+                        <div className='icon'>{instagram("#e72c84")}</div>
                     </div>
                     <div className='item tiktok-feed' onClick={() => { insertBlockType("ttp/tiktok-player"); }}>
                         <h3>TikTok Player</h3>
                         <p> Display instagram feeds, media and profile </p>
-                        <div className='icon'>{tiktok}</div>
+                        <div className='icon'>{tiktok("#e72c84")}</div>
                     </div>
                     <div className='item pinterest-feed' onClick={() => {
                         insertBlockType("bpf/b-pinterest-feed");
                     }}>
                         <h3>Pinterest Feed</h3>
                         <p> Display instagram feeds, media and profile </p>
-                        <div className='icon'>{pinterest}</div>
+                        <div className='icon'>{pinterest("#e72c84")}</div>
+                    </div>
+                    <div className='item twitter-feed' onClick={() => {
+                        insertBlockType("etf/twitter-feed");
+                    }}>
+                        <h3>Twitter </h3>
+                        <p> Display twitter timeline, follow button, tweet button, hashtag, video and post </p>
+                        <div className='icon'>{twitter("#e72c84")}</div>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { __ } from "@wordpress/i18n";
 import { PanelBody, PanelRow, TabPanel, TextControl, ToggleControl, SelectControl, CheckboxControl, RadioControl, RangeControl, __experimentalUnitControl as UnitControl, __experimentalNumberControl as NumberControl, Button, Dashicon, ToolbarGroup, ToolbarButton, __experimentalBoxControl as BoxControl } from "@wordpress/components";
 import { effectOpt, layoutOpt, ratioOpt } from '../../../../utils/options';
@@ -13,7 +13,7 @@ import InsertFeeds from '../../../../../utils/InsertFeeds';
 
 const General = ({ attributes, updateObject, getData, setAttributes, isPremium, setProModalOpen, clientId }) => {
 	const [device, setDevice] = useState('desktop');
-
+	const [allNames, setAllNames] = useState([]);
 	const { accountInfo, elements, layout, columns, columnGap, rowGap, pinCoverImage, fancyApps, slider } = attributes;
 	const { userName, boardName } = accountInfo;
 	const { isProfile, isPins, isImage, isName, isDesc, isFollower, isPin, isBtn } = elements;
@@ -23,13 +23,34 @@ const General = ({ attributes, updateObject, getData, setAttributes, isPremium, 
 	const { slideshow, thumbs, close } = right;
 	const { isLoop, isAutoPlay, autoPlayDelay, isMouseWheel, effect, isGrabCursor } = slider;
 
+	const fetchAccountNames = async () => {
+		try {
+			const res = await fetch(
+				`${msfAuthorization?.ajaxUrl}?action=msfbp-get-pinterest-credentials&nonce=${msfAuthorization?.nonce}`
+			);
+			const data = await res.json();
+			setAllNames(data?.data);
+		} catch (e) {
+			console.error(e);
+		} finally {
+			// setLoading(false);
+		}
+	};
+
+	useEffect(() => {
+		fetchAccountNames();
+	}, []);
+
 	return <>
 
 		<InsertFeeds blockType={'bpf/b-pinterest-feed'} clientId={clientId} />
 
 		<PanelBody className="bPlPanelBody addRemoveItems editItem" title={__("Account Information", "bpinterest")} initialOpen={true}>
-			<TextControl className='' label={__("User Name", 'bpinterest')} labelPosition={__('top', 'bpinterest')} value={userName} placeholder={__('Enter Your User Name', 'bpinterest')}
-				onChange={(val) => updateObject('accountInfo', 'userName', val)} />
+
+			<SelectControl label={__('User Name:', 'bpinterest')} labelPosition='side' options={[{ label: "Select Name", value: '' }, ...allNames]} value={userName} onChange={(val) => updateObject('accountInfo', 'userName', val)} />
+
+			{/* <TextControl className='' label={__("User Name", 'bpinterest')} labelPosition={__('top', 'bpinterest')} value={userName} placeholder={__('Enter Your User Name', 'bpinterest')}
+				onChange={(val) => updateObject('accountInfo', 'userName', val)} /> */}
 
 			<TextControl className='' label={__('Board Name', 'bPinterest')} labelPosition={__('top', 'bpinterest-feed')} value={boardName} placeholder={__('Enter Your BoardName', 'bpinterest')} onChange={(val) => updateObject('accountInfo', 'boardName', val)} />
 

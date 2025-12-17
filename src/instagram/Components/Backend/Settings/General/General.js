@@ -15,11 +15,33 @@ const General = ({ attributes, setAttributes, setProModalOpen, setPageNumber, is
     const { accessToken, itemVisible, isPopup, isLink, isLinkNewTab, columns, columnGap, rowGap, cacheTime,
         cacheTimePeriod, cId, blockType } = attributes;
 
-    // const insertBlockType = (type) => {
-    //     const block = wp.blocks.createBlock(type);
-    //     // return dispatch("core/block-editor").insertBlock(block, 0, clientId);
-    //     return dispatch('core/block-editor').replaceBlock(clientId, block);
-    // };
+    const [tokens, setTokens] = useState([]);
+
+    const insertBlockType = (type) => {
+        const block = wp.blocks.createBlock(type);
+        // return dispatch("core/block-editor").insertBlock(block, 0, clientId);
+        return dispatch('core/block-editor').replaceBlock(clientId, block);
+    };
+
+
+    const fetchTokens = async () => {
+        try {
+            const res = await fetch(
+                `${msfAuthorization?.ajaxUrl}?action=msfbp-get-instagram-access-token&nonce=${msfAuthorization?.nonce}`
+            );
+            const data = await res.json();
+            setTokens(data?.data);
+
+        } catch (e) {
+            console.error(e);
+        } finally {
+            // setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchTokens();
+    }, []);
 
     const [device, setDevice] = useState('desktop');
     return <>
@@ -55,9 +77,14 @@ const General = ({ attributes, setAttributes, setProModalOpen, setPageNumber, is
                     </div>
                 })}
             </div> : null} */}
+            {/* <div className='msfHelpLine'>
 
-            <Label className='mb5'>{__('Access Token:', 'instagram-feed')}</Label>
-            <TextControl value={accessToken[0]} onChange={val => setAttributes({ accessToken: [val] })} />
+                <Label className='mb5'>{__('Access Token:', 'instagram-feed')}</Label>
+                <a href='https://www.youtube.com/watch?v=9zLjvdAV60A' target='_blank' rel='noreferrer'>{__('Help', 'instagram-feed')}</a>
+            </div> */}
+            {/* <TextControl value={accessToken[0]} onChange={val => setAttributes({ accessToken: [val] })} /> */}
+
+            <SelectControl label={__('Access Token:', 'instagram-feed')} options={[{ label: "Select Token", value: '' }, ...tokens]} value={accessToken} onChange={val => setAttributes({ accessToken: val })} />
 
             <PanelRow className='ifbCacheTimeRow mt20'>
                 <Label className=''>{__('Cache Time:', 'instagram-feed')}</Label>

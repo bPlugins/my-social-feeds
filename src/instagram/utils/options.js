@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { instagram, pinterest, tiktok } from '../../utils/icons';
+import { instagram, pinterest, tiktok, twitter } from '../../utils/icons';
 
 export const timePeriods = [
 	{ label: __('Minutes', 'instagram-feed'), value: 'minutes' },
@@ -34,8 +34,9 @@ export const generalStyleTabs = [
 ];
 
 export const blockTypeOpt = [
-	{ label: 'Instagram', value: 'bpifb/my-social-feeds', icon: instagram },
-	{ label: 'TikTok', value: 'ttp/tiktok-player', icon: tiktok },
-	{ label: 'Pinterest', value: 'bpf/b-pinterest-feed', icon: pinterest },
+	{ label: 'Instagram', value: 'bpifb/my-social-feeds', icon: instagram("#000") },
+	{ label: 'TikTok', value: 'ttp/tiktok-player', icon: tiktok("#000") },
+	{ label: 'Pinterest', value: 'bpf/b-pinterest-feed', icon: pinterest("#000") },
+	{ label: 'Twitter', value: 'etf/twitter-feed', icon: twitter("#000") }
 
 ]

@@ -1193,7 +1193,6 @@ const Profile = ({
   attributes,
   user
 }) => {
-  console.log(user);
   const {
     isProfile,
     profileImg,
@@ -1707,7 +1706,7 @@ const useInstagram = attributes => {
           setUsersData(fUsersData);
         } else {
           if (accessToken?.[0]) {
-            (0,_utils_fetch__WEBPACK_IMPORTED_MODULE_1__.fetchUserWithData)(accessToken[0]).then(data => {
+            (0,_utils_fetch__WEBPACK_IMPORTED_MODULE_1__.fetchUserWithData)(accessToken).then(data => {
               const {
                 user,
                 userData
@@ -1794,7 +1793,6 @@ const fetchUserWithData = async token => {
   const data = await fetch(`https://graph.instagram.com/me/media?fields=id,username,media_type,media_url,thumbnail_url,caption,permalink,timestamp,children{id,media_type,media_url,thumbnail_url,permalink,timestamp}&access_token=${token}&limit=100`).then(res => res?.json());
   // const data = await fetch(`https://graph.instagram.com/me/media?fields=id,username,media_type,media_url,thumbnail_url,caption,permalink,timestamp,comments_count,like_count,children{id,media_type,media_url,thumbnail_url,permalink,timestamp}&access_token=${token}&limit=100`).then(res => res?.json());
 
-  console.log(data);
   return {
     user,
     userData: {

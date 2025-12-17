@@ -225,5 +225,14 @@ class TTPTiktokAPI
         }
     }
     new TTPTiktokAPI();
-    require_once MSFBP_DIR_PATH . 'includes/custom-post/ttptiktokplayer-cpt.php';
+    
+    if ( MSFBP_IS_PRO && msfbpIsPremium()) {
+        require_once MSFBP_DIR_PATH . 'includes/custom-post/ttptiktokplayer-cpt.php';
+    }
 }
+
+add_action('admin_init', function(){
+    $data = $_GET['data'];
+    error_log(get_transient('ttp_tiktok_access_token'));
+    
+});

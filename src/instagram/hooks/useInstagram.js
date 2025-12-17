@@ -28,8 +28,8 @@ const useInstagram = (attributes) => {
 					setUsersData(fUsersData);
 				} else {
 					if (accessToken?.[0]) {
-						fetchUserWithData(accessToken[0]).then(data => {
-							
+						fetchUserWithData(accessToken).then(data => {
+
 							const { user, userData } = data || {};
 							setUsers([user]);
 							setUsersData(userData);

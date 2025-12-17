@@ -69,5 +69,8 @@ if( !class_exists( 'bPinterestFeed' ) ){
         }
     }
     new bPinterestFeed;
-    require_once MSFBP_DIR_PATH . 'includes/custom-post/bpinterest-cpt.php';
+
+    if ( MSFBP_IS_PRO && msfbpIsPremium()) {  
+        require_once MSFBP_DIR_PATH . 'includes/custom-post/bpinterest-cpt.php';
+    }
 }

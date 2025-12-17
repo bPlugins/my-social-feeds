@@ -1,6 +1,5 @@
 const Profile = ({ attributes, user }) => {
-	console.log(user);
-	
+
 	const { isProfile, profileImg, profileInfo } = attributes;
 	const { isFollowers, isFollows, isName, name: nameText, isBio, bio } = profileInfo || {};
 	const { username, profile_picture_url, name, biography, followers_count, follows_count } = user;

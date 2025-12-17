@@ -7,7 +7,10 @@
 	"category": "widgets",
 	"keywords": [
 		"my social feeds",
-		"feeds"
+		"instagram",
+		"tiktok",
+		"pinterest",
+		"twitter"
 	],
 	"textdomain": "my-social-feeds",
 	"attributes": {

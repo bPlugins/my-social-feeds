@@ -2,13 +2,13 @@
 /**
  * Plugin Name: My Social Feeds
  * Description: Embed social feeds 
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: bPlugins
  * Author URI: https://bplugins.com
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain: my-social-feeds
- * @fs_premium_only /freemius, /inc/pro.php, /inc/AdminMenu.php, /dist/admin.css, /dist/admin.css.map, /dist/admin.js, /dist/admin.js.map
+ * @fs_premium_only /freemius, /old-pinterest-feed, /includes/menu/admin-menu-pro.php, /includes/custom-post, /
  */
 
 // ABS PATH
@@ -33,7 +33,7 @@ if ( function_exists( 'msfbp_fs' ) ) {
     msfbp_fs()->set_basename( false, __FILE__ );
 } else {
 
-	define( 'MSFBP_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.1' );
+	define( 'MSFBP_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.2' );
 	define( 'MSFBP_DIR_URL', plugin_dir_url( __FILE__ ) );
 	define( 'MSFBP_DIR_PATH', plugin_dir_path( __FILE__ ) );
 	define( 'MSFBP_PUBLIC_URL', MSFBP_DIR_URL . 'public/');
@@ -101,7 +101,6 @@ if ( function_exists( 'msfbp_fs' ) ) {
 	require_once MSFBP_DIR_PATH . 'includes/TiktokAPI.php';
 	require_once MSFBP_DIR_PATH . 'includes/Instagram.php';
 	require_once MSFBP_DIR_PATH . 'includes/Pinterest.php';
-	require_once MSFBP_DIR_PATH . 'old-pinterest-feed/b-pinterest-feed.php';
 
 	if( !class_exists( 'MSFBPPlugin' ) ){
 		class MSFBPPlugin{
@@ -109,6 +108,7 @@ if ( function_exists( 'msfbp_fs' ) ) {
 				$this->load_classes();
 				add_action( 'init', [ $this, 'onInit' ] );
 				add_action('enqueue_block_assets', [$this, 'enqueueTiktokAssets']);
+				add_action('admin_enqueue_scripts', [$this, 'wp_admin_scripts']);
 				add_action('admin_footer', [$this, 'load_tiktok_script'], 10);
 				add_action('wp_footer', [$this, 'load_tiktok_script'], 10);
 				add_action('wp_ajax_msfbPipeChecker', [$this, 'msfbPipeChecker']);
@@ -146,15 +146,22 @@ if ( function_exists( 'msfbp_fs' ) ) {
 			//Class loaded
 			public function load_classes () {
 				
+				require_once MSFBP_DIR_PATH . 'includes/InstagramAccessTokenSave.php';
+				require_once MSFBP_DIR_PATH . 'includes/PinterestAccessTokenSave.php';
+				require_once MSFBP_DIR_PATH . 'includes/TwitterUserNameIdSave.php';
+				new AccessToken\MSFBP_INSTAGRAM_ACCESS_TOKEN_SAVE();
+				new NameCredentials\MSFBP_PINTEREST_FEED_CREDENTIAL();
+				new NameCredentials\MSFBP_TWITTER_CREDENTIAL();
+
 				// check premium 
-				
 				if( MSFBP_IS_PRO ) {
 					require_once MSFBP_DIR_PATH . 'includes/menu/admin-menu-pro.php'; 
 				}else {
-					require_once MSFBP_DIR_PATH . 'includes/menu/admin-menu-free.php';  
+					require_once MSFBP_DIR_PATH . 'includes/menu/admin-menu-free.php'; 
 				}
 
 				if ( MSFBP_IS_PRO && msfbpIsPremium()) {
+					require_once MSFBP_DIR_PATH . 'old-pinterest-feed/b-pinterest-feed.php';
 				}
 			}
 
@@ -182,7 +189,16 @@ if ( function_exists( 'msfbp_fs' ) ) {
 				wp_localize_script('ttp-tiktok-player-editor-script', 'ttpPatters', [
 					'patternsImagePath' => MSFBP_PUBLIC_URL . 'images/patterns/',
 				]);
+			}
 
+			public function wp_admin_scripts() {
+
+				wp_enqueue_script( 'ttp-script', MSFBP_PUBLIC_URL . 'js/ttp_script.js', [], MSFBP_VERSION );
+
+				wp_localize_script('ttp-script', 'msfAuthorization', [
+					'ajaxUrl' => admin_url('admin-ajax.php'),
+					'nonce' => wp_create_nonce('msf_authorization_nonce')
+				] );
 			}
 
 			function onInit(){
@@ -190,6 +206,7 @@ if ( function_exists( 'msfbp_fs' ) ) {
 				register_block_type( __DIR__ . '/build/instagram' );
 				register_block_type( __DIR__ . '/build/tiktok-player' );
 				register_block_type( __DIR__ . '/build/b-pinterest-feed' );
+				register_block_type( __DIR__ . '/build/twitter' );
 			}
 		}
 		new MSFBPPlugin();

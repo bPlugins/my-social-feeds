@@ -42,6 +42,363 @@
   width: 36%;
   text-align: center;
 }
+
+.configureMain {
+  padding: 40px;
+  background: #fafafa;
+}
+.configureMain .tabSmartGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+.configureMain .smartCard {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 35px 25px;
+  text-align: center;
+  border: 1px solid rgba(200, 200, 200, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: 0.35s ease;
+  position: relative;
+}
+.configureMain .smartCard .cardIcon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 18px;
+  background: #f3f3f3;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  color: #333;
+  transition: 0.35s ease;
+}
+.configureMain .smartCard h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #222;
+}
+.configureMain .smartCard p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+.configureMain .smartCard {
+  /* Hover Effects (Trending) */
+}
+.configureMain .smartCard:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 102, 255, 0.4);
+}
+.configureMain .smartCard:hover .cardIcon {
+  background: #0066ff;
+}
+.configureMain .smartCard:hover .cardIcon svg {
+  fill: #fff;
+}
+.configureMain .smartCard:hover .cardIcon {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.4);
+}
+.configureMain .backModernBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.configureMain .backModernBtn .icon {
+  width: 26px;
+  height: 26px;
+  background: #f3f3f3;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.25s ease;
+}
+.configureMain .backModernBtn:hover {
+  background: #f8f9ff;
+  border-color: #bcd2ff;
+  transform: translateX(-3px);
+  box-shadow: 0 4px 14px rgba(0, 102, 255, 0.18);
+}
+.configureMain .backModernBtn:hover .icon {
+  background: #e7f0ff;
+  color: #0056ff;
+  transform: scale(1.1);
+}
+
+.ig-settings-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: #f3f4f6;
+  border-radius: 20px;
+}
+.ig-settings-wrapper .ig-settings-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e5e7eb;
+}
+.ig-settings-wrapper .ig-settings-card .ig-settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.ig-settings-wrapper .ig-settings-card .ig-settings-header h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+.ig-settings-wrapper .ig-settings-card .ig-settings-header .ig-badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #4f46e5;
+}
+.ig-settings-wrapper .ig-settings-card .ig-input-row {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: 500px;
+  justify-content: center;
+  margin: 0 auto;
+}
+.ig-settings-wrapper .ig-settings-card .ig-input-row .ig-input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+  outline: none;
+  transition: 0.15s;
+}
+.ig-settings-wrapper .ig-settings-card .ig-input-row .ig-input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+.ig-settings-wrapper .ig-settings-card .ig-input-row .ig-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.1s ease;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.ig-settings-wrapper .ig-settings-card .ig-input-row .ig-btn.ig-btn-primary {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.3);
+}
+.ig-settings-wrapper .ig-settings-card .ig-input-row .ig-btn.ig-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.35);
+}
+.ig-settings-wrapper .ig-settings-card .ig-input-row .ig-btn.ig-btn-primary {
+  justify-content: center;
+}
+.ig-settings-wrapper .ig-settings-card .ig-input-row .ig-btn.ig-btn-danger {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+.ig-settings-wrapper .ig-settings-card .ig-input-row .ig-btn.ig-btn-danger:hover {
+  background: #fecaca;
+}
+.ig-settings-wrapper .ig-settings-card .toggle-wrapper {
+  width: 500px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+.ig-settings-wrapper .ig-settings-card .toggle-wrapper .twitter-label {
+  font-weight: 500;
+}
+.ig-settings-wrapper .ig-settings-card .ig-table-wrapper {
+  margin-top: 8px;
+  overflow-x: auto;
+}
+.ig-settings-wrapper .ig-settings-card .ig-table-wrapper .ig-token-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.ig-settings-wrapper .ig-settings-card .ig-table-wrapper .ig-token-table thead {
+  background: #f9fafb;
+  text-align: left;
+}
+.ig-settings-wrapper .ig-settings-card .ig-table-wrapper .ig-token-table thead th {
+  padding: 10px 12px;
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e5e7eb;
+}
+.ig-settings-wrapper .ig-settings-card .ig-table-wrapper .ig-token-table tbody tr td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.ig-settings-wrapper .ig-settings-card .ig-table-wrapper .ig-token-table tbody tr td.ig-token-cell span {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+.ig-settings-wrapper .ig-settings-card .ig-table-wrapper .ig-token-table tbody tr td.ig-actions-col {
+  width: 110px;
+  text-align: right;
+}
+.ig-settings-wrapper .ig-settings-card .ig-table-wrapper .ig-empty-state {
+  padding: 24px 12px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+.ig-settings-wrapper .ig-btn-delete {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: #fee2e2;
+  color: #b91c1c;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.ig-settings-wrapper .ig-btn-delete .icon {
+  font-size: 1rem;
+  transition: transform 0.2s;
+}
+.ig-settings-wrapper .ig-btn-delete:hover {
+  background: #fecaca;
+  transform: translateY(-1px);
+}
+.ig-settings-wrapper .ig-btn-delete:hover .icon {
+  transform: rotate(-10deg);
+}
+.ig-settings-wrapper .ig-btn-delete:active {
+  transform: scale(0.95);
+}
+
+.ig-add-btn {
+  background: #4f46e5;
+  color: white;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+.ig-add-btn:hover {
+  background: #6366f1;
+  transform: scale(1.1);
+}
+
+.ig-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.ig-modal-overlay .ig-modal {
+  background: #fff;
+  width: 360px;
+  max-width: 90%;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: igModalFadeIn 0.2s ease-out;
+}
+.ig-modal-overlay .ig-modal h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e1e1e;
+}
+.ig-modal-overlay .ig-modal p {
+  margin: 0 0 18px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #555;
+}
+.ig-modal-overlay .ig-modal .ig-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.ig-modal-overlay .ig-modal .ig-modal-actions button {
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.ig-modal-overlay .ig-modal .ig-modal-actions .ig-btn-cancel {
+  background: #f0f0f1;
+  border-color: #c3c4c7;
+}
+.ig-modal-overlay .ig-modal .ig-modal-actions .ig-btn-cancel:hover {
+  background: #e5e5e5;
+}
+.ig-modal-overlay .ig-modal .ig-modal-actions .ig-btn-confirm {
+  background: #d63638;
+  border-color: #d63638;
+  color: #fff;
+}
+.ig-modal-overlay .ig-modal .ig-modal-actions .ig-btn-confirm:hover {
+  background: #b32d2e;
+}
+
+/* Animation */
+@keyframes igModalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /*!****************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../bpl-tools/Components/Button/style.scss ***!
   \****************************************************************************************************************************************************************************************************************************************************************/

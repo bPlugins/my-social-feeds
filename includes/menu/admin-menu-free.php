@@ -32,7 +32,7 @@ if(!class_exists('msfbp_AdminMenuFree')) {
         public function helpPage()
         {?>
             <div
-                id='msfDashboard'
+                id='msfbpDashboard'
                 data-info='<?php echo esc_attr( wp_json_encode( [
                     'version' => MSFBP_VERSION,
                     'isPremium' => msfbpIsPremium(),

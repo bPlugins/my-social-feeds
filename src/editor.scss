@@ -24,6 +24,7 @@
             grid-template-columns: repeat(3, 1fr);
             -moz-column-gap: 10px;
             column-gap: 10px;
+            row-gap: 10px;
             padding-top: 20px;
 
             .item {
@@ -81,5 +82,21 @@
                 transform: scale(1.15);
             }
         }
+    }
+}
+
+.msfHelpLine {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a {
+        font-size: 14px;
+        text-decoration: none;
+        padding: 3px 11px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        background: #226df5;
+        color: #fff;
     }
 }

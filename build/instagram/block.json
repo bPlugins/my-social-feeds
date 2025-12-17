@@ -32,10 +32,8 @@
       "default": []
     },
     "accessToken": {
-      "type": "array",
-      "default": [
-        ""
-      ]
+      "type": "string",
+      "default": ""
     },
     "cacheTime": {
       "type": "number",

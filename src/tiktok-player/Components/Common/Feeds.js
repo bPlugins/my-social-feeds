@@ -9,8 +9,9 @@ import Slider from './components/layout/Slider';
 import Default from './components/layout/Default';
 
 const Feeds = (props) => {
-	const { attributes,elId, directory, isBackend = false, react: { useEffect, useState } } = props
-	const {  isVideos, isProfile, videosLists, columns, isProfileImg, isDisplayName, isShareBtn, isFollowing, isFollowers, isTotalLike, pLayoutStyle, feedLayoutStyle, shareBtn, isBio, isBtn, loadMoreBtn, loadMoreBtnColors, viewLoadBtnIcon, authorized, clearCache, videoCacheT, profileCacheT } = attributes;
+	const { attributes, elId, directory, isBackend = false, react: { useEffect, useState } } = props
+	const { isVideos, isProfile, videosLists, columns, isProfileImg, isDisplayName, isShareBtn, isFollowing, isFollowers, isTotalLike, pLayoutStyle, feedLayoutStyle, shareBtn, isBio, isBtn, loadMoreBtn, loadMoreBtnColors, viewLoadBtnIcon, authorized, clearCache, videoCacheT, profileCacheT } = attributes;
+
 
 	const [videos, setVideos] = useState([]);
 	// const [filterVideos, setFilterVideos] = useState([]);
@@ -77,7 +78,7 @@ const Feeds = (props) => {
 		return <span></span>;
 	}
 
-	const dataProps = {attributes,elId,userInfo,videos}
+	const dataProps = { attributes, elId, userInfo, videos }
 
 
 	return <div className='ttptiktok'>
@@ -96,9 +97,9 @@ const Feeds = (props) => {
 
 					{feedLayoutStyle === "slider" ?
 						<Slider {...dataProps} /> :
-							feedLayoutStyle === "masonry" ?
-								<Masonry {...dataProps} /> :
-									<Default {...dataProps} />
+						feedLayoutStyle === "masonry" ?
+							<Masonry {...dataProps} /> :
+							<Default {...dataProps} />
 					}
 				</div>
 

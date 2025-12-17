@@ -18,12 +18,14 @@
   text-align: center;
 }
 .wp-block-bpf-b-pinterest-feed .noticeArea {
-  background: #000;
-  color: #fff;
-  padding: 5px 10px;
+  font-size: 24px;
+  font-weight: 600;
   text-align: center;
-  text-transform: capitalize;
-  font-size: 20px;
+  color: #fff;
+  margin: 0;
+  padding: 60px;
+  background: #236df5;
+  border-radius: 3px;
 }
 .wp-block-bpf-b-pinterest-feed .mainLayout .profile {
   padding: 15px 15px;

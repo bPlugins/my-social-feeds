@@ -8,6 +8,7 @@ import FeatureCompare from '../../../../bpl-tools/Admin/FeatureCompare/FeatureCo
 import Layout from './Layout';
 import { demoInfo, pricingInfo, featureCompareInfo } from '../utils/data';
 import Welcome from './Welcome';
+import Configure from './Configure';
 
 
 const App = (props) => {
@@ -19,6 +20,8 @@ const App = (props) => {
                 <Route index element={<Welcome {...props} />} />
 
                 <Route path='welcome' element={<Welcome {...props} />} />
+
+                <Route path='configure' element={<Configure {...props} />} />
 
                 <Route path='demos' element={<ListDemos demoInfo={demoInfo} {...props}>
                     {!isPremium && <FSCheckoutButton {...{
