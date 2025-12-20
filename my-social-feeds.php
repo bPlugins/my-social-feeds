@@ -180,11 +180,6 @@ if ( function_exists( 'msfbp_fs' ) ) {
 				wp_register_script('justified', MSFBP_PUBLIC_URL . 'js/justifiedGallery.min.js', ['jquery'], MSFBP_VERSION);
 				wp_register_script('ttp-script', MSFBP_PUBLIC_URL . 'js/ttp_script.js', [], MSFBP_VERSION);
 
-				wp_localize_script('ttp-script', 'ttpData', [
-					'ajaxUrl' => admin_url('admin-ajax.php'),
-					'tiktokAuthorized' => false !== get_transient('ttp_tiktok_authorized_data'),
-					'nonce' => wp_create_nonce('wp_rest'),
-				]);
 
 				wp_localize_script('ttp-tiktok-player-editor-script', 'ttpPatters', [
 					'patternsImagePath' => MSFBP_PUBLIC_URL . 'images/patterns/',
@@ -199,6 +194,12 @@ if ( function_exists( 'msfbp_fs' ) ) {
 					'ajaxUrl' => admin_url('admin-ajax.php'),
 					'nonce' => wp_create_nonce('msf_authorization_nonce')
 				] );
+
+				wp_localize_script('ttp-script', 'ttpData', [
+					'ajaxUrl' => admin_url('admin-ajax.php'),
+					'tiktokAuthorized' => false !== get_transient('ttp_tiktok_authorized_data'),
+					'nonce' => wp_create_nonce('wp_rest'),
+				]);
 			}
 
 			function onInit(){

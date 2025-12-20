@@ -63221,9 +63221,6 @@ const Settings = ({
       } = window.location;
       const beforeWPAdmin = pathname?.substring(0, pathname?.indexOf('wp-admin'));
       const pageUrl = origin?.includes('action=edit') ? href : `${origin}${beforeWPAdmin}wp-admin/post.php?post=${postId}&action=edit`;
-
-      // const pageUrl = window.location.origin?.includes('action=edit') ? window.location.href : `${window.location.origin}${window.location.pathname}?post=${postId}&action=edit`;
-      // const pageUrl = window.location.origin?.includes('action=edit') ? window.location.href : `${window.location.origin}/wp-admin/post.php?post=${postId}&action=edit`
       await wp.data.dispatch('core/editor').savePost();
       window.location.href = `https://api.bplugins.com/tiktok-landing/?state=${state}&redirect_url=${pageUrl}`;
     }

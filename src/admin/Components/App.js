@@ -1,4 +1,5 @@
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { HashRouter as Router, Routes, Route, Navigate, useParams } from 'react-router-dom';
 
 import ListDemos from '../../../../bpl-tools/Admin/Demos/ListDemos';
 import FSCheckoutButton from '../../../../bpl-tools/Admin/FSCheckoutButton/FSCheckoutButton';
@@ -13,6 +14,17 @@ import Configure from './Configure';
 
 const App = (props) => {
     const { name, isPremium, freemius } = props;
+
+    useEffect(() => {
+        if (window.location.href.includes('isCloseModal')) {
+
+            const data = getDataParamsFromUrl();
+            if (data === 'lbb_auth_modal') {
+                window.close();
+            }
+
+        }
+    }, [])
 
     return <Router>
         <Routes>
@@ -34,11 +46,23 @@ const App = (props) => {
                     <h2 className='pricingTitle'>Buy Bundle of 3 premium social feeds blocks (Instagram, TikTok, Pinterest)</h2>
                 </Pricing>} />}
 
+
                 {!isPremium && <Route path='feature-comparison' element={<FeatureCompare featureCompareInfo={featureCompareInfo} {...props} />} />}
 
-                <Route path='*' element={<Navigate to='/welcome' replace />} />
+                <Route path='*' element={<Welcome {...props} />} />
             </Route>
         </Routes>
     </Router>
 }
 export default App;
+
+
+export function getDataParamsFromUrl() {
+
+    const params = new URLSearchParams(window.location.search);
+    const dataParam = params.get('isCloseModal');
+
+
+    return dataParam ? dataParam : null;
+
+}

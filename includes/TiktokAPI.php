@@ -180,7 +180,9 @@ class TTPTiktokAPI
                 set_transient('ttp_tiktok_authorized_data', $data, $data['refresh_expires_in']);
                 set_transient('ttp_tiktok_access_token', $data['access_token'], 60 * 60 * 20);
                 // update_option('tiktok_api_version', 'v2');
+
             }
+            
         }
 
         /**
@@ -231,8 +233,3 @@ class TTPTiktokAPI
     }
 }
 
-add_action('admin_init', function(){
-    $data = $_GET['data'];
-    error_log(get_transient('ttp_tiktok_access_token'));
-    
-});

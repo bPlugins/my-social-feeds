@@ -12821,7 +12821,8 @@ function htmlEscape(str) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   getDataParamsFromUrl: () => (/* binding */ getDataParamsFromUrl)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -12844,12 +12845,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 const App = props => {
   const {
     name,
     isPremium,
     freemius
   } = props;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (window.location.href.includes('isCloseModal')) {
+      const data = getDataParamsFromUrl();
+      if (data === 'lbb_auth_modal') {
+        window.close();
+      }
+    }
+  }, []);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.HashRouter, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Routes, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
     path: "/",
     element: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Layout__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -12898,13 +12908,17 @@ const App = props => {
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
     path: "*",
-    element: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Navigate, {
-      to: "/welcome",
-      replace: true
+    element: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Welcome__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      ...props
     })
   }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+function getDataParamsFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const dataParam = params.get('isCloseModal');
+  return dataParam ? dataParam : null;
+}
 
 /***/ }),
 
@@ -13477,21 +13491,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Elements_BackBtn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Elements/BackBtn */ "./src/admin/Components/pages/Elements/BackBtn.js");
 /* harmony import */ var _utils_functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils/functions */ "./src/utils/functions.js");
+/* harmony import */ var _tiktok_player_utils_functions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../tiktok-player/utils/functions */ "./src/tiktok-player/utils/functions.js");
+/* harmony import */ var _utils_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/icons */ "./src/utils/icons.js");
+
+
+
 
 
 
 const TikTokSettings = ({
   onBack
 }) => {
-  const url = 'https://api.bplugins.com/tiktok-landing/?state=TqrNe2i1ztkqS2D&redirect_url=http://dev.local/wp-admin/admin.php?page=my-social-feedsdsafas#/configure';
-  const tiktokPrompt = () => (0,_utils_functions__WEBPACK_IMPORTED_MODULE_2__["default"])(url, 850, 520, function () {});
+  const {
+    href,
+    origin,
+    pathname
+  } = window.location;
+  const state = (0,_tiktok_player_utils_functions__WEBPACK_IMPORTED_MODULE_3__.generateString)(15);
+  const pageUrl = `${origin}/wp-admin?page=my-social-feeds`;
+  const url = `https://api.bplugins.com/tiktok-landing/?state=${state}&redirect_url=${pageUrl}&isCloseModal=lbb_auth_modal`;
+  const tiktokPrompt = () => (0,_utils_functions__WEBPACK_IMPORTED_MODULE_2__["default"])(url, 850, 520, function () {
+    console.log('cb');
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const authorized = ttpData?.tiktokAuthorized;
+    console.log(authorized);
+  }, []);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "settingsPage"
+    className: "settingsPage ig-settings-wrapper"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Elements_BackBtn__WEBPACK_IMPORTED_MODULE_1__["default"], {
     onBack: onBack
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "TikTok Settings"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ig-settings-card"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ig-settings-header"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "TikTok Account "), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "ig-btn-tiktok",
     onClick: tiktokPrompt
-  }, "Connect TikTok Account"));
+  }, " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "ig-btn-icon"
+  }, " ", (0,_utils_icons__WEBPACK_IMPORTED_MODULE_4__.tiktok)("#fff"), " "), " Connect TikTok Account "))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TikTokSettings);
 
@@ -13890,6 +13929,78 @@ const featureCompareInfo = {
     label: 'Colors set follow button.',
     plans: ['lhmjqhkeyi']
   }]
+};
+
+/***/ }),
+
+/***/ "./src/tiktok-player/utils/functions.js":
+/*!**********************************************!*\
+  !*** ./src/tiktok-player/utils/functions.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   checkLayout: () => (/* binding */ checkLayout),
+/* harmony export */   dateTimeConvert: () => (/* binding */ dateTimeConvert),
+/* harmony export */   generateString: () => (/* binding */ generateString),
+/* harmony export */   getBoxValue: () => (/* binding */ getBoxValue),
+/* harmony export */   ratioCheck: () => (/* binding */ ratioCheck),
+/* harmony export */   tabController: () => (/* binding */ tabController)
+/* harmony export */ });
+const getBoxValue = object => Object.values(object).join(" ");
+const generateString = length => {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result.trim();
+};
+const tabController = () => {
+  setTimeout(() => {
+    const panelBodies = document.querySelectorAll('.components-panel__body-title button');
+    panelBodies.forEach(item => {
+      item.addEventListener('click', clickEveryItem);
+    });
+    function clickEveryItem() {
+      this.removeEventListener('click', clickEveryItem);
+      panelBodies.forEach(item => {
+        if (item.getAttribute('aria-expanded') === 'true' && !item.isEqualNode(this)) {
+          item.click();
+        }
+      });
+      setTimeout(() => {
+        this.addEventListener('click', clickEveryItem);
+      }, 500);
+    }
+  }, 500);
+};
+const checkLayout = val => {
+  if (val === '') {
+    return {
+      overlyIcon: {
+        size: 14
+      }
+    };
+  }
+};
+const dateTimeConvert = val => {
+  const options = {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  };
+  const dateFormatter = new Intl.DateTimeFormat('en-US', options);
+  const createTime = dateFormatter.format(val * 1000);
+  return createTime;
+};
+const ratioCheck = (val = "9:16") => {
+  const [width, height] = val.split(':');
+  const result = parseInt(height) / parseInt(width) * 100;
+  return result;
 };
 
 /***/ }),
