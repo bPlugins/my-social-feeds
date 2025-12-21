@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { HashRouter as Router, Routes, Route, Navigate, useParams } from 'react-router-dom';
 
 import ListDemos from '../../../../bpl-tools/Admin/Demos/ListDemos';
@@ -10,9 +10,11 @@ import Layout from './Layout';
 import { demoInfo, pricingInfo, featureCompareInfo } from '../utils/data';
 import Welcome from './Welcome';
 import Configure from './Configure';
+import Authorization from './pages/Authorization';
 
 
 const App = (props) => {
+
     const { name, isPremium, freemius } = props;
 
     useEffect(() => {
@@ -20,11 +22,16 @@ const App = (props) => {
 
             const data = getDataParamsFromUrl();
             if (data === 'lbb_auth_modal') {
-                window.close();
+                setTimeout(() => {
+                    window.close();
+                }, 2000);
             }
-
         }
     }, [])
+
+    if (window.location.href.includes('isCloseModal')) {
+        return <Authorization />
+    }
 
     return <Router>
         <Routes>
@@ -45,7 +52,6 @@ const App = (props) => {
                 {!isPremium && <Route path='pricing' element={<Pricing pricingInfo={pricingInfo} options={{}} {...props} >
                     <h2 className='pricingTitle'>Buy Bundle of 3 premium social feeds blocks (Instagram, TikTok, Pinterest)</h2>
                 </Pricing>} />}
-
 
                 {!isPremium && <Route path='feature-comparison' element={<FeatureCompare featureCompareInfo={featureCompareInfo} {...props} />} />}
 

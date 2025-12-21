@@ -12835,6 +12835,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_data__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/data */ "./src/admin/utils/data.js");
 /* harmony import */ var _Welcome__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Welcome */ "./src/admin/Components/Welcome.js");
 /* harmony import */ var _Configure__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Configure */ "./src/admin/Components/Configure.js");
+/* harmony import */ var _pages_Authorization__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/Authorization */ "./src/admin/Components/pages/Authorization.js");
+
 
 
 
@@ -12856,10 +12858,15 @@ const App = props => {
     if (window.location.href.includes('isCloseModal')) {
       const data = getDataParamsFromUrl();
       if (data === 'lbb_auth_modal') {
-        window.close();
+        setTimeout(() => {
+          window.close();
+        }, 2000);
       }
     }
   }, []);
+  if (window.location.href.includes('isCloseModal')) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pages_Authorization__WEBPACK_IMPORTED_MODULE_10__["default"], null);
+  }
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.HashRouter, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Routes, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Route, {
     path: "/",
     element: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Layout__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -13094,6 +13101,31 @@ const Welcome = props => {
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Welcome);
+
+/***/ }),
+
+/***/ "./src/admin/Components/pages/Authorization.js":
+/*!*****************************************************!*\
+  !*** ./src/admin/Components/pages/Authorization.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const Authorization = () => {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ttpAuthorization"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "header"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Authorization Success")));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Authorization);
 
 /***/ }),
 
@@ -13502,6 +13534,7 @@ __webpack_require__.r(__webpack_exports__);
 const TikTokSettings = ({
   onBack
 }) => {
+  const [authorized, setAuthorized] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)();
   const {
     href,
     origin,
@@ -13511,12 +13544,29 @@ const TikTokSettings = ({
   const pageUrl = `${origin}/wp-admin?page=my-social-feeds`;
   const url = `https://api.bplugins.com/tiktok-landing/?state=${state}&redirect_url=${pageUrl}&isCloseModal=lbb_auth_modal`;
   const tiktokPrompt = () => (0,_utils_functions__WEBPACK_IMPORTED_MODULE_2__["default"])(url, 850, 520, function () {
-    console.log('cb');
+    getAuthorized();
   });
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const authorized = ttpData?.tiktokAuthorized;
-    console.log(authorized);
+    getAuthorized();
   }, []);
+  const handleUnauthorized = async () => {
+    try {
+      const response = await fetch(`${ttpData.ajaxUrl}?action=ttp_tiktok_clear&nonce=${ttpData?.nonce}&action_type=unauthorized`);
+      await response.json();
+      getAuthorized();
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+  const getAuthorized = async () => {
+    try {
+      const response = await fetch(`${ttpData.ajaxUrl}?action=ttp_tiktok_isAuthorized&nonce=${ttpData?.nonce}`);
+      const data = await response.json();
+      setAuthorized(data?.data?.isAuthorized);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "settingsPage ig-settings-wrapper"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Elements_BackBtn__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -13525,7 +13575,12 @@ const TikTokSettings = ({
     className: "ig-settings-card"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "ig-settings-header"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "TikTok Account "), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "TikTok Account "), authorized ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "ig-btn-tiktok",
+    onClick: handleUnauthorized
+  }, " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "ig-btn-icon"
+  }, " ", (0,_utils_icons__WEBPACK_IMPORTED_MODULE_4__.tiktok)("#fff"), " "), " Logout ") : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "ig-btn-tiktok",
     onClick: tiktokPrompt
   }, " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {

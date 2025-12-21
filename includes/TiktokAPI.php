@@ -32,7 +32,19 @@ class TTPTiktokAPI
             add_action('wp_ajax_nopriv_ttp_tiktok_videos', [$this, 'ttp_tiktok_videos']);
 
             add_action('wp_ajax_ttp_tiktok_clear', [$this, 'ttp_tiktok_clear']);
+
+            add_action('wp_ajax_ttp_tiktok_isAuthorized', [$this, 'ttp_tiktok_isAuthorized']);
         }
+
+        public function ttp_tiktok_isAuthorized()
+        {
+            if (!wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'wp_rest')) {
+                wp_die();
+            }
+
+            $tiktok_info = get_transient('ttp_tiktok_authorized_data');
+            wp_send_json_success(['isAuthorized' => $tiktok_info ? true : false]);
+        }  
 
         public function ttp_tiktok_videos()
         {
@@ -152,6 +164,7 @@ class TTPTiktokAPI
                 delete_transient($key . '_ttp_tiktok_videos_' . $device);
                 delete_transient('ttp_tiktok_user_info');
                 echo wp_kses_post($this->getData($key, $max_count, false, $videoCacheTime, $profileCacheTime));
+                // wp_send_json_success($key, $max_count, false, $videoCacheTime, $profileCacheTime);
             }
 
             if ($action === 'unauthorized') {
@@ -162,6 +175,7 @@ class TTPTiktokAPI
                 delete_transient($key . '_ttp_tiktok_videos_' . $device);
 
                 echo wp_kses_post(wp_json_encode(['videos' => [], 'user_info' => []]));
+                // wp_send_json_success(['videos' => [], 'user_info' => []]);
             }
             wp_die();
         } // ttp_tiktok_clear
@@ -180,9 +194,7 @@ class TTPTiktokAPI
                 set_transient('ttp_tiktok_authorized_data', $data, $data['refresh_expires_in']);
                 set_transient('ttp_tiktok_access_token', $data['access_token'], 60 * 60 * 20);
                 // update_option('tiktok_api_version', 'v2');
-
             }
-            
         }
 
         /**
@@ -194,7 +206,7 @@ class TTPTiktokAPI
         {
             $tiktok_info = get_transient('ttp_tiktok_authorized_data');
             if (false === get_transient('ttp_tiktok_access_token') && $tiktok_info) {
-                $response = wp_remote_post('https://api. bplugins.com/wp-json/tiktok/v1/refresh-token', [
+                $response = wp_remote_post('https://api.bplugins.com/wp-json/tiktok/v1/refresh-token', [
                     'method' => 'POST',
                     'body' => [
                         'refresh_token' => $tiktok_info['refresh_token'],
@@ -233,3 +245,9 @@ class TTPTiktokAPI
     }
 }
 
+add_action( 'wp_footer', function(){
+    $data = get_transient('ttp_tiktok_authorized_data');
+    echo "<pre>";
+    print_r($data) ;
+    echo "</pre>";
+});

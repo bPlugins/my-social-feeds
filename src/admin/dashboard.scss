@@ -506,3 +506,28 @@ $bg-light: #f3f4f6;
         }
     }
 }
+
+// Authorization.scss
+
+.ttpAuthorization {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: #f6f8fb;
+
+    .header {
+        width: 100%;
+        max-width: 560px;
+        text-align: center;
+
+        h2 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+            color: #1f2937;
+            line-height: 1.3;
+        }
+    }
+}
