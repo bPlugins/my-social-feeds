@@ -19,6 +19,10 @@
       "type": "string",
       "default": ""
     },
+    "selectedAccountId": {
+      "type": "string",
+      "default": ""
+    },
     "profileCacheT": {
       "type": "string",
       "default": "5em"

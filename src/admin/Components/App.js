@@ -9,13 +9,13 @@ import FeatureCompare from '../../../../bpl-tools/Admin/FeatureCompare/FeatureCo
 import Layout from './Layout';
 import { demoInfo, pricingInfo, featureCompareInfo } from '../utils/data';
 import Welcome from './Welcome';
-import Configure from './Configure';
+import Settings from './Settings';
 import Authorization from './pages/Authorization';
 
 
 const App = (props) => {
-
     const { name, isPremium, freemius } = props;
+    console.log(window.location.href.includes('isCloseModal'));
 
     useEffect(() => {
         if (window.location.href.includes('isCloseModal')) {
@@ -24,14 +24,38 @@ const App = (props) => {
             if (data === 'lbb_auth_modal') {
                 setTimeout(() => {
                     window.close();
-                }, 2000);
+                }, 1000);
             }
         }
-    }, [])
+    }, []);
 
     if (window.location.href.includes('isCloseModal')) {
         return <Authorization />
     }
+
+    // useEffect(() => {
+    //     if (window.location.hash) return;
+
+    //     const page = new URLSearchParams(window.location.search).get('page');
+
+    //     if (page === 'my-social-feeds-settings') {
+    //         window.location.hash = '#/settings';
+    //     }
+    // }, []);
+
+    useEffect(() => {
+        // যদি URL এ hash আগেই থাকে, React সেটা সম্মান করবে
+        if (window.location.hash) return;
+
+        const params = new URLSearchParams(window.location.search);
+        const page = params.get('page');
+
+        if (page === 'my-social-feeds-settings') {
+            window.location.hash = '#/settings';
+        } else {
+            window.location.hash = '#/';
+        }
+    }, []);
 
     return <Router>
         <Routes>
@@ -40,7 +64,8 @@ const App = (props) => {
 
                 <Route path='welcome' element={<Welcome {...props} />} />
 
-                <Route path='configure' element={<Configure {...props} />} />
+                <Route path='settings' element={<Settings {...props} />} />
+
 
                 <Route path='demos' element={<ListDemos demoInfo={demoInfo} {...props}>
                     {!isPremium && <FSCheckoutButton {...{
@@ -49,9 +74,7 @@ const App = (props) => {
                     }}>Buy Now</FSCheckoutButton>}
                 </ListDemos>} />
 
-                {!isPremium && <Route path='pricing' element={<Pricing pricingInfo={pricingInfo} options={{}} {...props} >
-                    <h2 className='pricingTitle'>Buy Bundle of 3 premium social feeds blocks (Instagram, TikTok, Pinterest)</h2>
-                </Pricing>} />}
+                {!isPremium && <Route path='pricing' element={<Pricing pricingInfo={pricingInfo} options={{}} {...props} ></Pricing>} />}
 
                 {!isPremium && <Route path='feature-comparison' element={<FeatureCompare featureCompareInfo={featureCompareInfo} {...props} />} />}
 

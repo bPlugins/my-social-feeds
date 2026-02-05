@@ -20,9 +20,16 @@
     padding: 40px;
     background: #fafafa;
 
+    .header_title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
     .tabSmartGrid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        grid-template-columns: repeat(3, 1fr);
         gap: 25px;
     }
 
@@ -37,6 +44,63 @@
         cursor: pointer;
         transition: 0.35s ease;
         position: relative;
+        overflow: hidden;
+
+        .cardTopRight {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+
+        /* Count badge */
+        .accountCountBadge {
+            min-width: 26px;
+            height: 26px;
+            padding: 0 8px;
+            border-radius: 999px;
+            background: #111827;
+            /* dark modern */
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Status chip */
+        .statusChip {
+            height: 26px;
+            padding: 0 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            border: 1px solid transparent;
+        }
+
+        /* Connected style */
+        .statusChip.connected {
+            background: rgba(34, 197, 94, 0.12);
+            border-color: rgba(34, 197, 94, 0.3);
+            color: #16a34a;
+        }
+
+        /* Not connected style */
+        .statusChip.notConnected {
+            background: rgba(148, 163, 184, 0.15);
+            border-color: rgba(148, 163, 184, 0.35);
+            color: #475569;
+        }
 
         .cardIcon {
             width: 60px;
@@ -82,6 +146,8 @@
                 box-shadow: 0 4px 12px rgba(0, 102, 255, 0.4);
             }
         }
+
+
     }
 
     .backModernBtn {
@@ -238,6 +304,27 @@ $bg-light: #f3f4f6;
                         background: $danger-bg-hover;
                     }
                 }
+            }
+
+            p.ig-help-text {
+                font-size: 13px;
+                font-weight: 400;
+                color: #000000a6;
+
+                a {
+                    font-size: 13px;
+                }
+            }
+
+            .ig-success-msg {
+                padding: 10px 12px;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 500;
+                background: rgba(34, 197, 94, 0.12);
+                border: 1px solid rgba(34, 197, 94, 0.3);
+                color: #16a34a;
+                margin-bottom: 12px;
             }
         }
 
@@ -529,5 +616,177 @@ $bg-light: #f3f4f6;
             color: #1f2937;
             line-height: 1.3;
         }
+    }
+}
+
+/* ===============================
+   TikTok Settings – Modal & Table
+   =============================== */
+
+.ig-settings-wrapper {
+    .ig-table-wrapper {
+        margin-top: 20px;
+    }
+
+    .ig-token-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+
+        th,
+        td {
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 14px;
+        }
+
+        th {
+            font-weight: 600;
+            color: #111827;
+            background: #f9fafb;
+        }
+
+        td {
+            color: #374151;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+    }
+
+    .ig-btn-danger {
+        background: #dc2626;
+        color: #fff;
+        border: none;
+        padding: 6px 14px;
+        border-radius: 4px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+
+        &:hover {
+            background: #b91c1c;
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    }
+}
+
+/* ===============================
+   CONFIRM MODAL
+   =============================== */
+
+.ig-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.ig-modal {
+    background: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 8px;
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    animation: scaleIn 0.2s ease-out;
+
+    h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #111827;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #374151;
+
+        strong {
+            color: #111827;
+        }
+    }
+}
+
+.ig-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 22px;
+
+    .ig-btn {
+        background: #e5e7eb;
+        color: #111827;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+
+        &:hover {
+            background: #d1d5db;
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    }
+
+    .ig-btn-danger {
+        background: #dc2626;
+        color: #fff;
+
+        &:hover {
+            background: #b91c1c;
+        }
+    }
+}
+
+/* ===============================
+   ANIMATIONS
+   =============================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+
+@media (max-width: 480px) {
+    .ig-modal {
+        margin: 0 15px;
     }
 }

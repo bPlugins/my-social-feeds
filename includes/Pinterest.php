@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if( !class_exists( 'bPinterestFeed' ) ){
 
     class bPinterestFeed {
@@ -70,7 +74,5 @@ if( !class_exists( 'bPinterestFeed' ) ){
     }
     new bPinterestFeed;
 
-    if ( MSFBP_IS_PRO && msfbpIsPremium()) {  
-        require_once MSFBP_DIR_PATH . 'includes/custom-post/bpinterest-cpt.php';
-    }
+     
 }

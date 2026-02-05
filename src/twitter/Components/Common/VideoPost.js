@@ -2,7 +2,8 @@ const VideoPost = ({ attributes }) => {
     const { type, config, videoPostID } = attributes;
     const { language, scrolling, theme, height, width } = config;
 
-    const vpHeight = type == 'video' ? '280px' : height;
+    // const vpHeight = type == 'video' ? '280px' : height;
+    const vpHeight = height;
     const src = type === 'video' ?
         `https://platform.twitter.com/embed/Tweet.html?dnt=false&frame=false&hideCard=false&hideThread=false&id=${videoPostID}&lang=${language}&theme=${theme}&width=${width}&maxWidth=${width}` : type === 'post' ?
             `https://platform.twitter.com/embed/Tweet.html?dnt=false&frame=false&hideCard=false&hideThread=false&id=${videoPostID}&lang=${language}&theme=${theme}&width=${width}` : '';

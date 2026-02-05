@@ -4,8 +4,8 @@ function ttpHandleShortcode(id) {
 	input.select();
 	input.setSelectionRange(0, 30);
 	document.execCommand('copy');
-	tooltip.innerHTML = wp.i18n.__('Copied Successfully!', 'tiktok');
+	tooltip.innerHTML = wp.i18n.__('Copied Successfully!', 'my-social-feeds');
 	setTimeout(() => {
-		tooltip.innerHTML = wp.i18n.__('Copy To Clipboard', 'tiktok');
+		tooltip.innerHTML = wp.i18n.__('Copy To Clipboard', 'my-social-feeds');
 	}, 1500);
 }

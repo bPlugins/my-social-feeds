@@ -28,7 +28,7 @@
 	},
 	"example": {
 		"attributes": {
-			"preview": true,
+			"preview": false,
 			"columns": {
 				"desktop": 1,
 				"tablet": 1,
@@ -39,8 +39,12 @@
 	"editorScript": [
 		"file:./index.js"
 	],
-	"editorStyle": "file:./index.css",
-	"style": [],
+	"editorStyle": [
+		"file:./index.css"
+	],
+	"style": [
+		"file:./index.css"
+	],
 	"render": "file:./render.php",
 	"viewScript": []
 }

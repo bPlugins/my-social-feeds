@@ -79,11 +79,3 @@ class MSFBP_INSTAGRAM_ACCESS_TOKEN_SAVE{
         ]);
     }  
 }
-
-// add_action('wp_footer', function(){
-//     $tokens = get_option('msfbp_instagram_access_tokens', []);
-
-//     echo "<pre>";
-//     print_r($tokens);
-//     echo "</pre>";
-// });

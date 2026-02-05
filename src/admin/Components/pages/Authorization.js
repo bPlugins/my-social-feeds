@@ -1,10 +1,10 @@
-
+import { __ } from '@wordpress/i18n';
 
 const Authorization = () => {
 
     return <div className="ttpAuthorization">
         <div className="header">
-            <h2>Authorization Success</h2>
+            <h2>{__('Authorization Success', 'my-social-feeds')}</h2>
         </div>
     </div>
 }

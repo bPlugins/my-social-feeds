@@ -1,19 +1,22 @@
 .wp-block-msfbp-my-social-feeds {
 
     .msfb-my-social-feeds {
-        background-color: #146ef5;
+        background-color: #416ff40d;
         padding: 20px;
+        border-radius: 5px;
 
         h2 {
-            color: #fff;
+            color: #000;
             text-align: center;
             padding-top: 20px;
             padding-bottom: 10px;
             margin: 0;
+            font-size: 22px;
+            font-weight: 500;
         }
 
         h3 {
-            color: #fff;
+            color: #000;
             text-align: center;
             margin: 0;
             font-size: 18px;
@@ -28,8 +31,8 @@
             padding-top: 20px;
 
             .item {
-                border: 1px solid #ddd;
-                background-color: #fff;
+                // border: 1px solid #ddd;
+                background-color: #146ef50d;
                 border-radius: 4px;
                 text-align: center;
                 padding: 40px 15px;
@@ -46,7 +49,6 @@
                     color: #000;
                     margin-bottom: 5px;
                     margin-top: 15px;
-
                     transition: color 0.25s ease;
                 }
 
@@ -58,12 +60,13 @@
 
                 .icon {
                     position: absolute;
-                    top: 14px;
-                    right: 10px;
+                    top: 30px;
+                    left: 50%;
                     width: 30px;
                     height: 30px;
-
+                    transform: translate(-50%, -50%);
                     transition: transform 0.25s ease;
+
                 }
             }
 
@@ -79,7 +82,255 @@
             }
 
             .item:hover .icon {
-                transform: scale(1.15);
+                // transform: scale(0.7);
+            }
+        }
+    }
+
+    .ttpUnAuthor {
+        // margin: 80px auto;
+        padding: 52px 40px;
+
+        background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+        border-radius: 28px;
+        text-align: center;
+
+        box-shadow: 0 7px 67px rgb(45 108 223 / 17%), inset 0 0 0 1px rgb(255 255 255 / 30%);
+
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: -140px -140px auto auto;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle,
+                    rgba(91, 108, 249, 0.18),
+                    transparent 65%);
+        }
+
+        h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 10px;
+            letter-spacing: -0.2px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #475569;
+            line-height: 1.65;
+            margin-bottom: 28px;
+        }
+
+        /* ===============================
+     Shared Field Style
+     =============================== */
+        .bpField {
+            width: 100%;
+            height: 46px;
+            padding: 0 14px;
+
+            border-radius: 14px;
+            border: 1px solid rgba(148, 163, 184, 0.45) !important;
+            background: #fff;
+
+            font-size: 14px;
+            font-weight: 600;
+            color: #0f172a;
+
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+            transition: all 0.2s ease;
+
+            &:focus {
+                border-color: rgba(91, 108, 249, 0.8) !important;
+                box-shadow: 0 0 0 4px rgba(91, 108, 249, 0.18),
+                    0 10px 24px rgba(15, 23, 42, 0.06);
+                outline: none !important;
+            }
+        }
+
+        /* ===============================
+     Label + Control Row
+     (✅ inputs always same width)
+     =============================== */
+        .bpChooseToken {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 15px;
+            text-align: left;
+
+            /* ✅ fixed label width ensures equal inputs */
+            .mb {
+                width: 180px;
+                margin: 0;
+
+                font-size: 14px;
+                font-weight: 600;
+                color: #334155;
+                white-space: nowrap;
+            }
+
+            /* ✅ field takes remaining space */
+            .components-base-control {
+                flex: 1;
+                margin-bottom: 0;
+
+                .components-base-control__field {
+                    margin-bottom: 0px !important;
+                }
+            }
+
+            /* ===== SelectControl ===== */
+            select.components-select-control__input {
+                @extend .bpField;
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+            }
+
+            /* ===== TextControl ===== */
+            input.components-text-control__input {
+                @extend .bpField;
+            }
+
+            /* Gutenberg Backdrop cleanup (InputControl) */
+            .components-input-control__backdrop {
+                border: 0 !important;
+                box-shadow: none !important;
+                outline: none !important;
+            }
+
+            .components-input-control:focus-within .components-input-control__backdrop {
+                box-shadow: none !important;
+                outline: none !important;
+            }
+        }
+
+        /* optional fetch button */
+        .bpFetchBtn {
+            margin: 10px 0px;
+            display: block;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            border: 0;
+            font-weight: 600;
+            background: rgba(15, 23, 42, 0.06);
+            color: #0f172a;
+            transition: all 0.2s ease;
+            font-size: 14px;
+
+            &:hover {
+                background: rgba(15, 23, 42, 0.1);
+            }
+
+            &:active {
+                transform: translateY(1px);
+            }
+        }
+
+        a {
+            display: block;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            padding: 14px 30px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+
+            background: linear-gradient(135deg, #5b6cf9, #6a3fc7);
+            border-radius: 14px;
+            // box-shadow: 0 14px 28px rgba(91, 108, 249, 0.35);
+
+            transition: all 0.25s ease;
+
+            .icon {
+                font-size: 16px;
+                opacity: 0.95;
+            }
+
+            &:hover {
+                transform: translateY(-2px);
+                // box-shadow: 0 18px 36px rgba(91, 108, 249, 0.45);
+                color: #fff;
+            }
+
+            &:active {
+                transform: translateY(0);
+                box-shadow: 0 8px 18px rgba(91, 108, 249, 0.3);
+            }
+        }
+
+        .ttpSecure {
+            margin-top: 30px;
+            padding-top: 18px;
+
+            font-size: 14px;
+            color: #64748b;
+            border-top: 1px solid rgba(100, 116, 139, 0.18);
+        }
+
+        /* ===============================
+     Mobile responsive
+     =============================== */
+        @media (max-width: 480px) {
+            margin: 42px 16px;
+            padding: 38px 24px;
+
+            h2 {
+                font-size: 22px;
+            }
+
+            p {
+                font-size: 15px;
+            }
+
+            .bpChooseToken {
+                flex-direction: column;
+                align-items: stretch;
+
+                .mb {
+                    width: 100%;
+                    white-space: normal;
+                    margin-bottom: 6px;
+                }
+            }
+        }
+    }
+
+    .clipBtnWrapper {
+        text-align: center;
+        margin-bottom: 30px;
+
+        p {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        button {
+            border: none;
+            background: rgb(69, 39, 164);
+            color: rgb(255, 255, 255);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            font-size: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+
+            &:hover {
+                background: rgb(69, 39, 164);
+                color: rgb(255, 255, 255);
             }
         }
     }

@@ -7,9 +7,7 @@ import FollowBtn from './Components/Elements/FollowBtn';
 
 const Feeds = ({ attributes, pageNumber, setPageNumber }) => {
 	const { itemVisible, isFollowBtn, isFollowBtnInFooter, isLoadMore } = attributes;
-
 	const { users, usersData, loading } = useInstagram(attributes);
-
 	if (loading) {
 		return <GalleryLoading />
 	}
@@ -22,12 +20,9 @@ const Feeds = ({ attributes, pageNumber, setPageNumber }) => {
 	return <div className='ifbInstagramFeed'>
 		{!isEmptyObject(userData) ? <>
 			<GalleryHeader user={user} attributes={attributes} />
-
 			<Gallery attributes={attributes} user={user} feeds={media} pageNumber={pageNumber} />
-
 			{isLoadMore || (isFollowBtn && isFollowBtnInFooter) ? <div className='galleyFooter'>
 				<button className={`loadMoreBtn ${media?.length > itemVisible * pageNumber ? 'visible' : 'hidden'}`} onClick={() => setPageNumber(pageNumber + 1)}>Load More</button>
-
 				{isFollowBtnInFooter && <FollowBtn attributes={attributes} username={username} />}
 			</div> : null}
 		</> : ''}

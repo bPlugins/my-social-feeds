@@ -3,7 +3,7 @@ import Header from '../../../../bpl-tools/Admin/Header/Header';
 
 const navigation = [
     { name: 'Welcome', href: '/welcome' },
-    { name: 'Configure', href: '/configure' },
+    // { name: 'Settings', href: '/settings' },
     { name: 'Demos', href: '/demos' },
     { name: 'Pricing', href: '/pricing' },
     { name: "What's New In Pro ", href: '/feature-comparison' }

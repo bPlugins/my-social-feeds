@@ -31,7 +31,7 @@ label {
 
 .ttpAuthorization {
     position: relative;
-    display: flex;
+    // display: flex;
     align-items: center;
     justify-content: center;
     column-gap: 10px;
@@ -43,45 +43,33 @@ label {
         color: $primaryColor;
     }
 
-    .wppLoading {
-        color: $primaryColor !important;
-        font-size: 21px !important;
-        font-weight: bold !important;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        align-items: center;
-        position: absolute;
-        bottom: 0;
-        right: 32px;
-        transform: translate(-50%, -50%);
-        margin: 0;
-        z-index: 1;
+    .cacheArea {
+        .ttpAuthBtn {
+            position: relative;
 
-        .components-spinner {
-            margin-top: 0;
-            color: $primaryColor;
+            .wppLoading {
+                color: #4527a4 !important;
+                font-size: 21px !important;
+                font-weight: bold !important;
+                align-items: center;
+                position: absolute;
+                top: 0px;
+                margin: 0;
+                z-index: 1;
+                background: rgba(0, 0, 0, 0.1);
+                width: 100%;
+                left: 0;
+                height: 100%;
+
+                .components-spinner {
+                    margin-top: 0;
+                    color: $primaryColor;
+                }
+            }
         }
     }
 }
 
-
-
-.wp-block-ttp-tiktok-player {
-
-    .ttpUnAuthor {
-        background-color: #4527a4;
-        padding: 20px;
-        text-align: center;
-        border-radius: 10px;
-
-        h2 {
-            font-size: 30px;
-            font-weight: 700;
-            color: #fff;
-        }
-    }
-}
 
 .ttpProFeature {
     h3 {

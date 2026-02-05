@@ -28,13 +28,13 @@ const Default = ({ isProfileImg, userInfo, isDisplayName, isShareBtn, shareBtn, 
         <div className="social_count">
             <ul>
                 {isFollowing &&
-                    <li><span>{userInfo.following_count}</span>{__('Following', 'tiktok')}</li>
+                    <li><span>{userInfo.following_count}</span>{__('Following', 'my-social-feeds')}</li>
                 }
                 {isFollowers &&
-                    <li><span>{userInfo.follower_count}</span>{__('Followers', 'tiktok')}</li>
+                    <li><span>{userInfo.follower_count}</span>{__('Followers', 'my-social-feeds')}</li>
                 }
                 {isTotalLike &&
-                    <li><span>{userInfo.likes_count}</span>{__('Likes', 'tiktok')}</li>
+                    <li><span>{userInfo.likes_count}</span>{__('Likes', 'my-social-feeds')}</li>
                 }
 
             </ul>

@@ -13,10 +13,10 @@ const Style = ({ attributes, setAttributes, isPremium, setProModalOpen, }) => {
 
     return <>
         {isProfile && <>
-            <PanelBody className='bPlPanelBody' title={__('Profile', 'tiktok')} initialOpen={false}>
+            <PanelBody className='bPlPanelBody' title={__('Profile', 'my-social-feeds')} initialOpen={false}>
 
                 {/* Profile Layout Select  */}
-                <BControlPro className='mt15' labelPosition='side' label={__('Layout', 'tiktok')} value={pLayoutStyle}
+                <BControlPro className='mt15' labelPosition='side' label={__('Layout', 'my-social-feeds')} value={pLayoutStyle}
                     onChange={(val) => {
                         setAttributes({ pLayoutStyle: val })
                         if ('compact' === val) {
@@ -59,7 +59,7 @@ const Style = ({ attributes, setAttributes, isPremium, setProModalOpen, }) => {
                     __nextHasNoMarginBottom isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={SelectControl} />
 
                 {/* profile Alignment  */}
-                <SelectControl className='mt15 mb15' labelPosition='side' label={__('Alignment', 'tiktok')} value={profileAlignment}
+                <SelectControl className='mt15 mb15' labelPosition='side' label={__('Alignment', 'my-social-feeds')} value={profileAlignment}
                     onChange={(val) => {
 
                         if ('compact' === pLayoutStyle) {
@@ -81,10 +81,10 @@ const Style = ({ attributes, setAttributes, isPremium, setProModalOpen, }) => {
                 />
 
                 {/* Background Color  */}
-                <ColorControl className="mb10" label={__('Background Color', 'tiktok')} value={profilebgColor} onChange={val => setAttributes({ profilebgColor: val })} defaultColor={{ color: '#000' }} />
+                <ColorControl className="mb10" label={__('Background Color', 'my-social-feeds')} value={profilebgColor} onChange={val => setAttributes({ profilebgColor: val })} defaultColor={{ color: '#000' }} />
 
                 {/* Global Color  */}
-                <ColorControl className="mb10" label={__('Color', 'tiktok')} value={globalPColor}
+                <ColorControl className="mb10" label={__('Color', 'my-social-feeds')} value={globalPColor}
                     onChange={(val) =>
                         setAttributes({
                             globalPColor: val,
@@ -97,107 +97,101 @@ const Style = ({ attributes, setAttributes, isPremium, setProModalOpen, }) => {
                         })}
                     defaultColor={{ color: '#fff' }} />
 
-                <BoxControl label={__('Padding', 'tiktok')} values={profilePadding} onChange={val => setAttributes({ profilePadding: val })} resetValues={{ top: 0, right: 0, bottom: 0, left: 0 }} units={[pxUnit(3), emUnit(2)]} />
+                <BoxControl label={__('Padding', 'my-social-feeds')} values={profilePadding} onChange={val => setAttributes({ profilePadding: val })} resetValues={{ top: 0, right: 0, bottom: 0, left: 0 }} units={[pxUnit(3), emUnit(2)]} />
             </PanelBody>
 
-            {'compact' === pLayoutStyle && <PanelBody className='bPlPanelBody' title={__('Compact Profile', 'tiktok')} initialOpen={false}>
+            {'compact' === pLayoutStyle && <PanelBody className='bPlPanelBody' title={__('Compact Profile', 'my-social-feeds')} initialOpen={false}>
                 {/* profile img and button  */}
-                <ColorControl label={__('Top Background Color:', 'tiktok')} value={profilebgCTop} onChange={val => setAttributes({ profilebgCTop: val })} defaultColor='#333' />
+                <ColorControl label={__('Top Background Color:', 'my-social-feeds')} value={profilebgCTop} onChange={val => setAttributes({ profilebgCTop: val })} defaultColor='#333' />
                 {/* profileInfo Bottom  */}
-                <ColorControl label={__('Bottom Background Color:', 'tiktok')} value={profilebgCbottom} onChange={val => setAttributes({ profilebgCbottom: val })} defaultColor='#fff' />
+                <ColorControl label={__('Bottom Background Color:', 'my-social-feeds')} value={profilebgCbottom} onChange={val => setAttributes({ profilebgCbottom: val })} defaultColor='#fff' />
             </PanelBody>}
 
             {isDisplayName &&
-                <PanelBody className='bPlPanelBody' title={__('Name', 'tiktok')} initialOpen={false}>
+                <PanelBody className='bPlPanelBody' title={__('Name', 'my-social-feeds')} initialOpen={false}>
 
-                    <BControlPro className='mt20' label={__('Typography', 'titkok')} value={nameTypo} onChange={val => setAttributes({ nameTypo: val })} defaults={{ fontSize: 18 }} produce={produce} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={Typography} />
+                    <Typography className='mt20' label={__('Typography', 'my-social-feeds')} value={nameTypo} onChange={val => setAttributes({ nameTypo: val })} defaults={{ fontSize: 18 }} produce={produce} />
 
-                    <BControlPro label={__('Color', 'tiktok')} value={displayNameColor} onChange={val => setAttributes({ displayNameColor: val })} defaultColor={{ color: '#fff' }} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={ColorControl} />
+                    <ColorControl label={__('Color', 'my-social-feeds')} value={displayNameColor} onChange={val => setAttributes({ displayNameColor: val })} defaultColor={{ color: '#fff' }} />
                 </PanelBody>}
 
             {isShareBtn &&
-                <PanelBody className='bPlPanelBody sharePanelBody' title={__('Share Button', 'tiktok')} initialOpen={false}>
+                <PanelBody className='bPlPanelBody sharePanelBody' title={__('Share Button', 'my-social-feeds')} initialOpen={false}>
 
-                    <BControlPro label={__('Text', 'tiktok')} className='mt15 shareBtn' value={shareBtn}
-                        onChange={(val) => setAttributes({ shareBtn: val })} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={TextControl} />
+                    <TextControl label={__('Text', 'my-social-feeds')} className='mt15 shareBtn' value={shareBtn} onChange={(val) => setAttributes({ shareBtn: val })} />
 
-                    <BControlPro className='mt20 mb20' label={__('Typography:', 'titkok')} value={shareBtnTypo} onChange={val => setAttributes({ shareBtnTypo: val })} defaults={{ fontSize: 12 }} produce={produce} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={Typography} />
+                    <Typography className='mt20 mb20' label={__('Typography:', 'my-social-feeds')} value={shareBtnTypo} onChange={val => setAttributes({ shareBtnTypo: val })} defaults={{ fontSize: 12 }} produce={produce} />
 
-                    <BoxControl label={__('Padding', 'tiktok')} values={btnPadding} onChange={val => setAttributes({ btnPadding: val })} units={[pxUnit(3), emUnit(2)]} resetValues={{ top: 0, right: 0, bottom: 0, left: 0 }} />
+                    <BoxControl label={__('Padding', 'my-social-feeds')} values={btnPadding} onChange={val => setAttributes({ btnPadding: val })} units={[pxUnit(3), emUnit(2)]} resetValues={{ top: 0, right: 0, bottom: 0, left: 0 }} />
 
-                    <ColorsControl className='' label={__('Colors', 'tiktok')} value={sharebtnColors} onChange={val => setAttributes({ sharebtnColors: val })} defaults={{ color: '#fff', bg: '#ff3b5c' }} />
+                    <ColorsControl className='' label={__('Colors', 'my-social-feeds')} value={sharebtnColors} onChange={val => setAttributes({ sharebtnColors: val })} defaults={{ color: '#fff', bg: '#ff3b5c' }} />
 
-                    <ColorsControl className='' label={__('Hover Colors', 'tiktok')} value={sharebtnHoverColors} onChange={val => setAttributes({ sharebtnHoverColors: val })} defaults={{ color: '#fff', bg: '#fe2c55' }} />
-
+                    <ColorsControl className='' label={__('Hover Colors', 'my-social-feeds')} value={sharebtnHoverColors} onChange={val => setAttributes({ sharebtnHoverColors: val })} defaults={{ color: '#fff', bg: '#fe2c55' }} />
                 </PanelBody>}
 
             {(isFollowing || isFollowers || isTotalLike) &&
-                <PanelBody className='bPlPanelBody' title={__('Info Count', 'tiktok')} initialOpen={false}>
-                    <BControlPro label={__('Count Color', 'tiktok')} value={countNumColor} onChange={val => setAttributes({ countNumColor: val })} defaultColor='#fff' isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={ColorControl} />
+                <PanelBody className='bPlPanelBody' title={__('Info Count', 'my-social-feeds')} initialOpen={false}>
+                    <ColorControl label={__('Count Color', 'my-social-feeds')} value={countNumColor} onChange={val => setAttributes({ countNumColor: val })} defaultColor='#fff' />
 
-                    <BControlPro label={__('Text Color', 'tiktok')} value={TextColor} onChange={val => setAttributes({ TextColor: val })} defaultColor='#ffffffbf' isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={ColorControl} />
+                    <ColorControl label={__('Text Color', 'my-social-feeds')} value={TextColor} onChange={val => setAttributes({ TextColor: val })} defaultColor='#ffffffbf' />
 
-                    <BControlPro className='mt20' label={__('Typography:', 'titkok')} value={InfoTypo} onChange={val => setAttributes({ InfoTypo: val })} produce={produce} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={Typography} />
+                    <Typography className='mt20' label={__('Typography:', 'my-social-feeds')} value={InfoTypo} onChange={val => setAttributes({ InfoTypo: val })} produce={produce} />
 
                     {['card', 'compact'].includes(pLayoutStyle) &&
-                        <ColorControl label={__('Border Color', 'tiktok')} value={borderColor} onChange={val => setAttributes({ borderColor: val })} defaultColor='#000' />
+                        <ColorControl label={__('Border Color', 'my-social-feeds')} value={borderColor} onChange={val => setAttributes({ borderColor: val })} defaultColor='#000' />
                     }
                 </PanelBody>}
 
             {['default', 'card'].includes(pLayoutStyle) && <>
                 {isBio &&
-                    <PanelBody className='bPlPanelBody' title={__('Biography', 'tiktok')} initialOpen={false}>
-                        <BControlPro label={__('Color', 'tiktok')} value={bioColor} onChange={val => setAttributes({ bioColor: val })} defaultColor='#fff' isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={ColorControl} />
+                    <PanelBody className='bPlPanelBody' title={__('Biography', 'my-social-feeds')} initialOpen={false}>
+                        <ColorControl label={__('Color', 'my-social-feeds')} value={bioColor} onChange={val => setAttributes({ bioColor: val })} defaultColor='#fff' />
 
-                        <BControlPro className='mt20' label={__('Typography', 'business-review')} value={bioTypo} onChange={val => setAttributes({ bioTypo: val })} defaults={{ fontSize: 17 }} produce={produce} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={Typography} />
+                        <Typography className='mt20' label={__('Typography', 'my-social-feeds')} value={bioTypo} onChange={val => setAttributes({ bioTypo: val })} defaults={{ fontSize: 17 }} produce={produce} />
                     </PanelBody>
                 }
             </>}
         </>}
 
-        {isVideos && <PanelBody className='bPlPanelBody sharePanelBody' title={__('Gallery', 'tiktok')} initialOpen={false}>
-            <ColorsControl label={__('Colors', 'tiktok')} value={layoutColors} onChange={(val) => {
+        {isVideos && <PanelBody className='bPlPanelBody sharePanelBody' title={__('Gallery', 'my-social-feeds')} initialOpen={false}>
+            <ColorsControl label={__('Colors', 'my-social-feeds')} value={layoutColors} onChange={(val) => {
                 setAttributes({ layoutColors: val })
             }} />
         </PanelBody>}
 
         {/* profile Condition End */}
         {isVideos && <>
-            <PanelBody className='bPlPanelBody sharePanelBody' title={__('Load More', 'tiktok')} initialOpen={false}>
+            <PanelBody className='bPlPanelBody sharePanelBody' title={__('Load More', 'my-social-feeds')} initialOpen={false}>
+                <TextControl label={__('Text', 'my-social-feeds')} className='mt15 shareBtn' value={loadMoreBtn} onChange={(val) => setAttributes({ loadMoreBtn: val })} />
+            </PanelBody>
 
-                <BControlPro label={__('Text', 'tiktok')} className='mt15 shareBtn' value={loadMoreBtn}
-                    onChange={(val) => setAttributes({ loadMoreBtn: val })} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={TextControl} />
+            <PanelBody className='bPlPanelBody' title={__('Overly', 'my-social-feeds')} initialOpen={false}>
+                <ColorControl className="mt10 mb10" label={__('Color', 'my-social-feeds')} value={overlyColor} onChange={val => setAttributes({ overlyColor: val })} />
+
+                <ColorControl className="mt10 mb10" label={__('Icon Color', 'my-social-feeds')} value={overlyIconColor} onChange={val => setAttributes({ overlyIconColor: val })} defaultColor='#fff' />
+
+                <RangeControl label={__('Icon size', 'my-social-feeds')} value={overlyIcon?.size} onChange={(val) => { setAttributes({ overlyIcon: { ...overlyIcon, size: val } }) }} min={1} max={100} />
 
             </PanelBody>
 
-            <PanelBody className='bPlPanelBody' title={__('Overly', 'tiktok')} initialOpen={false}>
+            <PanelBody className='bPlPanelBody' title={__('Icon', 'my-social-feeds')} initialOpen={false}>
 
-                <BControlPro className="mt10 mb10" label={__('Color', 'tiktok')} value={overlyColor} onChange={val => setAttributes({ overlyColor: val })} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={ColorControl} />
+                {/* <BControlPro className="mt10 mb10" label={__('Color', 'my-social-feeds')} value={icon?.color} onChange={val => setAttributes({ icon: { ...icon, color: val } })} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={ColorControl} /> */}
 
-                <BControlPro className="mt10 mb10" label={__('Icon Color', 'tiktok')} value={overlyIconColor} onChange={val => setAttributes({ overlyIconColor: val })} defaultColor='#fff' isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={ColorControl} />
-
-                <RangeControl label={__('Icon size', 'tiktok')} value={overlyIcon?.size} onChange={(val) => { setAttributes({ overlyIcon: { ...overlyIcon, size: val } }) }} min={1} max={100} />
-
+                <RangeControl value={icon?.size} onChange={(val) => { setAttributes({ icon: { ...icon, size: val } }) }} min={1} max={100} />
             </PanelBody>
 
-            <PanelBody className='bPlPanelBody' title={__('Icon', 'tiktok')} initialOpen={false}>
+            <PanelBody className='bPlPanelBody' title={__('Button', 'my-social-feeds')} initialOpen={false}>
 
-                {/* <BControlPro className="mt10 mb10" label={__('Color', 'tiktok')} value={icon?.color} onChange={val => setAttributes({ icon: { ...icon, color: val } })} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={ColorControl} /> */}
+                <Typography className='mt20' label={__('Typography', 'my-social-feeds')} value={btnTypo} onChange={val => setAttributes({ btnTypo: val })} produce={produce} />
 
-                <BControlPro value={icon?.size} onChange={(val) => { setAttributes({ icon: { ...icon, size: val } }) }} min={1} max={100} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={RangeControl} />
-            </PanelBody>
+                <ColorsControl className='' label={__('Colors', 'my-social-feeds')} value={loadMoreBtnColors} onChange={val => setAttributes({ loadMoreBtnColors: val })} defaults={{ color: '#fff', bg: '#4527a4' }} />
 
-            <PanelBody className='bPlPanelBody' title={__('Button', 'tiktok')} initialOpen={false}>
+                <ColorsControl className='' label={__('Hover Colors', 'my-social-feeds')} value={loadMoreBtnHoverColors} onChange={val => setAttributes({ loadMoreBtnHoverColors: val })} defaults={{ color: '#000', bg: '#fff' }} />
 
-                <BControlPro className='mt20' label={__('Typography', 'titkok')} value={btnTypo} onChange={val => setAttributes({ btnTypo: val })} produce={produce} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={Typography} />
+                <BControlPro label={__('Icon Size', 'my-social-feeds')} value={viewLoadBtnIcon?.size} onChange={(val) => { setAttributes({ viewLoadBtnIcon: { ...viewLoadBtnIcon, size: val } }) }} min={1} max={100} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={RangeControl} />
 
-                <ColorsControl className='' label={__('Colors', 'tiktok')} value={loadMoreBtnColors} onChange={val => setAttributes({ loadMoreBtnColors: val })} defaults={{ color: '#fff', bg: '#4527a4' }} />
-
-                <ColorsControl className='' label={__('Hover Colors', 'tiktok')} value={loadMoreBtnHoverColors} onChange={val => setAttributes({ loadMoreBtnHoverColors: val })} defaults={{ color: '#000', bg: '#fff' }} />
-
-                <BControlPro label={__('Icon Size', 'tiktok')} value={viewLoadBtnIcon?.size} onChange={(val) => { setAttributes({ viewLoadBtnIcon: { ...viewLoadBtnIcon, size: val } }) }} min={1} max={100} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={RangeControl} />
-
-                <BoxControl label={__('Padding', 'clipboard')} values={viewLoadBtnPadding} onChange={val => setAttributes({ viewLoadBtnPadding: val })} resetValues={{ top: "6px", right: "12px", bottom: "6px", left: "12px" }} units={[pxUnit(3), emUnit(2)]} />
+                <BoxControl label={__('Padding', 'my-social-feeds')} values={viewLoadBtnPadding} onChange={val => setAttributes({ viewLoadBtnPadding: val })} resetValues={{ top: "6px", right: "12px", bottom: "6px", left: "12px" }} units={[pxUnit(3), emUnit(2)]} />
 
             </PanelBody>
         </>}

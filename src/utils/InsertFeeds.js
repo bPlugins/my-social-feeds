@@ -15,7 +15,7 @@ const InsertFeeds = ({ blockType, clientId }) => {
 
     return <>
 
-        <PanelBody className='bPlPanelBody' title={__('Select Social Feeds', 'instagram-feed')} initialOpen={true}>
+        <PanelBody className='bPlPanelBody' title={__('Select Social Feeds', 'my-social-feeds')} initialOpen={true}>
             <BtnGroup value={blockType} onChange={(val) => insertBlockType(val)} options={blockTypeOpt} isIcon={true} size='default' />
         </PanelBody>
     </>

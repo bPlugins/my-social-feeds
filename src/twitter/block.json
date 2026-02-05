@@ -29,7 +29,7 @@
 		},
 		"videoPostID": {
 			"type": "string",
-			"default": "1732824684683784516"
+			"default": "2000916063869940154"
 		},
 		"type": {
 			"type": "string",
@@ -83,7 +83,7 @@
 		"border": {
 			"type": "object",
 			"default": {
-				"radius": "30px"
+				"radius": "5px"
 			}
 		},
 		"shadow": {

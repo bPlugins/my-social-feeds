@@ -13,55 +13,54 @@ const Style = ({ attributes, updateObject, isPremium, setProModalOpen }) => {
     const { background } = profileWrapper;
 
     return <>
-        <PanelBody className="bPlPanelBody" title={__("Profile Wrapper", "bpinterest")} initialOpen={true}>
-            <Background className='mb0' label={__('Background:', 'bpinterest')} value={background} onChange={val => updateObject('profileWrapper', 'background', val)} />
+        <PanelBody className="bPlPanelBody" title={__("Profile Wrapper", "my-social-feeds")} initialOpen={true}>
+            <Background className='mb0' label={__('Background:', 'my-social-feeds')} value={background} onChange={val => updateObject('profileWrapper', 'background', val)} />
         </PanelBody>
 
-        <PanelBody className="bPlPanelBody" title={__("Image", "bpinterest")} initialOpen={false}>
-            <BControlPro label={__("Overly", "bpinterest")} checked={image?.isOverly} onChange={val => updateObject("image", "isOverly", val)} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={ToggleControl} />
+        <PanelBody className="bPlPanelBody" title={__("Image", "my-social-feeds")} initialOpen={false}>
+            <ToggleControl label={__("Overly", "my-social-feeds")} checked={image?.isOverly} onChange={val => updateObject("image", "isOverly", val)} />
 
-            <BControlPro className='mt10' label={__("Transform", "bpinterest")} checked={image?.isTransform} onChange={val => updateObject("image", "isTransform", val)} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={ToggleControl} />
+            <ToggleControl className='mt10' label={__("Transform", "my-social-feeds")} checked={image?.isTransform} onChange={val => updateObject("image", "isTransform", val)} />
 
-            <BControlPro className='' label={__('Overly Color', 'bpinterest')} value={image?.overlyColor} onChange={val => updateObject("image", "overlyColor", val)} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={ColorControl} />
+            <ColorControl className='' label={__('Overly Color', 'my-social-feeds')} value={image?.overlyColor} onChange={val => updateObject("image", "overlyColor", val)} />
 
-            <BorderControl className='mt10' label={__('Border', 'bpinterest')} value={image?.border} onChange={(val) => updateObject('image', 'border', val)} />
+            <BorderControl className='mt10' label={__('Border', 'my-social-feeds')} value={image?.border} onChange={(val) => updateObject('image', 'border', val)} />
 
         </PanelBody>
 
-        <PanelBody className='bPlPanelBody' title={__('Name', 'bpinterest')} initialOpen={false}>
-            <BControlPro className='mb10' label={__('Typography', 'bpinterest')} value={name.typo} onChange={(val) => { updateObject('name', 'typo', val) }} produce={produce} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={Typography} />
+        <PanelBody className='bPlPanelBody' title={__('Name', 'my-social-feeds')} initialOpen={false}>
+            <Typography className='mb10' label={__('Typography', 'my-social-feeds')} value={name.typo} onChange={(val) => { updateObject('name', 'typo', val) }} produce={produce} />
 
-            <ColorControl className='' label={__('Color', 'bpinterest')} value={name?.color} onChange={(val) => updateObject('name', 'color', val)} />
+            <ColorControl className='' label={__('Color', 'my-social-feeds')} value={name?.color} onChange={(val) => updateObject('name', 'color', val)} />
         </PanelBody>
 
-        <PanelBody className='bPlPanelBody' title={__('About', 'bpinterest')} initialOpen={false}>
-            <BControlPro className='mb10' label={__('Typography', 'bpinterest')} value={about.typo} onChange={(val) => { updateObject('about', 'typo', val) }} produce={produce} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={Typography} />
+        <PanelBody className='bPlPanelBody' title={__('About', 'my-social-feeds')} initialOpen={false}>
+            <Typography className='mb10' label={__('Typography', 'my-social-feeds')} value={about.typo} onChange={(val) => { updateObject('about', 'typo', val) }} produce={produce} />
 
-            <ColorControl className='' label={__('Color', 'bpinterest')} value={about?.color} onChange={(val) => updateObject('about', 'color', val)} />
+            <ColorControl className='' label={__('Color', 'my-social-feeds')} value={about?.color} onChange={(val) => updateObject('about', 'color', val)} />
         </PanelBody>
 
-        <PanelBody className='bPlPanelBody' title={__('Count', 'bpinterest')} initialOpen={false}>
-            <BControlPro className='mb10' label={__('Typography', 'bpinterest')} value={countArea.typo} onChange={(val) => { updateObject('countArea', 'typo', val) }} produce={produce} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={Typography} />
+        <PanelBody className='bPlPanelBody' title={__('Count', 'my-social-feeds')} initialOpen={false}>
+            <Typography className='mb10' label={__('Typography', 'my-social-feeds')} value={countArea.typo} onChange={(val) => { updateObject('countArea', 'typo', val) }} produce={produce} />
 
-            <ColorControl className='' label={__('Color', 'bpinterest')} value={countArea?.color} onChange={(val) => updateObject('countArea', 'color', val)} />
+            <ColorControl className='' label={__('Color', 'my-social-feeds')} value={countArea?.color} onChange={(val) => updateObject('countArea', 'color', val)} />
         </PanelBody>
 
-        <PanelBody className='bPlPanelBody' title={__('Button', 'bpinterest')} initialOpen={false}>
+        <PanelBody className='bPlPanelBody' title={__('Button', 'my-social-feeds')} initialOpen={false}>
+            <Typography className='mb10' label={__('Typography', 'my-social-feeds')} value={button.typo} onChange={(val) => { updateObject('button', 'typo', val) }} produce={produce} />
 
-            <BControlPro className='mb10' label={__('Typography', 'bpinterest')} value={button.typo} onChange={(val) => { updateObject('button', 'typo', val) }} produce={produce} isPremium={isPremium} setIsProModalOpen={setProModalOpen} Component={Typography} />
+            <ColorsControl className='mb10' label={__('Colors', 'my-social-feeds')} value={button?.colors} onChange={(val) => updateObject('button', 'colors', val)} />
 
-            <ColorsControl className='mb10' label={__('Colors', 'bpinterest')} value={button?.colors} onChange={(val) => updateObject('button', 'colors', val)} />
-
-            <ColorsControl className='mb10' label={__('Hover Colors', 'bpinterest')} value={button?.hoverColors} onChange={(val) => updateObject('button', 'hoverColors', val)} />
+            <ColorsControl className='mb10' label={__('Hover Colors', 'my-social-feeds')} value={button?.hoverColors} onChange={(val) => updateObject('button', 'hoverColors', val)} />
 
             <PanelRow className='mt0'>
-                <Label mt='0'>{__('Padding:', 'bpinterest')}</Label>
+                <Label mt='0'>{__('Padding:', 'my-social-feeds')}</Label>
                 <BDevice device={device} onChange={val => setDevice(val)} />
             </PanelRow>
 
             <BoxControl values={button.padding[device]} onChange={val => updateObject('button', 'padding', val, device)} />
 
-            <BorderControl className='mt10' label={__('Border', 'bpinterest')} value={button?.border} onChange={(val) => updateObject('button', 'border', val)} />
+            <BorderControl className='mt10' label={__('Border', 'my-social-feeds')} value={button?.border} onChange={(val) => updateObject('button', 'border', val)} />
         </PanelBody>
     </>
 }

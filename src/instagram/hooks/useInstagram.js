@@ -11,7 +11,6 @@ const useInstagram = (attributes) => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			console.log("Fetch Data");
 			try {
 				setLoading(true);
 
@@ -28,8 +27,7 @@ const useInstagram = (attributes) => {
 					setUsersData(fUsersData);
 				} else {
 					if (accessToken?.[0]) {
-						fetchUserWithData(accessToken).then(data => {
-
+						fetchUserWithData(accessToken[0]).then(data => {
 							const { user, userData } = data || {};
 							setUsers([user]);
 							setUsersData(userData);

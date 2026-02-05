@@ -133,8 +133,4 @@ if( !class_exists( 'IFBInstagramFeed' ) ){
 		}
 	}
 	new IFBInstagramFeed;
-
-	if ( MSFBP_IS_PRO && msfbpIsPremium()) { 
-		require_once MSFBP_DIR_PATH . 'includes/custom-post/ifbinstagram-cpt.php';
-	}
 }

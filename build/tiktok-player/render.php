@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
     extract($attributes);
 
     $id = wp_unique_id( 'ttpTiktok-' );

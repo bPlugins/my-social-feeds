@@ -5,7 +5,7 @@ import { parse } from '@wordpress/blocks';
 const Patterns = ({ setProModalOpen, isPremium, clientId }) => {
 
     return <>
-        {!isPremium && <p className='noticePatter'>{__('it\'s only available on pro version', 'Tiktok')}</p>}
+        {!isPremium && <p className='noticePatter'>{__('it\'s only available on pro version', 'my-social-feeds')}</p>}
         {patterns.map((pattern, index) => {
             const imgName = pattern.name.replace('/', '-');
             const imgPath = ttpPatters.patternsImagePath + imgName + '.png';
@@ -20,7 +20,7 @@ const Patterns = ({ setProModalOpen, isPremium, clientId }) => {
                         } else {
                             setProModalOpen(true);
                         }
-                    }}>{__('Apply', 'slider')}</button>
+                    }}>{__('Apply', 'my-social-feeds')}</button>
                 </div>
             </div>
         })}</>

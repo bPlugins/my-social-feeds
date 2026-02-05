@@ -1,60 +1,69 @@
+import { __ } from '@wordpress/i18n';
 import { useEffect, useState } from 'react';
 import BackBtn from './Elements/BackBtn';
 import fb_prompt from '../../../utils/functions';
 import { generateString } from '../../../tiktok-player/utils/functions';
 import { tiktok } from '../../../utils/icons';
+import Table from './Elements/Table';
 
-const TikTokSettings = ({ onBack }) => {
-    const [authorized, setAuthorized] = useState();
-    const { href, origin, pathname } = window.location;
 
-    const state = generateString(15);
-    const pageUrl = `${origin}/wp-admin?page=my-social-feeds`;
+const TikTokSettings = ({ onBack, props, fetchAccounts, loading, setLoading, accounts }) => {
 
-    const url = `https://api.bplugins.com/tiktok-landing/?state=${state}&redirect_url=${pageUrl}&isCloseModal=lbb_auth_modal`;
+    const { isPremium } = props;
+    const nonce = ttpData?.dataGet;
+    const state = generateString(12);
+    // const slug = 'isPremium ? `/wp-admin?page=my-social-feeds` : `/wp-admin/tools.php?page=my-social-feeds`';
+    const slug = '/wp-admin/edit.php?post_type=msfbp';
+    // const redirect = `${location.origin}${slug}&isCloseModal=lbb_auth_modal&nonce=${nonce}`;
+    // const connectUrl = `https://api.bplugins.com/tiktok-landing/?state=${state}&redirect_url=${redirect}`;
+    const redirectRaw = `${location.origin}/wp-admin/edit.php?post_type=msfbp&page=my-social-feeds&isCloseModal=lbb_auth_modal&nonce=${nonce}`;
 
-    const tiktokPrompt = () => fb_prompt(url, 850, 520, function () {
-        getAuthorized();
-    });
+    const redirect = encodeURIComponent(redirectRaw);
+    const connectUrl = `https://api.bplugins.com/tiktok-landing/?state=${state}&redirect_url=${redirect}`;
+
+    const connect = () => fb_prompt(connectUrl, 850, 720, fetchAccounts);
+
+    const removeAccount = async (id) => {
+        setLoading(true);
+        await fetch(`${ttpData.ajaxUrl}?action=ttp_remove_account`, {
+            method: 'POST',
+            body: new URLSearchParams({ account_id: id }),
+        });
+        fetchAccounts();
+        setLoading(false);
+    };
 
     useEffect(() => {
-        getAuthorized();
+        fetchAccounts();
     }, []);
 
-    const handleUnauthorized = async () => {
 
-        try {
-            const response = await fetch(`${ttpData.ajaxUrl}?action=ttp_tiktok_clear&nonce=${ttpData?.nonce}&action_type=unauthorized`);
-            await response.json();
-            getAuthorized();
-
-        } catch (error) {
-            console.log('error', error);
-        }
-    }
-
-    const getAuthorized = async () => {
-        try {
-            const response = await fetch(`${ttpData.ajaxUrl}?action=ttp_tiktok_isAuthorized&nonce=${ttpData?.nonce}`);
-            const data = await response.json();
-            setAuthorized(data?.data?.isAuthorized);
-
-        } catch (error) {
-            console.log('error', error);
-        }
-    }
 
     return (
         <div className="settingsPage ig-settings-wrapper">
             <BackBtn onBack={onBack} />
+
             <div className="ig-settings-card">
                 <div className="ig-settings-header">
-                    <h2>TikTok Account </h2>
+                    <h2>{__('TikTok Accounts', 'my-social-feeds')}</h2>
 
-                    {authorized ? <button className="ig-btn-tiktok" onClick={handleUnauthorized}> <span className="ig-btn-icon"> {tiktok("#fff")} </span> Logout </button> : <button className="ig-btn-tiktok" onClick={tiktokPrompt}> <span className="ig-btn-icon"> {tiktok("#fff")} </span> Connect TikTok Account </button>}
+                    {loading ? <span className="ig-badge">{__('Loading...', 'my-social-feeds')}</span> : <button className="ig-btn-tiktok" onClick={connect}> <span className="ig-btn-icon">{tiktok('#fff')}</span> {__('Add TikTok Account', 'my-social-feeds')}</button>}
+
+                    {/* <button className="ig-btn-tiktok" onClick={connect}> <span className="ig-btn-icon">{tiktok('#fff')}</span>Add TikTok Account</button> */}
                 </div>
+                <Table tokens={accounts} handleDeleteToken={removeAccount} blockType="tiktok" ValueName={"connected at"} />
             </div>
         </div>
     );
 };
 export default TikTokSettings;
+
+export function getDataParamsFromUrl() {
+
+    const params = new URLSearchParams(window.location.search);
+    const dataParam = params.get('isCloseModal');
+
+
+    return dataParam ? dataParam : null;
+
+}

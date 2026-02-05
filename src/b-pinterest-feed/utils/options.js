@@ -2,20 +2,20 @@ import { __ } from '@wordpress/i18n';
 import { verticalLineIcon, horizontalLineIcon } from './icons';
 
 export const effectOpt = [
-	{ label: __('Default', 'bpinterest'), value: 'none' },
-	{ label: __('Fade', 'bpinterest'), value: 'fade' },
-	{ label: __('Cards', 'bpinterest'), value: 'cards' },
-	{ label: __('Flip', 'bpinterest'), value: 'flip' },
-	{ label: __('Coverflow', 'bpinterest'), value: 'coverflow' },
-	{ label: __('Cube', 'bpinterest'), value: 'cube' },
+	{ label: __('Default', 'my-social-feeds'), value: 'none' },
+	{ label: __('Fade', 'my-social-feeds'), value: 'fade' },
+	{ label: __('Cards', 'my-social-feeds'), value: 'cards' },
+	{ label: __('Flip', 'my-social-feeds'), value: 'flip' },
+	{ label: __('Coverflow', 'my-social-feeds'), value: 'coverflow' },
+	{ label: __('Cube', 'my-social-feeds'), value: 'cube' },
 ]
 
 export const ratioOpt = [
-	{ label: __('16:9 - Landscape', 'bpinterest'), value: '16:9' },
-	{ label: __('4:3 - Horizontal', 'bpinterest'), value: '4:3' },
-	{ label: __('1:1 - Square', 'bpinterest'), value: '1:1' },
-	{ label: __('3:4 - Vertical', 'bpinterest'), value: '3:4' },
-	{ label: __('9:16 - Potrait', 'bpinterest'), value: '9:16' },
+	{ label: __('16:9 - Landscape', 'my-social-feeds'), value: '16:9' },
+	{ label: __('4:3 - Horizontal', 'my-social-feeds'), value: '4:3' },
+	{ label: __('1:1 - Square', 'my-social-feeds'), value: '1:1' },
+	{ label: __('3:4 - Vertical', 'my-social-feeds'), value: '3:4' },
+	{ label: __('9:16 - Potrait', 'my-social-feeds'), value: '9:16' },
 ]
 
 export const layoutOpt = [
@@ -23,14 +23,14 @@ export const layoutOpt = [
 	{ label: 'Masonry', value: 'masonry' },
 	{ label: 'Carousel', value: 'slider' },
 	{ label: 'Justified', value: 'justified' },
-] 
+]
 
 export const layouts = [
-	{ label: __('Vertical', 'bpinterest'), value: 'vertical', icon: verticalLineIcon },
-	{ label: __('Horizontal', 'bpinterest'), value: 'horizontal', icon: horizontalLineIcon }
+	{ label: __('Vertical', 'my-social-feeds'), value: 'vertical', icon: verticalLineIcon },
+	{ label: __('Horizontal', 'my-social-feeds'), value: 'horizontal', icon: horizontalLineIcon }
 ];
 
 export const generalStyleTabs = [
-	{ name: 'general', title: __('General', 'bpinterest') },
-	{ name: 'style', title: __('Style', 'bpinterest') }
+	{ name: 'general', title: __('General', 'my-social-feeds') },
+	{ name: 'style', title: __('Style', 'my-social-feeds') }
 ];

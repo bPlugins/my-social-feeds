@@ -1,42 +1,47 @@
 import { __ } from '@wordpress/i18n';
 import { useState, useEffect } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
-import { TabPanel, Button, Spinner } from '@wordpress/components';
+import { TabPanel, Button, Spinner, SelectControl } from '@wordpress/components';
 
-import ProModal from '../../../../Pro-modal/ProModal';
+
 
 import { tabController, generateString } from '../../../utils/functions';
 import { btnTiktok, comment, heart, playCount } from '../../../utils/icons';
 
-import usePremiumInEditor from '../../../../hooks/usePremiumInEditor';
+
 
 import options from '../../../utils/options';
 import getTimeFromString from '../../../utils/getTimeFromString';
 import General from './General/General';
 import Style from './Style/Style';
 import Patterns from './Patterns/Patterns';
+import { AboutProModal } from '../../../../../../bpl-tools/ProControls';
+import { adminUrl } from '../../../../twitter/utils/functions';
 const { generalStyleTabs } = options;
 
-const Settings = ({ attributes, elId, setAttributes, clientId }) => {
-	const { videosLists, overlyIconColor, overlyIcon, viewLoadBtnIcon, loadMoreBtnColors, authorized, clearCache, profileCacheT, videoCacheT } = attributes;
-
-	const { isPremium } = usePremiumInEditor();
+const Settings = ({ attributes, elId, setAttributes, clientId, accounts, isPremium }) => {
+	const { videosLists, overlyIconColor, overlyIcon, viewLoadBtnIcon, loadMoreBtnColors, authorized, clearCache, profileCacheT, videoCacheT, selectedAccountId } = attributes;
 
 	const [loading, setLoading] = useState(false);
 	const [proModalOpen, setProModalOpen] = useState(false);
 	const [postId, setPostId] = useState(null);
+
 	const state = generateString(15);
 
 	// Cache Clear 
 	const handleCacheClear = async () => {
-		setLoading(true);
 
-		const response = await fetch(`${ttpData.ajaxUrl}?action=ttp_tiktok_clear&nonce=${ttpData?.nonce}&action_type=clear_cache&key=${elId}&profileCacheTime=${getTimeFromString(profileCacheT)}&videoCacheTime=${getTimeFromString(videoCacheT)}`);
+		if (!selectedAccountId) {
+			return;
+		}
+
+		setLoading(true);
+		const response = await fetch(`${ttpData.ajaxUrl}?action=ttp_tiktok_clear&nonce=${ttpData?.nonce}&action_type=clear_cache&key=${elId}&account_id=${selectedAccountId}&profileCacheTime=${getTimeFromString(profileCacheT)}&videoCacheTime=${getTimeFromString(videoCacheT)}`);
 
 		await response.json();
 		setLoading(false);
 		setAttributes({ clearCache: !clearCache });
-	}
+	};
 
 	// Authorized 
 	const handleUnauthorized = async () => {
@@ -77,7 +82,7 @@ const Settings = ({ attributes, elId, setAttributes, clientId }) => {
 
 	return <>
 		<InspectorControls>
-			{authorized ?
+			{/* {authorized ?
 				<div className='ttpAuthorization'>
 					<Button className='ttpAuthBtn' onClick={handleUnauthorized} disabled={loading}>{__('Remove Authorize', 'tiktok')}</Button>
 					<Button className='ttpAuthBtn' disabled={loading} onClick={handleCacheClear}>{__('Clear Cache', 'tiktok')}</Button>
@@ -92,11 +97,12 @@ const Settings = ({ attributes, elId, setAttributes, clientId }) => {
 					await wp.data.dispatch('core/editor').savePost();
 					window.location.href = `https://api.bplugins.com/tiktok-landing/?state=${state}&redirect_url=${pageUrl}`
 				}} > {__('Add TikTok Account', 'tiktok')}</Button></div>
-			}
+			} */}
 
-			{authorized && <TabPanel className='bPlTabPanel ttpTabPanel' activeClass='activeTab' tabs={generalStyleTabs} onSelect={() => tabController()}>{tab => <>
 
-				{'general' === tab.name && <General {...requireAtt} videosLists={videosLists} handleCacheClear={handleCacheClear} />}
+			{accounts?.length > 0 && <TabPanel className='bPlTabPanel ttpTabPanel' activeClass='activeTab' tabs={generalStyleTabs} onSelect={() => tabController()}>{tab => <>
+
+				{'general' === tab.name && <General {...requireAtt} videosLists={videosLists} handleCacheClear={handleCacheClear} accounts={accounts} loading={loading} />}
 
 				{'style' === tab.name && <Style {...requireAtt} />}
 
@@ -105,19 +111,18 @@ const Settings = ({ attributes, elId, setAttributes, clientId }) => {
 			</>}</TabPanel>}
 		</InspectorControls>
 		{/* Moadal  */}
-		<ProModal isProModal={proModalOpen} setIsProModal={setProModalOpen} block='B TikTok Feeds'>
-			<li>{__('Videos per page', 'tiktok-feed')}</li>
-			<li>{__('Show Hide Video Overly like,share and view', 'tiktok-feed')}</li>
-			<li>{__('Video overly icon style', 'tiktok-feed')}</li>
-			<li>{__('Share button text change', 'tiktok-feed')}</li>
-			<li>{__('Share button style', 'tiktok-feed')}</li>
-			<li>{__('Cache time set profile and video', 'tiktok-feed')}</li>
-			<li>{__('Profile 3 layout', 'tiktok-feed')}</li>
-			<li>{__('Profile name style', 'tiktok-feed')}</li>
-			<li>{__('Info style', 'tiktok-feed')}</li>
-			<li>{__('Load more button text change', 'tiktok-feed')}</li>
-		</ProModal>
-
+		<AboutProModal isProModalOpen={proModalOpen} setIsProModalOpen={setProModalOpen} link={adminUrl()}>
+			<li>{__('Videos per page', 'my-social-feeds')}</li>
+			<li>{__('Show Hide Video Overly like,share and view', 'my-social-feeds')}</li>
+			<li>{__('Video overly icon style', 'my-social-feeds')}</li>
+			<li>{__('Share button text change', 'my-social-feeds')}</li>
+			<li>{__('Share button style', 'my-social-feeds')}</li>
+			<li>{__('Cache time set profile and video', 'my-social-feeds')}</li>
+			<li>{__('Profile 3 layout', 'my-social-feeds')}</li>
+			<li>{__('Profile name style', 'my-social-feeds')}</li>
+			<li>{__('Info style', 'my-social-feeds')}</li>
+			<li>{__('Load more button text change', 'my-social-feeds')}</li>
+		</AboutProModal>
 	</>;
 };
 export default Settings;

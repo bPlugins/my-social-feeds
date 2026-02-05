@@ -1,11 +1,13 @@
 import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
-
-import { useSelect, dispatch } from "@wordpress/data";
+import { useSelect, dispatch, withSelect } from "@wordpress/data";
 import { instagram, pinterest, tiktok, twitter } from './utils/icons';
+import ClipBoard from './ClipBoard';
 
-const Edit = ({ clientId }) => {
+const Edit = ({ clientId, currentPostId, CPTType }) => {
 
+    const shortcode = `[msfbp-social-feeds id=${currentPostId}]`;
     const innerBlocks = useSelect((select) => select("core/block-editor").getBlock(clientId).innerBlocks);
+
 
     const insertBlockType = (type) => {
         const block = wp.blocks.createBlock(type);
@@ -14,6 +16,8 @@ const Edit = ({ clientId }) => {
 
     if (!innerBlocks?.length) {
         return <div {...useBlockProps()}>
+
+            {CPTType === "msfbp" && <ClipBoard shortcode={shortcode} />}
 
             <div className='msfb-my-social-feeds'>
 
@@ -50,13 +54,20 @@ const Edit = ({ clientId }) => {
                 </div>
             </div>
 
-            <InnerBlocks templateLock={false} allowedBlocks={["bpifb/my-social-feeds", "ttp/tiktok-player", "bpf/b-pinterest-feed"]} renderAppender={() => false} />
+            <InnerBlocks templateLock={false} allowedBlocks={["bpifb/my-social-feeds", "ttp/tiktok-player", "bpf/b-pinterest-feed", "etf/twitter-feed"]} renderAppender={() => false} />
         </div>
     }
 
     return <div {...useBlockProps()}>
-        <InnerBlocks templateLock={false} allowedBlocks={["bpifb/my-social-feeds", "ttp/tiktok-player", "bpf/b-pinterest-feed"]} />
+        <InnerBlocks templateLock={false} allowedBlocks={["bpifb/my-social-feeds", "ttp/tiktok-player", "bpf/b-pinterest-feed", "etf/twitter-feed"]} />
     </div>
 }
 
-export default Edit;
+export default withSelect((select) => {
+    const currentPostId = select('core/editor').getCurrentPostId();
+    const CPTType = select('core/editor').getCurrentPostType?.();
+    return {
+        currentPostId,
+        CPTType
+    };
+})(Edit);

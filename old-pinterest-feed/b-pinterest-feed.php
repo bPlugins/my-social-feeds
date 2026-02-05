@@ -1,7 +1,7 @@
 <?php
  
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+	exit;
 }
 
 if ( ! function_exists( 'activate_pinterest' ) ) {
@@ -85,13 +85,13 @@ if ( ! class_exists( 'KP_Pinterest_FREE' ) ) {
 		}
 		 
 		public function load_text_domain() {
-			load_plugin_textdomain( 'pinterest-free', false, KP_PFREE_PATH . '/languages' );
+			load_plugin_textdomain( 'my-social-feeds', false, KP_PFREE_PATH . '/languages' );
 		}
 
 		 
 		public function add_pinterest_plugin_action_links( $links, $file ) {
 			if ( KP_PFREE_BASENAME === $file ) {
-				$links['go_pro'] = sprintf( '<a href="%s" style="%s">%s</a>', '#', 'color:#1dab87;font-weight:bold', __( 'Go Premium!', 'pinterest-free' ) );
+				$links['go_pro'] = sprintf( '<a href="%s" style="%s">%s</a>', '#', 'color:#1dab87;font-weight:bold', __( 'Go Premium!', 'my-social-feeds' ) );
 			}
 
 			return $links;
@@ -99,7 +99,7 @@ if ( ! class_exists( 'KP_Pinterest_FREE' ) ) {
 		 
 		function after_pinterest_free_row_meta( $plugin_meta, $file ) {
 			if ( KP_PFREE_BASENAME === $file ) {
-				$plugin_meta[] = '<a href="#" target="_blank">' . __( 'Live Demo', 'pinterest-free' ) . '</a>';
+				$plugin_meta[] = '<a href="#" target="_blank">' . __( 'Live Demo', 'my-social-feeds' ) . '</a>';
 			}
 			return $plugin_meta;
 		}
@@ -133,7 +133,7 @@ if ( ! class_exists( 'KP_Pinterest_FREE' ) ) {
 		}
 		 
 		function add_shortcode_column($defaults) {
-			$defaults['shortcode'] = __( 'Shortcode', 'pinterest-free' );
+			$defaults['shortcode'] = __( 'Shortcode', 'my-social-feeds' );
 			return $defaults;
 		}
 		 

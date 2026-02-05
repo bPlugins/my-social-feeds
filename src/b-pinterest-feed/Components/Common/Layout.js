@@ -1,3 +1,4 @@
+import { __ } from '@wordpress/i18n';
 import { useRef } from 'react';
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { useEffect } from "react";
@@ -8,9 +9,11 @@ import SingleItem from './Layout/SingleItem';
 import Justified from './Layout/Justified';
 import { loadingIcon } from '../../utils/icons';
 import JustifiedPackage from './Layout/JustifiedPackage';
+import Authorization from '../../../Components/Authorization';
 
-const Layout = ({ attributes, pins, elId, status, loading }) => {
-  const { elements, layout, columns, rowGap, columnGap, fancyApps } = attributes;
+
+const Layout = ({ attributes, pins, elId, status, loading, allNames, setAttributes, fetchPins, isBackEnd, isPremium }) => {
+  const { elements, layout, columns, rowGap, columnGap, fancyApps, accountInfo } = attributes;
   const { isProfile, isPins } = elements;
   const { left, middle, right } = fancyApps;
   const { infobar } = left;
@@ -48,8 +51,38 @@ const Layout = ({ attributes, pins, elId, status, loading }) => {
     return <div className='loadingArea'>{loadingIcon}</div>
   }
 
-  if (status == 404 || status == 403) {
-    return <div className='noticeArea'>Board name not found</div>
+  const options = [
+    { label: __('Select UserName', 'my-social-feeds'), value: '' },
+    ...(Array.isArray(allNames) ? allNames : []),
+  ];
+
+
+  const onChangeAccount = (val) => {
+    setAttributes({ accountInfo: { ...accountInfo, userName: val } });
+  }
+
+  const onChangeBoardName = (val) => {
+    setAttributes({ accountInfo: { ...accountInfo, boardName: val } });
+  }
+
+  const getData = () => {
+    fetchPins();
+  }
+
+  const authorizationProps = {
+    "title": __("User Name And Board Name Required", "my-social-feeds"),
+    "description": __("Please connect a Pinterest account to display the pins.", "my-social-feeds"),
+    "button": __("Connect New Account", "my-social-feeds"),
+    "bottomDes": __("🔒 Secure connection via Pinterest", "my-social-feeds"),
+    "selectControlLabel": __("Choose Connected Account", "my-social-feeds")
+  };
+
+  const authorizationMeinProps = { options, onChangeAccount, onChangeBoardName, authorizationProps, isPremium, attributes, setAttributes, blockType: "pinterest", getData };
+
+  if (isBackEnd && (status == 404 || status == 403)) {
+    return <Authorization {...authorizationMeinProps} />
+  } else if (status == 404 || status == 403) {
+    return <span></span>
   }
 
   return <div className='mainLayout'>

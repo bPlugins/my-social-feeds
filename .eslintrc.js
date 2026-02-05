@@ -19,14 +19,15 @@ module.exports = {
 		jQuery: 'readonly',
 		Fancybox: 'readonly',
 		Swiper: 'readonly',
-		'ttpLayer': 'readonly',
+		ttpLayer: 'readonly',
 		ttpData: 'readonly',
-		'ttpPatters': 'readonly',
+		ttpPatters: 'readonly',
 		ifbLocal: 'readonly',
 		bPinterestData: 'readonly',
 		MiniMasonry: 'readonly',
 		justifiedGallery: 'readonly',
-		msfAuthorization: 'readonly'
+		msfAuthorization: 'readonly',
+		msfbppipecheck: 'readonly'
 	},
 	parserOptions: {
 		ecmaFeatures: {

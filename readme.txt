@@ -1,142 +1,203 @@
-=== My Social Feeds ===
-Contributors: bplugins, abuhayat, btechnologies
-Donate link: https://www.buymeacoffee.com/abuhayat
-Tags: block, instagram feed, instagram, feed, Gutenberg block
-Requires at least: 6.5
-Tested up to: 6.8.3
-Stable tag: 1.0.1
-Requires PHP: 7.1
-License: GPLv3 or later
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+=== My Social Feeds – Social Feeds Embedder Plugin for WordPress ===
+Contributors: bplugins, abuhayat, btechnologies  
+Donate link: https://www.buymeacoffee.com/abuhayat  
+Tags: block, instagram feed, instagram, tiktok feed, pinterest feed, twitter feed, gutenberg  
+Requires at least: 6.5  
+Tested up to: 6.9  
+Stable tag: 1.0.2  
+Requires PHP: 7.1  
+License: GPLv3 or later  
+License URI: http://www.gnu.org/licenses/gpl-3.0.html  
 
-Embed your Instagram feed on your website.
+Embed Instagram, TikTok, Pinterest, and Twitter feeds easily using Gutenberg blocks.
 
 == Description ==
 
-Social Feed offers an easy embed feature that lets you add Instagram posts as gallery on your WordPress website. You have to just put your instagram access token, and you are ready to go.
+**My Social Feeds** is a powerful Gutenberg block plugin that lets you embed social media feeds on your WordPress website. You can display Instagram posts, TikTok videos, Pinterest pins, and Twitter timelines with full control over layout, design, and behavior.
 
-**[Demos](https://bplugins.com/products/social-feed-block/#demos) || [Get Pro Version](https://bplugins.com/products/my-social-feeds/#pricing) || [Documentation](https://www.youtube.com/watch?v=9zLjvdAV60A)**
+Simply add your social access token where required, customize the layout, and you’re ready to go.
+
+**[Demos](https://bplugins.com/products/social-feed-block/#demos) | [Get Pro Version](https://bplugins.com/products/my-social-feeds/#pricing) | [Documentation](https://www.youtube.com/watch?v=9zLjvdAV60A)**
 
 https://www.youtube.com/watch?v=9zLjvdAV60A
 
+== Features ==
 
-### Features
-- Cache time is configured
-- Set displayed items
-- Assign column, row spacing, and column spacing.
-- Open gallery item link
-- Gallery item link opens in a new tab
-- Show/hide profile
-- Adjust profile picture size.
-- Show/Hide, Load More, Caption and Follow buttons
-- A change to the background color
-- Define borders and padding.
-- Set image effects rotate in, rotate out, shine and zoom in, zoom out
+### Instagram Feed
+- Cache time configuration.
+- Control number of displayed items.
+- Column, row gap, and column gap settings.
+- Open gallery item links.
+- Open links in a new tab.
+- Show/Hide profile.
+- Adjustable profile image size.
+- Show/Hide Load More, Caption, and Follow buttons.
+- Background color control.
+- Border and padding settings.
+- Image effects: rotate in, rotate out, shine, zoom in, zoom out.
 
+### New Free Features
+- Three new Gutenberg blocks added
 
-### Features Pro
-- Show feed details in the popup modal.
-- Show Name in profile area.
-- Show Biography in profile area.
-- Set Follow button in footer area.
-- Set different Profile Photo size in popup area.
-- Remove Caption hashtag
-- Change username color
-- Change name color
-- Change biography color
-- Colors set follow button
+### TikTok Feed (Free)
+- Authorization, remove authorization, and cache clear options.
+- Show TikTok profile and feeds.
+- Feed-only display option.
+- Device-based feed per page control.
+- Show/Hide profile elements:
+  - Profile image
+  - Profile name
+  - Share button
+  - Info count
+  - Biography
+- Profile alignment, color, background, and padding.
+- Share button padding, color, and hover color.
+- Video layout column control.
+- Column gap and row gap options.
+- Video popup with slider and thumbnail.
+- Load more button color and hover color.
+- Default load: 9 videos.
 
-= How to use =
-- First install the My Social Feeds Block plugin
-- Add the My Social Feeds Block from the block category called "Widgets" in Gutenberg editor.
-- You can change block settings from the right side settings sidebar.
+### Pinterest Pins (Free)
+- Show/Hide Profile, Pins, Image, Name, About, Follower Count, Pin Count, Follow Button
+- Aspect ratio selection: 16:9, 4:3, 1:1, 3:4, 9:16
+- Portrait ratio support (9:16)
+- Adjustable columns with slider and manual input
+- Column and row gap control
+- Responsive layout controls
+- Lightbox enable/disable
+- Lightbox controls: Info Bar, Zoom In, Zoom Out, Slide Show, Thumbs, Close (show/hide)
+- Profile background, image overlay, overlay color, transform, and border settings
+- Name, About, Count typography and color settings
+- Button typography, colors, hover colors, padding, and border setting
+
+### Twitter (Free)
+- Add Twitter Timeline
+- Timeline style options: height, width, scrolling, theme
+- Add Twitter Follow Button
+- Add Tweet Button
+- Follow button styling: color, background, font size, padding
+
+== Pro Features ==
+
+### Instagram Feed
+- Show feed details in popup modal
+- Show Name and Biography in profile area
+- Follow button in footer area
+- Different profile photo size in popup
+- Remove caption hashtags
+- Username, name, biography color control
+- Follow button color settings
+
+### TikTok (Pro)
+- Show/Hide videos and content.
+- Videos per page control.
+- Video overlay like, share, view count show/hide.
+- Overlay icon color control.
+- Load more button text change.
+- Cache time control.
+- Profile layout selection.
+- Profile name typography and color.
+- Share button text and typography.
+- Info count and text color control.
+- Lightbox video show option.
+- “View on TikTok” button show/hide.
+- Modal content show/hide.
+- Layout types: Default, Slider, Masonry.
+- Image ratio selection.
+- Gallery background and overlay color.
+- Content icon size control.
+- Button typography, colors, padding.
+- Pattern support.
+- Masonry layout video info show/hide.
+
+### Pinterest Pins (Pro)
+- Show/Hide pins.
+- Layouts: Default, Masonry, Slider, Justified.
+- Image ratio control.
+- Popup control show/hide (Zoom, Toggle, etc.).
+- Image overlay, transform, and overlay color.
+- Typography control for Name, About, Count, Button.
+- Lightbox controls: Toggle 1:1, Rotate CCW, Rotate CW, Flip X, Flip Y (show/hide).
+
+### Twitter (Pro)
+- Hide timeline header and footer.
+- Timeline language translation.
+- Latest Twitter icon support.
+- Tweet button with custom text.
+- Hashtag support.
+- Embed videos from specific tweets.
+- Embed specific Twitter posts.
+
+== How to Use ==
+- Install the **My Social Feeds** plugin
+- Add the **My Social Feeds** block from the “Widgets” category in Gutenberg
+- Customize settings from the right sidebar
 - Enjoy!
 
-* For Installation help click on Installation Tab
+== Feedback ==
+Did you like this plugin or have suggestions?  
+[Send feedback](mailto:support@bplugins.com)
 
+== Check Out Our Plugins ==
 
-= Feedback =
-- Did you like this plugin? Dislike it? Do you have a feature request? [Please share your feedback with us](mailto:support@bplugins.com 'Send feedback')
-
-
-= ⭐ Check out the Parent Plugin of this plugin- =
-
-🔥 **[b Blocks](https://bblockswp.com/)** – Best gutenberg blocks collections for WordPress.
-
-
-= ⭐ Check out our other WordPress Plugins- =
-
-🔥 **[Html5 Audio Player](https://bplugins.com/products/html5-audio-player)** – Best audio player plugin for WordPress.
-
-🔥 **[Html5 Video Player](https://bplugins.com/products/html5-video-player)** – Best video player plugin for WordPress.
-
-🔥 **[PDF Poster](https://bplugins.com/products/pdf-poster)** – A fully-featured PDF Viewer Plugin for WordPress.
-
-🔥 **[StreamCast](https://bplugins.com/products/streamcast-radio-player)** – A fully-featured Radio Player Plugin for WordPress.
-
-🔥 **[3D Viewer](https://bplugins.com/products/3d-viewer)** – Display interactive 3D models on the webs.
-
+🔥 **b Blocks** – https://bblockswp.com  
+🔥 **HTML5 Audio Player** – https://bplugins.com/products/html5-audio-player  
+🔥 **HTML5 Video Player** – https://bplugins.com/products/html5-video-player  
+🔥 **PDF Poster** – https://bplugins.com/products/pdf-poster  
+🔥 **StreamCast** – https://bplugins.com/products/streamcast-radio-player  
+🔥 **3D Viewer** – https://bplugins.com/products/3d-viewer  
 
 == Installation ==
 
-= From Gutenberg Editor: =
-1. Go to the WordPress Block/Gutenberg Editor
-2. Search For **My Social Feeds**
-3. Click on the **My Social Feeds** block to add the block
+= From Gutenberg Editor =
+1. Open Gutenberg Editor
+2. Search for **My Social Feeds**
+3. Add the block
 
-= Download & Upload: =
-1. Download the **My Social Feeds** plugin (*.zip file*)
-2. In your admin area, go to the Plugins menu and click on **Add New**
-3. Click on **Upload Plugin** and choose the **`my-social-feeds.zip`** file and click on **Install Now**
-4. Activate the plugin and Enjoy!
+= Upload =
+1. Upload `my-social-feeds.zip`
+2. Install and activate
 
-= Manually: =
-1. Download and upload the **My Social Feeds** plugin to the **`/wp-content/plugins/`** directory
-2. Activate the plugin through the Plugins menu in WordPress
+= Manual =
+1. Upload to `/wp-content/plugins/`
+2. Activate from Plugins menu
 
+== FAQ ==
 
-== Frequently Asked Questions ==
+= Is My Social Feeds free? =
+Yes, it’s a free Gutenberg block plugin.
 
-= Is My Social Feeds Block free? =
+= Does it work with any theme? =
+Yes, it works with all standard WordPress themes.
 
-Yes, Social Feeds Block is a free Gutenberg block plugin.
+= Where are settings located? =
+In the Gutenberg editor’s right sidebar.
 
-= Does it work with any WordPress theme? =
-
-Yes, it will work with any standard WordPress theme.
-
-= Where can I change block settings? =
-
-You can change block settings from the Gutenberg block editor's right sidebar.
-
-= How many times can I reuse a block? =
-
-You can use unlimited times as you want.
+= How many times can I use it? =
+Unlimited.
 
 = Where can I get support? =
-
-You can post your questions on the [support forum here](https://wordpress.org/support/plugin/my-social-feeds/reviews/#new-post)
-
-
-== Screenshots ==
-
-1. Settings
-2. Social Feed
-
+https://wordpress.org/support/plugin/my-social-feeds/
 
 == Changelog ==
 
-= 1.0.1 - 24 Nov, 2025 =
-* Modern Dashboard Added;
+= 1.0.2 - 5 Feb, 2026 =
+* Three new Gutenberg blocks added.
+
+= 1.0.1 – 24 Nov, 2025 =
+* Modern dashboard added.
 
 = 1.0.0 =
-* Initial Release
-
+* Initial release
 
 == Upgrade Notice ==
 
-= 1.0.1 - 24 Nov, 2025 =
-* Modern Dashboard Added;
+= 1.0.2 - 5 Feb, 2026 =
+* Three new Gutenberg blocks added.
+
+= 1.0.1 – 24 Nov, 2025 =
+* Modern dashboard added.
 
 = 1.0.0 =
-* Initial Release
+* Initial release

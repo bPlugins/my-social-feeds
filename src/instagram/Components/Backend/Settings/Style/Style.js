@@ -17,43 +17,43 @@ const Style = ({ attributes, setAttributes, updateObj, isPremium, setProModalOpe
     const { photoSize, popupPhotoSize, userNameColor, followersColor, nameColor, bioColor } = profileInfo || {};
 
     return <>
-        <PanelBody className='bPlPanelBody' title={__('Feed', 'instagram-feed')}>
-            <Background label={__('Background:', 'instagram-feed')} value={background} onChange={val => setAttributes({ background: val })} defaults={{ color: '#0000' }} />
+        <PanelBody className='bPlPanelBody' title={__('Feed', 'my-social-feeds')}>
+            <Background label={__('Background:', 'my-social-feeds')} value={background} onChange={val => setAttributes({ background: val })} defaults={{ color: '#0000' }} />
 
-            <SpaceControl className='mt20' label={__('Padding:', 'instagram-feed')} value={padding} onChange={val => setAttributes({ padding: val })} defaults={{ vertical: '15px', horizontal: '15px' }} />
+            <SpaceControl className='mt20' label={__('Padding:', 'my-social-feeds')} value={padding} onChange={val => setAttributes({ padding: val })} defaults={{ vertical: '15px', horizontal: '15px' }} />
 
-            <BorderControl className='mt20' label={__('Border:', 'instagram-feed')} value={border} onChange={val => setAttributes({ border: val })} defaults={{ radius: '5px' }} />
+            <BorderControl className='mt20' label={__('Border:', 'my-social-feeds')} value={border} onChange={val => setAttributes({ border: val })} defaults={{ radius: '5px' }} />
         </PanelBody>
 
-        {isProfile && <PanelBody className='bPlPanelBody' title={__('Profile', 'instagram-feed')} initialOpen={false}>
-            <UnitControl label={__('Photo Size:', 'instagram-feed')} labelPosition='left' value={photoSize} onChange={val => updateObj('profileInfo', 'photoSize', val)} units={[pxUnit(55), emUnit(3.5)]} isPremium={isPremium} Component={ToggleControl} setIsProModalOpen={setProModalOpen} />
+        {isProfile && <PanelBody className='bPlPanelBody' title={__('Profile', 'my-social-feeds')} initialOpen={false}>
+            <UnitControl label={__('Photo Size:', 'my-social-feeds')} labelPosition='left' value={photoSize} onChange={val => updateObj('profileInfo', 'photoSize', val)} units={[pxUnit(55), emUnit(3.5)]} isPremium={isPremium} Component={ToggleControl} setIsProModalOpen={setProModalOpen} />
 
-            <UnitControl className='mt15' label={__('Photo Size in Popup:', 'instagram-feed')} labelPosition='left' value={popupPhotoSize} onChange={val => updateObj('profileInfo', 'popupPhotoSize', val)} units={[pxUnit(55), emUnit(3.5)]} isPremium={isPremium} Component={UnitControl} setIsProModalOpen={setProModalOpen} />
+            <UnitControl className='mt15' label={__('Photo Size in Popup:', 'my-social-feeds')} labelPosition='left' value={popupPhotoSize} onChange={val => updateObj('profileInfo', 'popupPhotoSize', val)} units={[pxUnit(55), emUnit(3.5)]} isPremium={isPremium} Component={UnitControl} setIsProModalOpen={setProModalOpen} />
 
-            <BControlPro label={__('Username Color:', 'instagram-feed')} value={userNameColor} onChange={val => updateObj('profileInfo', 'userNameColor', val)} defaultColor='#4527a4' isPremium={isPremium} Component={ColorControl} setIsProModalOpen={setProModalOpen} />
+            <ColorControl label={__('Username Color:', 'my-social-feeds')} value={userNameColor} onChange={val => updateObj('profileInfo', 'userNameColor', val)} defaultColor='#4527a4' />
 
-            <BControlPro label={__('Name Color:', 'instagram-feed')} value={nameColor} onChange={val => updateObj('profileInfo', 'nameColor', val)} defaultColor='#333' isPremium={isPremium} Component={ColorControl} setIsProModalOpen={setProModalOpen} />
+            <BControlPro label={__('Name Color:', 'my-social-feeds')} value={nameColor} onChange={val => updateObj('profileInfo', 'nameColor', val)} defaultColor='#333' isPremium={isPremium} Component={ColorControl} setIsProModalOpen={setProModalOpen} />
 
-            <BControlPro label={__('Biography Color:', 'instagram-feed')} value={bioColor} onChange={val => updateObj('profileInfo', 'bioColor', val)} defaultColor='#4b4f58' isPremium={isPremium} Component={ColorControl} setIsProModalOpen={setProModalOpen} />
+            <BControlPro label={__('Biography Color:', 'my-social-feeds')} value={bioColor} onChange={val => updateObj('profileInfo', 'bioColor', val)} defaultColor='#4b4f58' isPremium={isPremium} Component={ColorControl} setIsProModalOpen={setProModalOpen} />
         </PanelBody>}
 
-        <PanelBody className='bPlPanelBody' title={__('Follow Button', 'instagram-feed')} initialOpen={false}>
-            <BControlPro value={followBtnColors} onChange={val => setAttributes({ followBtnColors: val })} defaults={{ color: '#fff', bg: '#4527a4' }} isPremium={isPremium} Component={ColorsControl} setIsProModalOpen={setProModalOpen} />
+        <PanelBody className='bPlPanelBody' title={__('Follow Button', 'my-social-feeds')} initialOpen={false}>
+            <ColorsControl value={followBtnColors} onChange={val => setAttributes({ followBtnColors: val })} defaults={{ color: '#fff', bg: '#4527a4' }} />
 
-            <BControlPro value={followBtnHovColors} onChange={val => setAttributes({ followBtnHovColors: val })} defaults={{ color: '#fff', bg: '#8344c5' }} isPremium={isPremium} Component={ColorsControl} setIsProModalOpen={setProModalOpen} />
+            <ColorsControl value={followBtnHovColors} onChange={val => setAttributes({ followBtnHovColors: val })} defaults={{ color: '#fff', bg: '#8344c5' }} />
         </PanelBody>
 
-        <PanelBody className='bPlPanelBody' title={__('Image', 'instagram-feed')} initialOpen={false}>
+        <PanelBody className='bPlPanelBody' title={__('Image', 'my-social-feeds')} initialOpen={false}>
             <PanelRow>
-                <Label className=''>{__('Hover Effect:', 'instagram-feed')}</Label>
+                <Label className=''>{__('Hover Effect:', 'my-social-feeds')}</Label>
 
                 <SelectControl value={imgHoverEffect} onChange={val => setAttributes({ imgHoverEffect: val })} options={imgHoverEffects} />
             </PanelRow>
         </PanelBody>
 
-        {isCaption && <PanelBody className='bPlPanelBody' title={__('Caption', 'instagram-feed')} initialOpen={false}>
+        {isCaption && <PanelBody className='bPlPanelBody' title={__('Caption', 'my-social-feeds')} initialOpen={false}>
             <PanelRow>
-                <Label className=''>{__('Caption Style:', 'instagram-feed')}</Label>
+                <Label className=''>{__('Caption Style:', 'my-social-feeds')}</Label>
 
                 <SelectControl value={captionStyle} onChange={val => setAttributes({
                     captionStyle: val,
@@ -61,11 +61,11 @@ const Style = ({ attributes, setAttributes, updateObj, isPremium, setProModalOpe
                 })} options={[...captionStyles, ...captionStylesPro]} />
             </PanelRow>
 
-            <Background label={__('Background:', 'instagram-feed')} value={captionBG} onChange={val => setAttributes({ captionBG: val })} defaults={{ color: '#0006' }} isImage={false} />
+            <Background label={__('Background:', 'my-social-feeds')} value={captionBG} onChange={val => setAttributes({ captionBG: val })} defaults={{ color: '#0006' }} isImage={false} />
 
-            <Typography label={__('Typography:', 'instagram-feed')} value={captionTypo} onChange={val => setAttributes({ captionTypo: val })} defaults={{ fontSize: { desktop: 22, tablet: 20, mobile: 18 } }} produce={produce} />
+            <Typography label={__('Typography:', 'my-social-feeds')} value={captionTypo} onChange={val => setAttributes({ captionTypo: val })} defaults={{ fontSize: { desktop: 22, tablet: 20, mobile: 18 } }} produce={produce} />
 
-            <ColorControl label={__('Color:', 'instagram-feed')} value={captionColor} onChange={val => setAttributes({ captionColor: val })} defaultColor='#fff' />
+            <ColorControl label={__('Color:', 'my-social-feeds')} value={captionColor} onChange={val => setAttributes({ captionColor: val })} defaultColor='#fff' />
         </PanelBody>}
     </>
 }

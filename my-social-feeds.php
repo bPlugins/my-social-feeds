@@ -1,20 +1,21 @@
 <?php
 /**
  * Plugin Name: My Social Feeds
- * Description: Embed social feeds 
+ * Description: Embed social feeds
  * Version: 1.0.2
  * Author: bPlugins
  * Author URI: https://bplugins.com
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain: my-social-feeds
- * @fs_premium_only /freemius, /old-pinterest-feed, /includes/menu/admin-menu-pro.php, /includes/custom-post, /
+ * @fs_premium_only /freemius, /old-pinterest-feed
  */
 
 // ABS PATH
 if ( !defined( 'ABSPATH' ) ) { exit; }
 
 register_activation_hook(__FILE__, function () {
+	
 	if (function_exists('msfbp_fs') && is_plugin_active('my-social-feeds/my-social-feeds.php')) {
 		deactivate_plugins('my-social-feeds/my-social-feeds.php');
 	}
@@ -26,7 +27,11 @@ register_activation_hook(__FILE__, function () {
 	if (is_plugin_active('b-pinterest-feed/b-pinterest-feed.php')) {
 		deactivate_plugins('b-pinterest-feed/b-pinterest-feed.php');
 	}
-	 
+
+	if (is_plugin_active('easy-twitter-feeds/easy-twitter-feeds.php')) {
+		deactivate_plugins('easy-twitter-feeds/easy-twitter-feeds.php');
+	}
+
 });
 
 if ( function_exists( 'msfbp_fs' ) ) {
@@ -34,6 +39,9 @@ if ( function_exists( 'msfbp_fs' ) ) {
 } else {
 
 	define( 'MSFBP_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.2' );
+
+	// define( 'MSFBP_VERSION', ( defined('WP_DEBUG') && WP_DEBUG ) ? time() : '1.0.2');
+
 	define( 'MSFBP_DIR_URL', plugin_dir_url( __FILE__ ) );
 	define( 'MSFBP_DIR_PATH', plugin_dir_path( __FILE__ ) );
 	define( 'MSFBP_PUBLIC_URL', MSFBP_DIR_URL . 'public/');
@@ -68,20 +76,11 @@ if ( function_exists( 'msfbp_fs' ) ) {
 						'days'               => 7,
 						'is_require_payment' => true,
 					),
-					'menu' => MSFBP_IS_PRO ?
-						array(
-							'slug'        => 'my-social-feeds',
-							// 'first-path'  =>  'admin.php?page=my-social-feeds#/pricing',
-							'support'     => false,
-						)
-						: array(
-							'slug'           => 'my-social-feeds',
-							'first-path'     => 'tools.php?page=my-social-feeds#/pricing',
+					'menu' =>  array(
+							'slug'           => 'edit.php?post_type=msfbp',
+							'first-path'     => 'edit.php?post_type=msfbp&page=my-social-feeds#/pricing',
 							'support'        => false,
-							'parent'         => array(
-								'slug' => 'tools.php',
-							),
-						),
+						)
                 );
                 $msfbp_fs = ( MSFBP_IS_PRO ? fs_dynamic_init( $msfbpConfig ) : fs_lite_dynamic_init( $msfbpConfig ) );
             }
@@ -107,41 +106,14 @@ if ( function_exists( 'msfbp_fs' ) ) {
 			function __construct(){
 				$this->load_classes();
 				add_action( 'init', [ $this, 'onInit' ] );
+				add_action( 'enqueue_block_editor_assets', [$this, 'enqueueBlockEditorAssets'] );
 				add_action('enqueue_block_assets', [$this, 'enqueueTiktokAssets']);
+				add_action('enqueue_block_assets', [$this, 'wp_admin_scripts']);
 				add_action('admin_enqueue_scripts', [$this, 'wp_admin_scripts']);
 				add_action('admin_footer', [$this, 'load_tiktok_script'], 10);
 				add_action('wp_footer', [$this, 'load_tiktok_script'], 10);
-				add_action('wp_ajax_msfbPipeChecker', [$this, 'msfbPipeChecker']);
-                add_action('wp_ajax_nopriv_msfbPipeChecker', [$this, 'msfbPipeChecker']);
-                add_action('admin_init', [$this, 'registerSettings']);
-                add_action('rest_api_init', [$this, 'registerSettings']);
+				add_filter( 'plugin_action_links', [$this, 'plugin_action_links'], 10, 2 ); 
 			}
-
-			public function msfbPipeChecker()
-            {
-                $nonce = $_POST['_wpnonce'];
-
-                if (!wp_verify_nonce($nonce, 'wp_ajax')) {
-                    wp_send_json_error('Invalid Request');
-                }
-
-                wp_send_json_success([
-                    'isPipe' => msfbp_fs()->can_use_premium_code() ?? false,
-                ]);
-            }
-
-            public function registerSettings()
-            {
-                register_setting('msfbpUtils', 'msfbpUtils', [
-                    'show_in_rest' => [
-                        'name' => 'msfbpUtils',
-                        'schema' => ['type' => 'string'],
-                    ],
-                    'type' => 'string',
-                    'default' => wp_json_encode(['nonce' => wp_create_nonce('wp_ajax')]),
-                    'sanitize_callback' => 'sanitize_text_field',
-                ]);
-            }
 
 			//Class loaded
 			public function load_classes () {
@@ -149,17 +121,13 @@ if ( function_exists( 'msfbp_fs' ) ) {
 				require_once MSFBP_DIR_PATH . 'includes/InstagramAccessTokenSave.php';
 				require_once MSFBP_DIR_PATH . 'includes/PinterestAccessTokenSave.php';
 				require_once MSFBP_DIR_PATH . 'includes/TwitterUserNameIdSave.php';
+				require_once MSFBP_DIR_PATH . 'includes/menu/admin-menu.php'; 
+				require_once MSFBP_DIR_PATH . 'includes/post/shortcode.php';
 				new AccessToken\MSFBP_INSTAGRAM_ACCESS_TOKEN_SAVE();
 				new NameCredentials\MSFBP_PINTEREST_FEED_CREDENTIAL();
 				new NameCredentials\MSFBP_TWITTER_CREDENTIAL();
 
-				// check premium 
-				if( MSFBP_IS_PRO ) {
-					require_once MSFBP_DIR_PATH . 'includes/menu/admin-menu-pro.php'; 
-				}else {
-					require_once MSFBP_DIR_PATH . 'includes/menu/admin-menu-free.php'; 
-				}
-
+				//check premium 
 				if ( MSFBP_IS_PRO && msfbpIsPremium()) {
 					require_once MSFBP_DIR_PATH . 'old-pinterest-feed/b-pinterest-feed.php';
 				}
@@ -198,9 +166,32 @@ if ( function_exists( 'msfbp_fs' ) ) {
 				wp_localize_script('ttp-script', 'ttpData', [
 					'ajaxUrl' => admin_url('admin-ajax.php'),
 					'tiktokAuthorized' => false !== get_transient('ttp_tiktok_authorized_data'),
-					'nonce' => wp_create_nonce('wp_rest'),
-				]);
+					'nonce' => wp_create_nonce('ttp_fetch_data_nonce'),
+                    'dataGet' => wp_create_nonce('ttp_data_get_nonce'),
+				]); 
 			}
+
+			public function enqueueBlockEditorAssets() {
+            	wp_add_inline_script( 'msfbp-my-social-feeds-editor-script', "const msfbppipecheck=" . wp_json_encode( msfbpIsPremium() ) . ';', 'before' );
+        	}
+
+			public function plugin_action_links($links, $file) {
+            
+				if ( plugin_basename( __FILE__ ) === $file ) {
+
+					$settings_url = admin_url(
+						'wp-admin/edit.php?post_type=msfbp&page=my-social-feeds-settings#/settings'
+					);
+
+					$links['settings'] = sprintf(
+						'<a href="%s" target="_blank" style="%s">%s</a>',
+						esc_url( $settings_url ),
+						'color:#4527a4;font-weight:bold',
+						__( 'Settings', 'slider' )
+					);
+				}
+            	return $links;
+        	}
 
 			function onInit(){
 				register_block_type( __DIR__ . '/build' );

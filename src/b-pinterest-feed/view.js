@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 });
 
-const RenderLayout = ({attributes, id}) => {
-	const {accountInfo} = attributes;
-	const {userName, boardName} = accountInfo;
+const RenderLayout = ({ attributes, id }) => {
+	const { accountInfo } = attributes;
+	const { userName, boardName } = accountInfo;
 	const [pins, setPins] = useState([]);
 	const [status, setStatus] = useState();
 	const [loading, setLoading] = useState(false);
@@ -33,16 +33,15 @@ const RenderLayout = ({attributes, id}) => {
 		const fetchPins = async () => {
 			const res = await fetch(`${bPinterestData?.ajaxUrl}?action=bPinterestAjaxRequest&userName=${userName}&boardName=${boardName}&nonce=${bPinterestData?.nonce}`);
 			const response = await res.json();
-			console.log(response);
 			setPins(response.data?.data);
 			setStatus(response.data);
-			setLoading(false); 
+			setLoading(false);
 		}
 		fetchPins();
 	}, []);
 
 	return <>
-		<Style attributes={attributes} eleId={id}/>
-		<Layout attributes={attributes} pins={pins} elId={id} status={status} loading={loading} />
+		<Style attributes={attributes} eleId={id} />
+		<Layout isBackEnd={false} attributes={attributes} pins={pins} elId={id} status={status} loading={loading} />
 	</>
 }
