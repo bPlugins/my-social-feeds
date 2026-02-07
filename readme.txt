@@ -183,7 +183,7 @@ https://wordpress.org/support/plugin/my-social-feeds/
 == Changelog ==
 
 = 1.0.2 - 5 Feb, 2026 =
-* Three new Gutenberg blocks added.
+* New: Three new Gutenberg blocks have been added: TikTok Feeds, Pinterest Pins, and Twitter.
 
 = 1.0.1 – 24 Nov, 2025 =
 * Modern dashboard added.
@@ -194,7 +194,7 @@ https://wordpress.org/support/plugin/my-social-feeds/
 == Upgrade Notice ==
 
 = 1.0.2 - 5 Feb, 2026 =
-* Three new Gutenberg blocks added.
+* New: Three new Gutenberg blocks have been added: TikTok Feeds, Pinterest Pins, and Twitter.
 
 = 1.0.1 – 24 Nov, 2025 =
 * Modern dashboard added.

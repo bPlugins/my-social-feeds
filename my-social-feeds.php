@@ -180,7 +180,7 @@ if ( function_exists( 'msfbp_fs' ) ) {
 				if ( plugin_basename( __FILE__ ) === $file ) {
 
 					$settings_url = admin_url(
-						'wp-admin/edit.php?post_type=msfbp&page=my-social-feeds-settings#/settings'
+						'edit.php?post_type=msfbp&page=my-social-feeds-settings#/settings'
 					);
 
 					$links['settings'] = sprintf(
