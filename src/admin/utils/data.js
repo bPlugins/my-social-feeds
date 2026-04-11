@@ -1,281 +1,315 @@
+import { instagramIcon } from '../../instagram/utils/icons';
+import { gridIcon, masonryIcon, pinterest, sliderIcon, tickerIcon, tiktok, twitter } from '../../utils/icons';
+
 const slug = 'my-social-feeds';
 
 export const dashboardInfo = (info) => {
-    const { version, isPremium, hasPro } = info;
-    const proSuffix = isPremium ? 'Pro' : '';
+    const { version, isPremium, hasPro, licenseActiveNonce } = info;
+
+    const proSuffix = isPremium ? ' Pro' : '';
 
     return {
-        name: `My Social Feeds ${proSuffix}`,
-        displayName: `My Social Feeds ${proSuffix} - Display Instagram Feeds in Grid Layouts`,
-        description: 'Social Feed offers an easy embed feature that lets you add Instagram posts as gallery on your WordPress website. You have to just put your instagram access token, and you are ready to go.',
+        name: `My Social Feeds${proSuffix}`,
+        displayName: `My Social Feeds${proSuffix} - Social Feeds Embedder Plugin for WordPress`,
+        description: 'Embed Instagram, TikTok, Pinterest, and Twitter feeds easily using Gutenberg blocks.',
         slug,
-        logo: `https://ps.w.org/${slug}/assets/icon-128x128.png`,
-        // banner: `https://b-slider.bplugins.com/wp-content/uploads/2025/09/light-box.png`,
-        video: 'https://www.youtube.com/watch?v=9zLjvdAV60A&t=10s',
-        isYoutube: true,
         version,
         isPremium,
         hasPro,
+        displayOurPlugins: true,
+        media: {
+            logo: `https://ps.w.org/${slug}/assets/icon-256x256.png`,
+            banner: `https://ps.w.org/${slug}/assets/banner-772x250.png`,
+            thumbnail: `https://bplugins.com/wp-content/themes/b-technologies/assets/images/products/${slug}.png`,
+            // proThumbnail: `https://bplugins.com/wp-content/themes/b-technologies/assets/images/products/${slug}-pro.png`,
+            video: 'https://www.youtube.com/watch?v=9zLjvdAV60A',
+            isYoutube: true
+        },
         pages: {
             org: `https://wordpress.org/plugins/${slug}/`,
-            landing: `https://bplugins.com/products/social-feed-block/`,
-            docs: `https://www.youtube.com/watch?v=9zLjvdAV60A&t=10s`,
-            pricing: `https://bplugins.com/products/social-feed-block/#pricing`,
+            // landing: `https://bplugins.com/products/${slug}/`,
+            docs: `https://bplugins.com/docs/social-feed-block/`,
+            pricing: `https://bplugins.com/products/my-social-feeds/pricing/`,
         },
         freemius: {
             product_id: 16150,
             plan_id: 27386,
             public_key: 'pk_5a1e06dcd48a4bcb7184e0d809e08'
+        },
+        licenseActiveNonce,
+        changelogs: [
+            {
+                version: '1.0.3 - 11 April, 2026',
+                type: 'new',
+                list: [
+                    'Added a new modern dashboard;'
+                ]
+            },
+            {
+                version: '1.0.2 - 5 Feb, 2026',
+                type: 'new',
+                list: [
+                    'New: Three new Gutenberg blocks have been added: TikTok Feeds, Pinterest Pins, and Twitter',
+                ]
+            },
+            {
+                version: '1.0.1 – 24 Nov, 2025',
+                type: 'new',
+                list: [
+                    'Modern dashboard added;',
+                ]
+            }
+
+        ],
+        proFeatures: [
+            "(TikTok Feed) Videos per page",
+            "Show Hide Video Overly like, share, and view.",
+            "Video overly icon style",
+            "Share button text change",
+            "Share button style",
+            "Cache time set profile and video",
+            "Profile 3 layout",
+            "(Instagram Feed) Popup: Show feed details in the popup modal.",
+            "(Instagram Feed) Name: Show Name in the profile area.",
+            "(Instagram Feed) Biography: Show the Biography in the profile area.",
+            "(Instagram Feed) Follow Button: Set the Follow button in the footer area.",
+            "(Instagram Feed) Profile Photo: Set different Profile Photo sizes in the popup area.",
+            "(Instagram Feed) Caption: Remove Caption hashtag",
+            "(Pinterest Feed) Show/Hide Pins.",
+            "(Pinterest Feed) There are four types of layouts: Default, Masonry, Slider, and Justified.",
+            "(Pinterest Feed) Change image ratio.",
+            "(Pinterest Feed) Popup options for show/hide: Zoom In, Zoom Out, Toggle 1:1, etc.",
+            "(Pinterest Feed) Set image overlay, transform, and overlay color.",
+            "(Pinterest Feed) Set typography for Name, About, Count, and button."
+        ],
+        startButton: {
+            label: 'Start Now',
+            url: `wp-admin/post-new.php?post_type=msfbp`
         }
     }
 }
 
-export const changelogs = [
-    {
-        version: '1.0.1',
-        list: [
-            'Modern Dashboard Added;',
-        ]
-    },
-    {
-        version: '1.0.0',
-        list: [
-            'Initial Release;',
-        ]
-    }
-];
-
 export const demoInfo = {
-    title: 'Live Overview',
-    description: 'Click on any section to view it live',
     allInOneLabel: 'See All Demos',
     allInOneLink: 'https://bplugins.com/products/social-feed-block/#demos',
     demos: [
         {
-            icon: '',
-            title: 'Default',
-            description: '',
-            category: '',
-            type: 'iframe',
-            url: 'https://social.bplugins.com/demo/default/'
+            icon: tiktok('#000'),
+            title: 'TikTok Feed',
+            children: [
+                {
+                    title: 'Default',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/default/',
+                },
+                {
+                    title: 'Card',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/card/',
+                },
+                {
+                    title: 'Compact',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/compact/',
+                },
+                {
+                    title: 'Only Videos',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/only-videos/',
+                },
+                {
+                    title: 'Column',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/column/',
+                },
+                {
+                    title: 'Load 5 Videos',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/load-5-video/',
+                },
+                {
+                    title: 'Default Profile Slider Horizontal',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/default-profile-slider-horizontal/',
+                },
+                {
+                    title: 'Default Profile Slider Horizontal',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/default-profile-slider-landscape/',
+                },
+                {
+                    title: 'Default Profile Slider Square',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/default-profile-slider-square/',
+                },
+                {
+                    title: 'Default Profile Slider Vertical',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/default-profile-slider-vertical/',
+                },
+                {
+                    title: 'Horizontal Profile Default Center',
+                    type: 'iframe',
+                    url: 'http://wptiktokfeed.com/demo/horizontal-profile-default-center/',
+                },
+                {
+                    title: 'Landscape Profile Default Center',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/landscape-profile-default-center/',
+                },
+                {
+                    title: 'Portrait Profile Default Center',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/portrait-profile-default-center/',
+                },
+                {
+                    title: 'Profile Default Center',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/profile-default-center/',
+                },
+                {
+                    title: 'Profile Masonry',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/profile-masonry/',
+                },
+
+                {
+                    title: 'Vertical Profile Default Center',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/vertical-profile-default-center/',
+                },
+            ]
         },
         {
-            icon: '',
-            title: 'Just Feed & Image Zoom Out',
-            description: '',
-            category: '',
-            type: 'iframe',
-            url: 'https://social.bplugins.com/demo/just-feed-image-zoom-out/'
+            icon: instagramIcon('#000', 27),
+            title: 'Instagram Feed',
+            children: [
+                {
+                    title: 'Default',
+                    type: 'iframe',
+                    url: 'https://wptiktokfeed.com/demo/default/',
+                },
+                {
+                    title: 'Just Feed with Image Zoom Out',
+                    type: 'iframe',
+                    url: 'https://social.bplugins.com/demo/just-feed-image-zoom-out/',
+                },
+                {
+                    title: 'No Caption with Image Rotate',
+                    type: 'iframe',
+                    url: 'https://social.bplugins.com/demo/no-caption-image-rotate-in/',
+                },
+                {
+                    title: 'Load More with Image Shine',
+                    type: 'iframe',
+                    url: 'https://social.bplugins.com/demo/load-more-image-shine/',
+                },
+            ]
         },
         {
-            icon: '',
-            title: 'No Caption Image Rotate In',
-            description: '',
-            category: '',
-            type: 'iframe',
-            url: 'https://social.bplugins.com/demo/no-caption-image-rotate-in/'
+            icon: pinterest('#000'),
+            title: 'Pinterest Feed',
+            children: [
+                {
+                    title: 'Default',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/b-pinterest-default',
+                },
+                {
+                    title: 'Only Pins',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/only-pins',
+                },
+                {
+                    title: 'Only Profiles',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/only-profiles',
+                },
+                {
+                    title: 'Masonry',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/masonry',
+                },
+                {
+                    title: 'Slider',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/b-pinterest-slider/',
+                },
+                {
+                    title: 'Default Landscape',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/b-pinterest-default-landscape/',
+                },
+                {
+                    title: 'Default Horizontal',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/b-pinterest-default-horizontal/',
+                },
+                {
+                    title: 'Default Square',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/b-pinterest-square/',
+                },
+                {
+                    title: 'Default Vertical',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/b-pinterest-default-vertical/',
+                },
+                {
+                    title: 'Default Portrait',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/b-pinterest-default-portrait/',
+                },
+            ]
         },
         {
-            icon: '',
-            title: 'Load More Image Shine',
-            description: '',
-            category: '',
-            type: 'iframe',
-            url: 'https://social.bplugins.com/demo/load-more-image-shine/'
-        }
+            icon: twitter('#000'),
+            title: 'Twitter Feed',
+            children: [
+                {
+                    title: 'Follow Button',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/twitter-follow-button/',
+                },
+                {
+                    title: 'Tweet Button',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/twitter-tweet-button/',
+                },
+                {
+                    title: 'Has Tag Button',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/twitter-has-tag-button/',
+                },
+                {
+                    title: 'Single Video',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/single-demo/',
+                },
+                {
+                    title: 'Single Post',
+                    type: 'iframe',
+                    url: 'https://bblockswp.com/demo/twitter-single-post/',
+                },
+            ]
+        },
 
     ]
 }
 
 export const pricingInfo = {
-    cycles: [
-        {
-            cycle: 'monthly',
-            label: 'Monthly',
-            isDefault: false
-        },
-        {
-            cycle: 'annual',
-            label: 'Yearly',
-            isDefault: true
-        },
-        {
-            cycle: 'lifetime',
-            label: 'Lifetime',
-            isDefault: false
-        }
-    ],
-    plans: [
-        {
-            name: 'Single Site',
-            quantity: 1,
-            prices: {
-                "monthly": "3.99",
-                "annual": "35.88",
-                "lifetime": "99.99"
-                // lifetime: '29.99'
-            },
-            pricePrefix: '',
-            priceSuffix: '',
-            isFeatured: false,
-            note: ''
-        },
-        {
-            name: '3 Sites',
-            quantity: 3,
-            prices: {
-                "monthly": "6.99",
-                "annual": "71.88",
-                "lifetime": "219.99"
-                // lifetime: '79.99'
-            },
-            pricePrefix: '',
-            priceSuffix: '',
-            isFeatured: true,
-            note: ''
-        },
-        {
-            name: 'Unlimited Sites',
-            quantity: 'null',
-            prices: {
-                "monthly": "26.99",
-                "annual": "263.88",
-                "lifetime": "799.99"
-                // lifetime: '199.99'
-            },
-            pricePrefix: '',
-            priceSuffix: '',
-            isFeatured: false,
-            note: ''
-        }
-    ],
-    features: [
-        "(TikTok Feed) Videos per page",
-        "Show Hide Video Overly like, share, and view.",
-        "Video overly icon style",
-        "Share button text change",
-        "Share button style",
-        "Cache time set profile and video",
-        "Profile 3 layout",
-        "(Instagram Feed) Popup: Show feed details in the popup modal.",
-        "(Instagram Feed) Name: Show Name in the profile area.",
-        "(Instagram Feed) Biography: Show the Biography in the profile area.",
-        "(Instagram Feed) Follow Button: Set the Follow button in the footer area.",
-        "(Instagram Feed) Profile Photo: Set different Profile Photo sizes in the popup area.",
-        "(Instagram Feed) Caption: Remove Caption hashtag",
-        "(Pinterest Feed) Show/Hide Pins.",
-        "(Pinterest Feed) There are four types of layouts: Default, Masonry, Slider, and Justified.",
-        "(Pinterest Feed) Change image ratio.",
-        "(Pinterest Feed) Popup options for show/hide: Zoom In, Zoom Out, Toggle 1:1, etc.",
-        "(Pinterest Feed) Set image overlay, transform, and overlay color.",
-        "(Pinterest Feed) Set typography for Name, About, Count, and button."
+    logo: `https://ps.w.org/${slug}/assets/icon-256x256.png`, // Optional
+    pluginId: 16150,
+    planId: 27386,
+    licenses: [
+        1,
+        3,
+        null
     ],
     button: {
         label: 'Buy Now ➜'
     },
     featured: {
-        text: 'Best Value'
+        selected: 3, // choose from licenses item
     }
-}
-
-export const featureCompareInfo = {
-    title: 'Features',
-    plans: [
-        {
-            id: 'ztbk4ex2fyi',
-            name: 'Free Plan',
-            color: '#485781'
-        },
-        {
-            id: 'lhmjqhkeyi',
-            name: `<span style='color: #485781;'>Pro Start from </span><span style='font-size: 1.3em;'>$35.88/y</span>`,
-            color: '#146EF5'
-        }
-    ],
-    features: [
-        {
-            label: 'Cache time is configured',
-            plans: ['ztbk4ex2fyi', 'lhmjqhkeyi']
-        },
-        {
-            label: 'Set displayed items.',
-            plans: ['ztbk4ex2fyi', 'lhmjqhkeyi']
-        },
-        {
-            label: 'Open gallery item link.',
-            plans: ['ztbk4ex2fyi', 'lhmjqhkeyi']
-        },
-        {
-            label: 'Gallery item link opens in a new tab',
-            plans: ['ztbk4ex2fyi', 'lhmjqhkeyi']
-        },
-        {
-            label: 'Show/hide profile.',
-            plans: ['ztbk4ex2fyi', 'lhmjqhkeyi']
-        },
-        {
-            label: 'Adjust profile picture size.',
-            plans: ['ztbk4ex2fyi', 'lhmjqhkeyi']
-        },
-        {
-            label: 'Show/Hide, Load More, Caption and Follow buttons.',
-            plans: ['ztbk4ex2fyi', 'lhmjqhkeyi']
-        },
-        {
-            label: 'A change to the background color.',
-            plans: ['ztbk4ex2fyi', 'lhmjqhkeyi']
-        },
-        {
-            label: 'Define borders and padding.',
-            plans: ['ztbk4ex2fyi', 'lhmjqhkeyi']
-        },
-        {
-            label: 'Set image effects rotate in, rotate out, shine and zoom in, zoom out.',
-            plans: ['ztbk4ex2fyi', 'lhmjqhkeyi']
-        },
-        {
-            label: 'Show feed details in the popup modal.',
-            plans: ['lhmjqhkeyi']
-        },
-        {
-            label: 'Show Name in profile area.',
-            plans: ['lhmjqhkeyi']
-        },
-        {
-            label: 'Show Biography in profile area.',
-            plans: ['lhmjqhkeyi']
-        },
-        {
-            label: 'Set Follow button in footer area.',
-            plans: ['lhmjqhkeyi']
-        },
-        {
-            label: 'Set different Profile Photo size in popup area.',
-            plans: ['lhmjqhkeyi']
-        },
-        {
-            label: 'Remove Caption hashtag.',
-            plans: ['lhmjqhkeyi']
-        },
-        {
-            label: 'Change username color.',
-            plans: ['lhmjqhkeyi']
-        },
-        {
-            label: 'Profile name color and typography option',
-            plans: ['lhmjqhkeyi']
-        },
-        {
-            label: 'Profile name color and typography option.',
-            plans: ['lhmjqhkeyi']
-        },
-        {
-            label: 'Change biography color.',
-            plans: ['lhmjqhkeyi']
-        },
-        {
-            label: 'Colors set follow button.',
-            plans: ['lhmjqhkeyi']
-        }
-    ]
 }

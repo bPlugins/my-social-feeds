@@ -1,22 +1,20 @@
-import Overview from '../../../../bpl-tools/Admin/Overview/Overview';
-import Changelog from '../../../../bpl-tools/Admin/Changelog/Changelog';
-import FSCheckoutButton from '../../../../bpl-tools/Admin/FSCheckoutButton/FSCheckoutButton';
-
-import { changelogs } from '../utils/data';
+import Overview from '../../../../bpl-tools/Admin/Overview';
+import Changelog from '../../../../bpl-tools/Admin/Changelog';
+import ProAds from '../../../../bpl-tools/Admin/ProAds';
 
 const Welcome = (props) => {
-    const { name, isPremium, freemius } = props;
+    const { isPremium } = props;
 
-    return <>
-        <Overview {...props}>
-            {!isPremium && <FSCheckoutButton {...{
-                freemius,
-                options: { title: name },
-                buttonProps: { variant: 'secondary' }
-            }}>Buy Now</FSCheckoutButton>}
-        </Overview>
+    return <Overview {...props}>
+        <div style={{
+            display: 'grid',
+            gridTemplateColumns: isPremium ? '1fr' : 'repeat(auto-fill, minmax(min(480px, 100%), 1fr))',
+            gap: '32px'
+        }}>
+            <Changelog {...props} />
 
-        <Changelog changelogs={changelogs} {...props} />
-    </>
+            {!isPremium && <ProAds {...props} />}
+        </div>
+    </Overview>
 }
 export default Welcome;

@@ -29,7 +29,7 @@ if (!class_exists('msfbp_AdminMenu')) {
 
 				wp_enqueue_style('msf-admin-dashboard', MSFBP_DIR_URL . 'build/admin-dashboard.css', [], MSFBP_VERSION);
 
-				wp_enqueue_script('msf-admin-dashboard', MSFBP_DIR_URL . 'build/admin-dashboard.js', ['react', 'react-dom'], MSFBP_VERSION, true);
+				wp_enqueue_script('msf-admin-dashboard', MSFBP_DIR_URL . 'build/admin-dashboard.js', ['react', 'react-dom', 'wp-data', "wp-api", "wp-util", "wp-i18n"], MSFBP_VERSION, true);
 
 				wp_set_script_translations('msf-admin-dashboard', 'my-social-feeds', MSFBP_DIR_PATH . 'languages');
 
@@ -95,7 +95,9 @@ if (!class_exists('msfbp_AdminMenu')) {
 				data-info="<?php echo esc_attr(wp_json_encode([
 					'version'   => MSFBP_VERSION,
 					'isPremium' => msfbpIsPremium(),
-					'hasPro'    => MSFBP_IS_PRO
+					'hasPro'    => MSFBP_IS_PRO,
+					'nonce' => wp_create_nonce( 'apbCreatePage' ),
+		            'licenseActiveNonce' => wp_create_nonce( 'bPlLicenseActivation' )
 				])); ?>"
 			></div>
 		<?php }

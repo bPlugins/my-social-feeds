@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
-import { HashRouter as Router, Routes, Route, Navigate, useParams } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
-import ListDemos from '../../../../bpl-tools/Admin/Demos/ListDemos';
-import FSCheckoutButton from '../../../../bpl-tools/Admin/FSCheckoutButton/FSCheckoutButton';
-import Pricing from '../../../../bpl-tools/Admin/Pricing/Pricing';
-import FeatureCompare from '../../../../bpl-tools/Admin/FeatureCompare/FeatureCompare';
+import Demos from '../../../../bpl-tools/Admin/Demos';
+import Pricing from '../../../../bpl-tools/Admin/Pricing';
+import FeatureCompare from '../../../../bpl-tools/Admin/FeatureCompare';
+import Activation from '../../../../bpl-tools/Admin/Activation';
+import OurPlugins from '../../../../bpl-tools/Admin/OurPlugins';
 
 import Layout from './Layout';
-import { demoInfo, pricingInfo, featureCompareInfo } from '../utils/data';
 import Welcome from './Welcome';
+import { demoInfo, pricingInfo } from '../utils/data';
 import Settings from './Settings';
 import Authorization from './pages/Authorization';
 
 
 const App = (props) => {
-    const { name, isPremium, freemius } = props;
-    console.log(window.location.href.includes('isCloseModal'));
+    const { isPremium, hasPro } = props;
 
     useEffect(() => {
         if (window.location.href.includes('isCloseModal')) {
@@ -57,6 +57,7 @@ const App = (props) => {
         }
     }, []);
 
+
     return <Router>
         <Routes>
             <Route path='/' element={<Layout {...props} />}>
@@ -66,25 +67,22 @@ const App = (props) => {
 
                 <Route path='settings' element={<Settings {...props} />} />
 
+                <Route path='demos' element={<Demos demoInfo={demoInfo} {...props} />} />
 
-                <Route path='demos' element={<ListDemos demoInfo={demoInfo} {...props}>
-                    {!isPremium && <FSCheckoutButton {...{
-                        freemius,
-                        options: { title: name }
-                    }}>Buy Now</FSCheckoutButton>}
-                </ListDemos>} />
+                {!isPremium && <Route path='pricing' element={<Pricing pricingInfo={pricingInfo} options={{}} {...props} />} />}
 
-                {!isPremium && <Route path='pricing' element={<Pricing pricingInfo={pricingInfo} options={{}} {...props} ></Pricing>} />}
+                {!isPremium && <Route path='feature-comparison' element={<FeatureCompare plans={['free', 'pro']} {...props} />} />}
 
-                {!isPremium && <Route path='feature-comparison' element={<FeatureCompare featureCompareInfo={featureCompareInfo} {...props} />} />}
+                {hasPro && <Route path='activation' element={<Activation {...props} />} />}
 
-                <Route path='*' element={<Welcome {...props} />} />
+                <Route path='our-plugins' element={<OurPlugins {...props} />} />
+
+                <Route path='*' element={<Navigate to='/welcome' replace />} />
             </Route>
         </Routes>
     </Router>
 }
 export default App;
-
 
 export function getDataParamsFromUrl() {
 

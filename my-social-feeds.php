@@ -2,12 +2,12 @@
 /**
  * Plugin Name: My Social Feeds
  * Description: Embed social feeds
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: bPlugins
  * Author URI: https://bplugins.com
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
- * Text Domain: my-social-feeds
+ * Text Domain: my-social-feeds, /includes/LicenseActivation.php
  * @fs_premium_only /freemius, /old-pinterest-feed
  */
 
@@ -38,7 +38,7 @@ if ( function_exists( 'msfbp_fs' ) ) {
     msfbp_fs()->set_basename( false, __FILE__ );
 } else {
 
-	define( 'MSFBP_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.2' );
+	define( 'MSFBP_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.3' );
 
 	// define( 'MSFBP_VERSION', ( defined('WP_DEBUG') && WP_DEBUG ) ? time() : '1.0.2');
 
@@ -56,6 +56,7 @@ if ( function_exists( 'msfbp_fs' ) ) {
                 // Include Freemius SDK.
                 if ( MSFBP_IS_PRO ) {
                     require_once dirname( __FILE__ ) . '/freemius/start.php';
+					require_once dirname(__FILE__) . '/includes/LicenseActivation.php';
                 } else {
                     require_once dirname( __FILE__ ) . '/freemius-lite/start.php';
                 }
@@ -76,7 +77,7 @@ if ( function_exists( 'msfbp_fs' ) ) {
 						'days'               => 7,
 						'is_require_payment' => true,
 					),
-					'menu' =>  array(
+					'menu' 				=>  array(
 							'slug'           => 'edit.php?post_type=msfbp',
 							'first-path'     => 'edit.php?post_type=msfbp&page=my-social-feeds#/pricing',
 							'support'        => false,

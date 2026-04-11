@@ -46,9 +46,8 @@ class MSFBPCustomPost{
 			'capability_type'		=> 'page',
 			'rewrite'				=> [ 'slug' => 'msfbp' ],
 			'supports'				=> [ 'title', 'editor' ],
-			'template'				=> [ ['msfbp/my-social-feeds', 'bpifb/my-social-feeds'] ],
+			'template'				=> [ ['msfbp/my-social-feeds'] ],
 			'template_lock'			=> 'all',
-
 		]); // Register Post Type
 	}
 
