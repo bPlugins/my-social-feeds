@@ -14389,7 +14389,7 @@ const Settings = props => {
   };
   const fetchAccounts = async () => {
     setLoading(true);
-    const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts`);
+    const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts&nonce=${ttpData.nonce}`);
     const json = await res.json();
     setAccounts(json.data || []);
     setLoading(false);
@@ -14955,6 +14955,10 @@ const dashboardInfo = info => {
     },
     licenseActiveNonce,
     changelogs: [{
+      version: '1.0.4 - 18 April, 2026',
+      type: 'security',
+      list: ['Security Fix: Resolved a Wordfence-identified Missing Authorization vulnerability to prevent unauthenticated access.']
+    }, {
       version: '1.0.3 - 11 April, 2026',
       type: 'new',
       list: ['Added a new modern dashboard;']

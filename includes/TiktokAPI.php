@@ -182,6 +182,13 @@ if ( ! class_exists('TTPTiktokAPI') ) {
     }
 
     public function get_accounts() {
+
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error( [ 'message' => 'Unauthorized' ], 403 ); 
+        }
+
+        check_ajax_referer( 'ttp_fetch_data_nonce', 'nonce' );
+
         $accounts = get_option('ttp_tiktok_accounts', []);
         if ( empty($accounts) ) {
             $this->migrate_old_single_account();
@@ -290,6 +297,10 @@ if ( ! class_exists('TTPTiktokAPI') ) {
     }
 
     public function clear_cache() {
+
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error( [ 'message' => 'Unauthorized' ], 403 );
+        }
 
         $nonce = sanitize_text_field($_GET['nonce'] ?? '');
         if ( ! wp_verify_nonce($nonce, 'ttp_fetch_data_nonce') ) {

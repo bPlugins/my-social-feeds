@@ -2,7 +2,7 @@
 /**
  * Plugin Name: My Social Feeds
  * Description: Embed social feeds
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: bPlugins
  * Author URI: https://bplugins.com
  * License: GPLv3
@@ -38,7 +38,7 @@ if ( function_exists( 'msfbp_fs' ) ) {
     msfbp_fs()->set_basename( false, __FILE__ );
 } else {
 
-	define( 'MSFBP_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.3' );
+	define( 'MSFBP_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.4' );
 
 	// define( 'MSFBP_VERSION', ( defined('WP_DEBUG') && WP_DEBUG ) ? time() : '1.0.2');
 

@@ -85337,7 +85337,7 @@ const Edit = props => {
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     const fetchAccounts = async () => {
       try {
-        const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts`);
+        const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts&nonce=${ttpData.nonce}`);
         const json = await res.json();
         const list = json?.data || [];
         setAccounts(list);
@@ -86700,7 +86700,7 @@ const Feeds = props => {
         return;
       }
       try {
-        const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts`);
+        const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts&nonce=${ttpData.nonce}`);
         const json = await res.json();
         const list = json?.data || [];
         if (list.length) setFallbackAccountId(list[0].account_id);

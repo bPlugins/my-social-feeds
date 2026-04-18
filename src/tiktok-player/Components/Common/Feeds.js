@@ -45,7 +45,7 @@ const Feeds = (props) => {
 			}
 
 			try {
-				const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts`);
+				const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts&nonce=${ttpData.nonce}`);
 				const json = await res.json();
 				const list = json?.data || [];
 				if (list.length) setFallbackAccountId(list[0].account_id);

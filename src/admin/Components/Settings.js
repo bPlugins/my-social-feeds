@@ -34,7 +34,7 @@ const Settings = (props) => {
 
     const fetchAccounts = async () => {
         setLoading(true);
-        const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts`);
+        const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts&nonce=${ttpData.nonce}`);
         const json = await res.json();
         setAccounts(json.data || []);
         setLoading(false);

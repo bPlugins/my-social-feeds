@@ -39,6 +39,13 @@ export const dashboardInfo = (info) => {
         licenseActiveNonce,
         changelogs: [
             {
+                version: '1.0.4 - 18 April, 2026',
+                type: 'security',
+                list: [
+                    'Security Fix: Resolved a Wordfence-identified Missing Authorization vulnerability to prevent unauthenticated access.',
+                ]
+            },
+            {
                 version: '1.0.3 - 11 April, 2026',
                 type: 'new',
                 list: [
