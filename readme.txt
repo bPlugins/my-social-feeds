@@ -194,7 +194,7 @@ https://wordpress.org/support/plugin/my-social-feeds/
 = 1.0.1 – 24 Nov, 2025 =
 * Modern dashboard added.
 
-= 1.0.0 =
+= 1.0.0 = 
 * Initial release
 
 == Upgrade Notice ==
