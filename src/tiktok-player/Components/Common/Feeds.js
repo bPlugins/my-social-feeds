@@ -45,7 +45,7 @@ const Feeds = (props) => {
 			}
 
 			try {
-				const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts&nonce=${ttpData.nonce}`);
+				const res = await fetch(`${accountInformation.ajaxUrl}?action=ttp_get_accounts&nonce=${accountInformation.nonce}`);
 				const json = await res.json();
 				const list = json?.data || [];
 				if (list.length) setFallbackAccountId(list[0].account_id);
@@ -72,7 +72,7 @@ const Feeds = (props) => {
 		const newCursor = cursor ? `&cursor=${cursor}` : '';
 
 		fetch(
-			`${ttpData.ajaxUrl}?action=ttp_tiktok_videos&nonce=${ttpData.nonce} &account_id=${effectiveAccountId} &device=${device}&max_count=${count}${newCursor}&key=${elId}&profileCacheTime=${getTimeFromString(profileCacheT)}&videoCacheTime=${getTimeFromString(videoCacheT)}`
+			`${accountInformation.ajaxUrl}?action=ttp_tiktok_videos&nonce=${accountInformation.nonce} &account_id=${effectiveAccountId} &device=${device}&max_count=${count}${newCursor}&key=${elId}&profileCacheTime=${getTimeFromString(profileCacheT)}&videoCacheTime=${getTimeFromString(videoCacheT)}`
 		)
 			.then(res => res.json())
 			.then(res => {

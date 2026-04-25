@@ -19,7 +19,7 @@ const Edit = (props) => {
 	useEffect(() => {
 		const fetchAccounts = async () => {
 			try {
-				const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts&nonce=${ttpData.nonce}`);
+				const res = await fetch(`${accountInformation.ajaxUrl}?action=ttp_get_accounts&nonce=${accountInformation.nonce}`);
 				const json = await res.json();
 				const list = json?.data || [];
 

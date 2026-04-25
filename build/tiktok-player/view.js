@@ -83380,7 +83380,7 @@ const Feeds = props => {
         return;
       }
       try {
-        const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts&nonce=${ttpData.nonce}`);
+        const res = await fetch(`${accountInformation.ajaxUrl}?action=ttp_get_accounts&nonce=${accountInformation.nonce}`);
         const json = await res.json();
         const list = json?.data || [];
         if (list.length) setFallbackAccountId(list[0].account_id);
@@ -83402,7 +83402,7 @@ const Feeds = props => {
     }
     setLoading(true);
     const newCursor = cursor ? `&cursor=${cursor}` : '';
-    fetch(`${ttpData.ajaxUrl}?action=ttp_tiktok_videos&nonce=${ttpData.nonce} &account_id=${effectiveAccountId} &device=${device}&max_count=${count}${newCursor}&key=${elId}&profileCacheTime=${(0,_utils_getTimeFromString__WEBPACK_IMPORTED_MODULE_3__["default"])(profileCacheT)}&videoCacheTime=${(0,_utils_getTimeFromString__WEBPACK_IMPORTED_MODULE_3__["default"])(videoCacheT)}`).then(res => res.json()).then(res => {
+    fetch(`${accountInformation.ajaxUrl}?action=ttp_tiktok_videos&nonce=${accountInformation.nonce} &account_id=${effectiveAccountId} &device=${device}&max_count=${count}${newCursor}&key=${elId}&profileCacheTime=${(0,_utils_getTimeFromString__WEBPACK_IMPORTED_MODULE_3__["default"])(profileCacheT)}&videoCacheTime=${(0,_utils_getTimeFromString__WEBPACK_IMPORTED_MODULE_3__["default"])(videoCacheT)}`).then(res => res.json()).then(res => {
       setLoading(false);
 
       // wp_send_json_success compatibility

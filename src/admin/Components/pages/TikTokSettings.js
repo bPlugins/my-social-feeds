@@ -10,7 +10,7 @@ import Table from './Elements/Table';
 const TikTokSettings = ({ onBack, props, fetchAccounts, loading, setLoading, accounts }) => {
 
     const { isPremium } = props;
-    const nonce = ttpData?.dataGet;
+    const nonce = ttpAdminData?.dataGet;
     const state = generateString(12);
     // const slug = 'isPremium ? `/wp-admin?page=my-social-feeds` : `/wp-admin/tools.php?page=my-social-feeds`';
     const slug = '/wp-admin/edit.php?post_type=msfbp';
@@ -25,7 +25,7 @@ const TikTokSettings = ({ onBack, props, fetchAccounts, loading, setLoading, acc
 
     const removeAccount = async (id) => {
         setLoading(true);
-        await fetch(`${ttpData.ajaxUrl}?action=ttp_remove_account`, {
+        await fetch(`${ttpAdminData.ajaxUrl}?action=ttp_remove_account&nonce=${ttpAdminData.nonce}`, {
             method: 'POST',
             body: new URLSearchParams({ account_id: id }),
         });

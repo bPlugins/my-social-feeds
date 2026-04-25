@@ -181,20 +181,35 @@ if ( ! class_exists('TTPTiktokAPI') ) {
         update_option('ttp_tiktok_accounts', $accounts);
     }
 
-    public function get_accounts() {
-
-        if ( ! current_user_can( 'manage_options' ) ) {
-            wp_send_json_error( [ 'message' => 'Unauthorized' ], 403 ); 
+    public function get_accounts() { 
+ 
+        if ( ! isset($_GET['nonce']) || ! wp_verify_nonce($_GET['nonce'], 'ttp_public_video_nonce') ) {
+            wp_send_json_error('Invalid security token.', 403);
         }
 
-        check_ajax_referer( 'ttp_fetch_data_nonce', 'nonce' );
+        if ( ! current_user_can('manage_options') ) {
+            wp_send_json_error('Unauthorized access.', 403);
+        }
 
         $accounts = get_option('ttp_tiktok_accounts', []);
         if ( empty($accounts) ) {
             $this->migrate_old_single_account();
             $accounts = get_option('ttp_tiktok_accounts', []);
         }
-        wp_send_json_success(array_values($accounts));
+
+        // ✅ টোকেনগুলো বাদ দিয়ে ফিল্টার করুন
+        $sanitized_accounts = array_map(function($acc) {
+            return [
+                'account_id'     => $acc['account_id'],
+                'display_name'   => $acc['display_name'],
+                'avatar_url'     => $acc['avatar_url'],
+                'follower_count' => $acc['follower_count'], 
+                'created_at'     => $acc['created_at']
+            ];
+        }, array_values($accounts));
+
+        wp_send_json_success($sanitized_accounts);
+        // wp_send_json_success(array_values($accounts));
     }
 
     /* =====================================================
@@ -204,7 +219,7 @@ if ( ! class_exists('TTPTiktokAPI') ) {
 
         // ✅ frontend/backend both must use same nonce key
         $nonce = sanitize_text_field($_GET['nonce'] ?? '');
-        if ( ! wp_verify_nonce($nonce, 'ttp_fetch_data_nonce') ) {
+        if ( ! wp_verify_nonce($nonce, 'ttp_public_video_nonce') ) {
             wp_send_json_error(['message' => 'Invalid nonce']);
         }
 
@@ -298,13 +313,8 @@ if ( ! class_exists('TTPTiktokAPI') ) {
 
     public function clear_cache() {
 
-        if ( ! current_user_can( 'manage_options' ) ) {
-            wp_send_json_error( [ 'message' => 'Unauthorized' ], 403 );
-        }
-
-        $nonce = sanitize_text_field($_GET['nonce'] ?? '');
-        if ( ! wp_verify_nonce($nonce, 'ttp_fetch_data_nonce') ) {
-            wp_send_json_error(['message' => 'Invalid nonce']);
+         if (!wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'ttp_fetch_data_nonce') || !current_user_can('manage_options')) {
+                wp_send_json_error('invalid access');
         }
 
         $action     = sanitize_text_field($_GET['action_type'] ?? 'clear_cache');
@@ -325,6 +335,17 @@ if ( ! class_exists('TTPTiktokAPI') ) {
     }
 
     public function remove_account() {
+
+         // 1. Check Nonce (Note: usually POST for destructive actions)
+        $nonce = $_POST['nonce'] ?? $_GET['nonce'] ?? '';
+        if ( ! wp_verify_nonce($nonce, 'ttp_fetch_data_nonce') ) {
+            wp_send_json_error('Invalid security token.', 403);
+        }
+
+        // 2. Check Permissions
+        if ( ! current_user_can('manage_options') ) {
+            wp_send_json_error('Unauthorized access.', 403);
+        }
 
         $account_id = sanitize_text_field($_POST['account_id'] ?? '');
         $accounts   = get_option('ttp_tiktok_accounts', []);

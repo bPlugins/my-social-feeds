@@ -85337,7 +85337,7 @@ const Edit = props => {
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     const fetchAccounts = async () => {
       try {
-        const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts&nonce=${ttpData.nonce}`);
+        const res = await fetch(`${accountInformation.ajaxUrl}?action=ttp_get_accounts&nonce=${accountInformation.nonce}`);
         const json = await res.json();
         const list = json?.data || [];
         setAccounts(list);
@@ -86018,7 +86018,7 @@ const Settings = ({
       return;
     }
     setLoading(true);
-    const response = await fetch(`${ttpData.ajaxUrl}?action=ttp_tiktok_clear&nonce=${ttpData?.nonce}&action_type=clear_cache&key=${elId}&account_id=${selectedAccountId}&profileCacheTime=${(0,_utils_getTimeFromString__WEBPACK_IMPORTED_MODULE_8__["default"])(profileCacheT)}&videoCacheTime=${(0,_utils_getTimeFromString__WEBPACK_IMPORTED_MODULE_8__["default"])(videoCacheT)}`);
+    const response = await fetch(`${ttpAdminData.ajaxUrl}?action=ttp_tiktok_clear&nonce=${ttpAdminData?.nonce}&action_type=clear_cache&key=${elId}&account_id=${selectedAccountId}&profileCacheTime=${(0,_utils_getTimeFromString__WEBPACK_IMPORTED_MODULE_8__["default"])(profileCacheT)}&videoCacheTime=${(0,_utils_getTimeFromString__WEBPACK_IMPORTED_MODULE_8__["default"])(videoCacheT)}`);
     await response.json();
     setLoading(false);
     setAttributes({
@@ -86030,7 +86030,7 @@ const Settings = ({
   const handleUnauthorized = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${ttpData.ajaxUrl}?action=ttp_tiktok_clear&nonce=${ttpData?.nonce}&action_type=unauthorized&key=${elId}`);
+      const response = await fetch(`${ttpAdminData.ajaxUrl}?action=ttp_tiktok_clear&nonce=${ttpAdminData?.nonce}&action_type=unauthorized&key=${elId}`);
       await response.json();
       setAttributes({
         authorized: false
@@ -86700,7 +86700,7 @@ const Feeds = props => {
         return;
       }
       try {
-        const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts&nonce=${ttpData.nonce}`);
+        const res = await fetch(`${accountInformation.ajaxUrl}?action=ttp_get_accounts&nonce=${accountInformation.nonce}`);
         const json = await res.json();
         const list = json?.data || [];
         if (list.length) setFallbackAccountId(list[0].account_id);
@@ -86722,7 +86722,7 @@ const Feeds = props => {
     }
     setLoading(true);
     const newCursor = cursor ? `&cursor=${cursor}` : '';
-    fetch(`${ttpData.ajaxUrl}?action=ttp_tiktok_videos&nonce=${ttpData.nonce} &account_id=${effectiveAccountId} &device=${device}&max_count=${count}${newCursor}&key=${elId}&profileCacheTime=${(0,_utils_getTimeFromString__WEBPACK_IMPORTED_MODULE_3__["default"])(profileCacheT)}&videoCacheTime=${(0,_utils_getTimeFromString__WEBPACK_IMPORTED_MODULE_3__["default"])(videoCacheT)}`).then(res => res.json()).then(res => {
+    fetch(`${accountInformation.ajaxUrl}?action=ttp_tiktok_videos&nonce=${accountInformation.nonce} &account_id=${effectiveAccountId} &device=${device}&max_count=${count}${newCursor}&key=${elId}&profileCacheTime=${(0,_utils_getTimeFromString__WEBPACK_IMPORTED_MODULE_3__["default"])(profileCacheT)}&videoCacheTime=${(0,_utils_getTimeFromString__WEBPACK_IMPORTED_MODULE_3__["default"])(videoCacheT)}`).then(res => res.json()).then(res => {
       setLoading(false);
 
       // wp_send_json_success compatibility

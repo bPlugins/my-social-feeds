@@ -14389,9 +14389,10 @@ const Settings = props => {
   };
   const fetchAccounts = async () => {
     setLoading(true);
-    const res = await fetch(`${ttpData.ajaxUrl}?action=ttp_get_accounts&nonce=${ttpData.nonce}`);
+    const res = await fetch(`${accountInformation.ajaxUrl}?action=ttp_get_accounts&nonce=${accountInformation.nonce}`);
     const json = await res.json();
     setAccounts(json.data || []);
+    console.log(json.data);
     setLoading(false);
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -14831,7 +14832,7 @@ const TikTokSettings = ({
   const {
     isPremium
   } = props;
-  const nonce = ttpData?.dataGet;
+  const nonce = ttpAdminData?.dataGet;
   const state = (0,_tiktok_player_utils_functions__WEBPACK_IMPORTED_MODULE_4__.generateString)(12);
   // const slug = 'isPremium ? `/wp-admin?page=my-social-feeds` : `/wp-admin/tools.php?page=my-social-feeds`';
   const slug = '/wp-admin/edit.php?post_type=msfbp';
@@ -14843,7 +14844,7 @@ const TikTokSettings = ({
   const connect = () => (0,_utils_functions__WEBPACK_IMPORTED_MODULE_3__["default"])(connectUrl, 850, 720, fetchAccounts);
   const removeAccount = async id => {
     setLoading(true);
-    await fetch(`${ttpData.ajaxUrl}?action=ttp_remove_account`, {
+    await fetch(`${ttpAdminData.ajaxUrl}?action=ttp_remove_account&nonce=${ttpAdminData.nonce}`, {
       method: 'POST',
       body: new URLSearchParams({
         account_id: id

@@ -36,7 +36,7 @@ const Settings = ({ attributes, elId, setAttributes, clientId, accounts, isPremi
 		}
 
 		setLoading(true);
-		const response = await fetch(`${ttpData.ajaxUrl}?action=ttp_tiktok_clear&nonce=${ttpData?.nonce}&action_type=clear_cache&key=${elId}&account_id=${selectedAccountId}&profileCacheTime=${getTimeFromString(profileCacheT)}&videoCacheTime=${getTimeFromString(videoCacheT)}`);
+		const response = await fetch(`${ttpAdminData.ajaxUrl}?action=ttp_tiktok_clear&nonce=${ttpAdminData?.nonce}&action_type=clear_cache&key=${elId}&account_id=${selectedAccountId}&profileCacheTime=${getTimeFromString(profileCacheT)}&videoCacheTime=${getTimeFromString(videoCacheT)}`);
 
 		await response.json();
 		setLoading(false);
@@ -47,7 +47,7 @@ const Settings = ({ attributes, elId, setAttributes, clientId, accounts, isPremi
 	const handleUnauthorized = async () => {
 		setLoading(true);
 		try {
-			const response = await fetch(`${ttpData.ajaxUrl}?action=ttp_tiktok_clear&nonce=${ttpData?.nonce}&action_type=unauthorized&key=${elId}`);
+			const response = await fetch(`${ttpAdminData.ajaxUrl}?action=ttp_tiktok_clear&nonce=${ttpAdminData?.nonce}&action_type=unauthorized&key=${elId}`);
 			await response.json();
 			setAttributes({ authorized: false });
 			setLoading(false);

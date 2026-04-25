@@ -4,7 +4,7 @@ Donate link: https://www.buymeacoffee.com/abuhayat
 Tags: block, instagram feed, tiktok feed, pinterest feed, twitter feed
 Requires at least: 6.5  
 Tested up to: 6.9.4
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 Requires PHP: 7.1  
 License: GPLv3 or later  
 License URI: http://www.gnu.org/licenses/gpl-3.0.html  
@@ -182,6 +182,9 @@ https://wordpress.org/support/plugin/my-social-feeds/
 
 == Changelog ==
 
+= 1.0.5 - 24 April, 2026 =
+* Wordfence Security issues fixed:
+
 = 1.0.4 - 18 April, 2026 =
 * Security Fix: Resolved a Wordfence-identified 'Missing Authorization' vulnerability to prevent unauthenticated access.
 
@@ -198,6 +201,9 @@ https://wordpress.org/support/plugin/my-social-feeds/
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.0.5 - 24 April, 2026 =
+* Wordfence Security issues fixed:
 
 = 1.0.4 - 18 April, 2026 =
 * Security Fix: Resolved a Wordfence-identified 'Missing Authorization' vulnerability to prevent unauthenticated access.

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: My Social Feeds
  * Description: Embed social feeds
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: bPlugins
  * Author URI: https://bplugins.com
  * License: GPLv3
@@ -38,7 +38,7 @@ if ( function_exists( 'msfbp_fs' ) ) {
     msfbp_fs()->set_basename( false, __FILE__ );
 } else {
 
-	define( 'MSFBP_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.4' );
+	define( 'MSFBP_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.0.5' );
 
 	// define( 'MSFBP_VERSION', ( defined('WP_DEBUG') && WP_DEBUG ) ? time() : '1.0.2');
 
@@ -108,9 +108,9 @@ if ( function_exists( 'msfbp_fs' ) ) {
 				$this->load_classes();
 				add_action( 'init', [ $this, 'onInit' ] );
 				add_action( 'enqueue_block_editor_assets', [$this, 'enqueueBlockEditorAssets'] );
-				add_action('enqueue_block_assets', [$this, 'enqueueTiktokAssets']);
-				add_action('enqueue_block_assets', [$this, 'wp_admin_scripts']);
-				add_action('admin_enqueue_scripts', [$this, 'wp_admin_scripts']);
+				add_action('wp_enqueue_scripts', [$this, 'enqueue_frontend_assets']);
+				add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_assets']);
+				add_action('enqueue_block_assets', [$this, 'enqueue_common_block_assets']);
 				add_action('admin_footer', [$this, 'load_tiktok_script'], 10);
 				add_action('wp_footer', [$this, 'load_tiktok_script'], 10);
 				add_filter( 'plugin_action_links', [$this, 'plugin_action_links'], 10, 2 ); 
@@ -141,35 +141,44 @@ if ( function_exists( 'msfbp_fs' ) ) {
 			<?php
 			}
 
-			public function enqueueTiktokAssets()
-			{
-				wp_register_style('fancyapps', MSFBP_PUBLIC_URL . 'css/fancyapps.min.css');
-				wp_register_style('justified', MSFBP_PUBLIC_URL . 'css/justifiedGallery.min.css');
-				wp_register_script('fancyapps', MSFBP_PUBLIC_URL . 'js/fancyapps.min.js', [], MSFBP_VERSION);
-				wp_register_script('justified', MSFBP_PUBLIC_URL . 'js/justifiedGallery.min.js', ['jquery'], MSFBP_VERSION);
-				wp_register_script('ttp-script', MSFBP_PUBLIC_URL . 'js/ttp_script.js', [], MSFBP_VERSION);
+			public function enqueue_admin_assets() {
+				wp_enqueue_script( 'ttp-admin-script', MSFBP_PUBLIC_URL . 'js/ttp_script.js', [], MSFBP_VERSION, true );
 
-
-				wp_localize_script('ttp-tiktok-player-editor-script', 'ttpPatters', [
-					'patternsImagePath' => MSFBP_PUBLIC_URL . 'images/patterns/',
+				wp_localize_script('ttp-admin-script', 'ttpAdminData', [
+					'ajaxUrl' => admin_url('admin-ajax.php'),
+					'nonce'   => wp_create_nonce('ttp_fetch_data_nonce'), // অ্যাকাউন্ট দেখার জন্য
+					'dataGet' => wp_create_nonce('ttp_data_get_nonce'),  // অ্যাকাউন্ট কানেক্ট করার জন্য
 				]);
-			}
 
-			public function wp_admin_scripts() {
-
-				wp_enqueue_script( 'ttp-script', MSFBP_PUBLIC_URL . 'js/ttp_script.js', [], MSFBP_VERSION );
-
-				wp_localize_script('ttp-script', 'msfAuthorization', [
+				wp_localize_script('ttp-admin-script', 'msfAuthorization', [
 					'ajaxUrl' => admin_url('admin-ajax.php'),
 					'nonce' => wp_create_nonce('msf_authorization_nonce')
 				] );
 
-				wp_localize_script('ttp-script', 'ttpData', [
+				wp_localize_script('ttp-admin-script', 'accountInformation', [
 					'ajaxUrl' => admin_url('admin-ajax.php'),
-					'tiktokAuthorized' => false !== get_transient('ttp_tiktok_authorized_data'),
-					'nonce' => wp_create_nonce('ttp_fetch_data_nonce'),
-                    'dataGet' => wp_create_nonce('ttp_data_get_nonce'),
-				]); 
+					'nonce'   => wp_create_nonce('ttp_public_video_nonce'), // শুধুমাত্র ভিডিও লোড করার পাবলিক ননস
+				]);
+			}
+
+			public function enqueue_frontend_assets() {
+				wp_enqueue_script( 'ttp-frontend-script', MSFBP_PUBLIC_URL . 'js/ttp_script.js', [], MSFBP_VERSION, true );
+
+				wp_localize_script('ttp-frontend-script', 'accountInformation', [
+					'ajaxUrl' => admin_url('admin-ajax.php'),
+					'nonce'   => wp_create_nonce('ttp_public_video_nonce'), // শুধুমাত্র ভিডিও লোড করার পাবলিক ননস
+				]);
+			}
+
+			public function enqueue_common_block_assets() {
+				wp_register_style('fancyapps', MSFBP_PUBLIC_URL . 'css/fancyapps.min.css');
+				wp_register_style('justified', MSFBP_PUBLIC_URL . 'css/justifiedGallery.min.css');
+				wp_register_script('fancyapps', MSFBP_PUBLIC_URL . 'js/fancyapps.min.js', [], MSFBP_VERSION);
+				wp_register_script('justified', MSFBP_PUBLIC_URL . 'js/justifiedGallery.min.js', ['jquery'], MSFBP_VERSION);
+
+				wp_localize_script('ttp-tiktok-player-editor-script', 'ttpPatters', [
+					'patternsImagePath' => MSFBP_PUBLIC_URL . 'images/patterns/',
+				]);
 			}
 
 			public function enqueueBlockEditorAssets() {
