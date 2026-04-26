@@ -78,7 +78,7 @@ if ( ! class_exists( 'KP_PFREE_Pinterest' ) ) {
 					'publicly_queryable' => true,
 					'query_var'          => false,
 					'show_ui'            => current_user_can( 'manage_options' ) ? true : false,
-					'show_in_menu'       => false,
+					'show_in_menu'       => 'edit.php?post_type=msfbp',
 					'menu_icon'          => 'dashicons-share',
 					'show_in_nav_menus'  => true,
 					'show_in_admin_bar'  => true,

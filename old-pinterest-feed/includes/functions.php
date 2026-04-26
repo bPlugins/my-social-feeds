@@ -59,13 +59,13 @@ if ( !class_exists( 'KP_Pinterest_Free_Functions' ) ) {
 		 */
 		public function admin_menu() {
 /* 			add_submenu_page(
-				'edit.php?post_type=kpp_pinterest', __( 'Pinterest Pro', 'my-social-feeds' ), __( 'Premium', 'my-social-feeds' ), 'manage_options', 'pinterest_premium', array(
+				'edit.php?post_type=msfbp', __( 'Pinterest Pro', 'my-social-feeds' ), __( 'Premium', 'my-social-feeds' ), 'manage_options', 'pinterest_premium', array(
 					$this,
 					'premium_page_callback',
 				)
 			); */
 			add_submenu_page(
-				'edit.php?post_type=kpp_pinterest', __( 'Pinterest Help', 'my-social-feeds' ), __( 'Help', 'my-social-feeds' ), 'manage_options', 'pfree_help', array(
+				'edit.php?post_type=msfbp', __( 'Pinterest Help', 'my-social-feeds' ), __( 'Help', 'my-social-feeds' ), 'manage_options', 'pfree_help', array(
 					$this,
 					'help_page_callback',
 				)

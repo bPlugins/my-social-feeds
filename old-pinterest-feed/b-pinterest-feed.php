@@ -153,7 +153,7 @@ if ( ! class_exists( 'KP_Pinterest_FREE' ) ) {
 		
 		function redirect_help_page( $plugin ) {
 			if ( KP_PFREE_BASENAME === $plugin ) {
-				exit( wp_redirect( admin_url( 'edit.php?post_type=kpp_pinterest&page=pfree_help' ) ) );
+				exit( wp_redirect( admin_url( 'edit.php?post_type=msfbp&page=pfree_help' ) ) );
 			}
 		}
 

@@ -28,7 +28,7 @@ $text = sprintf(
 CSF::createOptions(
 	$prefix, array(
 		'menu_title'       => esc_html__( 'Pinterest Settings', 'b-pinterest-feed' ),
-		'menu_parent'      => 'edit.php?post_type=kpp_pinterest',
+		'menu_parent'      => 'edit.php?post_type=msfbp',
 		'menu_type'        => 'submenu', // menu, submenu, options, theme, etc.
 		'menu_slug'        => 'kpp_settings',
 		'theme'            => 'light',

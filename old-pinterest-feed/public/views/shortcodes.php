@@ -138,8 +138,8 @@ if ( ! function_exists( 'kp_pinterest_free_shortcode' ) ) :
 				}
 
 				if($layout == "slider"){
-					wp_enqueue_style( 'swiper', KP_PFREE_URL . 'public/assets/css/swiper.min.css', array(), '11.1.9', 'all' );
-					wp_enqueue_script( 'swiper', KP_PFREE_URL . 'public/assets/js/swiper.min.js', array( ), '11.1.9', true );
+					wp_enqueue_style( 'swiper-pinterest', KP_PFREE_URL . 'public/assets/css/swiper.min.css', array(), '11.1.9', 'all' );
+					wp_enqueue_script( 'swiper-pinterest', KP_PFREE_URL . 'public/assets/js/swiper.min.js', array(), '11.1.9', true );
 				}
 
 				if($layout == "justified") {
