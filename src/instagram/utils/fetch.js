@@ -5,7 +5,8 @@ export const fetchTransientData = () => new Promise((resolve, reject) => {
 		url: ifbLocal?.ajaxURL,
 		type: 'POST',
 		data: {
-			action: 'ifbAjaxRequest'
+			action: 'ifbAjaxRequest',
+			nonce: ifbLocal?.nonce
 		},
 		success: res => resolve(res?.data),
 		error: err => reject(err)
@@ -18,7 +19,8 @@ export const clearCache = () => {
 		url: ifbLocal?.ajaxURL,
 		type: 'POST',
 		data: {
-			action: 'ifbDeleteTransient'
+			action: 'ifbDeleteTransient',
+			nonce: ifbLocal?.nonce
 		},
 		success: () => {
 			// eslint-disable-next-line no-console

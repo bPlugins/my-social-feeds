@@ -1,0 +1,32 @@
+# Directories / files that must NOT ship in the distributed plugin zip.
+
+# Version control & editor
+.git
+.gitignore
+.gitattributes
+.github
+.vscode
+.idea
+.DS_Store
+
+# Build / dev tooling
+node_modules
+src
+.eslintrc.js
+.editorconfig
+webpack.config.js
+package.json
+package-lock.json
+composer.json
+composer.lock
+phpcs.xml
+phpcs.xml.dist
+.phpcs.xml.dist
+
+# Notes / scratch
+todo.txt
+readme.md
+
+# Packaged output
+*.zip
+*.map

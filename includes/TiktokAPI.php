@@ -89,15 +89,20 @@ if ( ! class_exists('TTPTiktokAPI') ) {
     public function handle_oauth_callback() {
 
         // ✅ Correct nonce check (missing OR invalid)
-        $nonce = isset($_GET['nonce']) ? sanitize_text_field($_GET['nonce']) : '';
+        $nonce = isset($_GET['nonce']) ? sanitize_text_field( wp_unslash( $_GET['nonce'] ) ) : '';
         if ( empty($nonce) || ! wp_verify_nonce($nonce, 'ttp_data_get_nonce') ) {
+            return;
+        }
+
+        // Only administrators may connect/store TikTok accounts.
+        if ( ! current_user_can( 'manage_options' ) ) {
             return;
         }
 
         if ( ! isset($_GET['data']) ) return;
 
         // sanitize_text_field strips json chars; don't use it here
-        $raw = wp_unslash($_GET['data']);
+        $raw = sanitize_textarea_field( wp_unslash( $_GET['data'] ) );
         $payload = json_decode($raw, true);
         $data = $payload['data'] ?? $payload;
 
@@ -183,7 +188,8 @@ if ( ! class_exists('TTPTiktokAPI') ) {
 
     public function get_accounts() { 
  
-        if ( ! isset($_GET['nonce']) || ! wp_verify_nonce($_GET['nonce'], 'ttp_public_video_nonce') ) {
+        $nonce = isset($_GET['nonce']) ? sanitize_text_field( wp_unslash( $_GET['nonce'] ) ) : '';
+        if ( ! wp_verify_nonce($nonce, 'ttp_public_video_nonce') ) {
             wp_send_json_error('Invalid security token.', 403);
         }
 
@@ -218,12 +224,12 @@ if ( ! class_exists('TTPTiktokAPI') ) {
     public function get_videos() {
 
         // ✅ frontend/backend both must use same nonce key
-        $nonce = sanitize_text_field($_GET['nonce'] ?? '');
+        $nonce = isset($_GET['nonce']) ? sanitize_text_field( wp_unslash( $_GET['nonce'] ) ) : '';
         if ( ! wp_verify_nonce($nonce, 'ttp_public_video_nonce') ) {
             wp_send_json_error(['message' => 'Invalid nonce']);
         }
 
-        $account_id = sanitize_text_field($_GET['account_id'] ?? '');
+        $account_id = isset($_GET['account_id']) ? sanitize_text_field( wp_unslash( $_GET['account_id'] ) ) : '';
         $accounts   = get_option('ttp_tiktok_accounts', []);
         if ( ! is_array($accounts) ) $accounts = [];
 
@@ -236,8 +242,8 @@ if ( ! class_exists('TTPTiktokAPI') ) {
             wp_send_json_error(['message' => 'Missing access token']);
         }
 
-        $profileCacheTime = intval($_GET['profileCacheTime'] ?? HOUR_IN_SECONDS);
-        $videoCacheTime   = intval($_GET['videoCacheTime'] ?? HOUR_IN_SECONDS);
+        $profileCacheTime = isset($_GET['profileCacheTime']) ? absint( wp_unslash( $_GET['profileCacheTime'] ) ) : HOUR_IN_SECONDS;
+        $videoCacheTime   = isset($_GET['videoCacheTime']) ? absint( wp_unslash( $_GET['videoCacheTime'] ) ) : HOUR_IN_SECONDS;
 
         /* ---------- USER INFO ---------- */
         $user_info = get_transient("ttp_tiktok_user_{$account_id}");
@@ -267,14 +273,14 @@ if ( ! class_exists('TTPTiktokAPI') ) {
         }
 
         /* ---------- VIDEOS ---------- */
-        $cursor = ! empty($_GET['cursor']) ? sanitize_text_field($_GET['cursor']) : '';
+        $cursor = ! empty($_GET['cursor']) ? sanitize_text_field( wp_unslash( $_GET['cursor'] ) ) : '';
         $videos = get_transient("ttp_tiktok_videos_{$account_id}");
 
         // cursor থাকলে cache ব্যবহার না করে fresh আনবে
         if ( $videos === false || $cursor ) {
 
             $payload = [
-                'max_count' => intval($_GET['max_count'] ?? 12),
+                'max_count' => isset($_GET['max_count']) ? absint( wp_unslash( $_GET['max_count'] ) ) : 12,
             ];
             if ( $cursor ) $payload['cursor'] = $cursor;
 
@@ -313,12 +319,13 @@ if ( ! class_exists('TTPTiktokAPI') ) {
 
     public function clear_cache() {
 
-         if (!wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'ttp_fetch_data_nonce') || !current_user_can('manage_options')) {
+        $nonce = isset($_GET['nonce']) ? sanitize_text_field( wp_unslash( $_GET['nonce'] ) ) : '';
+        if ( ! wp_verify_nonce( $nonce, 'ttp_fetch_data_nonce' ) || ! current_user_can('manage_options') ) {
                 wp_send_json_error('invalid access');
         }
 
-        $action     = sanitize_text_field($_GET['action_type'] ?? 'clear_cache');
-        $account_id = sanitize_text_field($_GET['account_id'] ?? '');
+        $action     = isset($_GET['action_type']) ? sanitize_text_field( wp_unslash( $_GET['action_type'] ) ) : 'clear_cache';
+        $account_id = isset($_GET['account_id']) ? sanitize_text_field( wp_unslash( $_GET['account_id'] ) ) : '';
 
         if ( $action === 'clear_cache' ) {
             if ( empty($account_id) ) {
@@ -337,7 +344,7 @@ if ( ! class_exists('TTPTiktokAPI') ) {
     public function remove_account() {
 
          // 1. Check Nonce (Note: usually POST for destructive actions)
-        $nonce = $_POST['nonce'] ?? $_GET['nonce'] ?? '';
+        $nonce = isset($_POST['nonce']) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
         if ( ! wp_verify_nonce($nonce, 'ttp_fetch_data_nonce') ) {
             wp_send_json_error('Invalid security token.', 403);
         }
@@ -347,7 +354,7 @@ if ( ! class_exists('TTPTiktokAPI') ) {
             wp_send_json_error('Unauthorized access.', 403);
         }
 
-        $account_id = sanitize_text_field($_POST['account_id'] ?? '');
+        $account_id = isset($_POST['account_id']) ? sanitize_text_field( wp_unslash( $_POST['account_id'] ) ) : '';
         $accounts   = get_option('ttp_tiktok_accounts', []);
         if ( ! is_array($accounts) ) $accounts = [];
 

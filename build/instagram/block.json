@@ -98,7 +98,8 @@
         "nameColor": "#333",
         "isBio": false,
         "bio": "",
-        "bioColor": "#4b4f58"
+        "bioColor": "#4b4f58",
+        "followBtnText": "Follow On Instagram"
       }
     },
     "isFollowBtn": {
@@ -124,6 +125,12 @@
     "isLoadMore": {
       "type": "boolean",
       "default": true
+    },
+    "loadMore": {
+      "type": "object",
+      "default": {
+        "text": "Load More"
+      }
     },
     "columns": {
       "type": "object",

@@ -5,7 +5,7 @@ import TikTokSettings from './pages/TikTokSettings';
 import { instagram, tiktok } from '../../utils/icons';
 
 
-const Settings = (props) => {
+const AuthorizationSettings = (props) => {
     const [screen, setScreen] = useState("main");
     const [tokens, setTokens] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -104,7 +104,7 @@ const Settings = (props) => {
         </div>
     );
 };
-export default Settings;
+export default AuthorizationSettings;
 
 
 export function getDataParamsFromUrl() {

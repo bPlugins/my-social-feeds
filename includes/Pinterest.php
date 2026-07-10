@@ -14,17 +14,23 @@ if( !class_exists( 'bPinterestFeed' ) ){
         }         
 
         public function bpinterest_ajaxRequest() {
-            if (!wp_verify_nonce(sanitize_text_field($_GET['nonce']), 'wp_rest')) {
+            $nonce = isset($_GET['nonce']) ? sanitize_text_field( wp_unslash( $_GET['nonce'] ) ) : '';
+            if (!wp_verify_nonce($nonce, 'wp_rest')) {
                 wp_send_json_error('Invalid request');
             }
-        
-            $userName = sanitize_text_field($_GET['userName']) ?? false;
-            $boardName = sanitize_text_field($_GET['boardName']) ?? false;
-        
-            $url = "https://api.pinterest.com/v3/pidgets/boards/$userName/$boardName/pins";
-        
+
+            // Restrict to safe URL-path characters so the fixed Pinterest host/path cannot be manipulated.
+            $userName  = isset($_GET['userName']) ? preg_replace( '/[^A-Za-z0-9_.\-]/', '', sanitize_text_field( wp_unslash( $_GET['userName'] ) ) ) : '';
+            $boardName = isset($_GET['boardName']) ? preg_replace( '/[^A-Za-z0-9_.\-]/', '', sanitize_text_field( wp_unslash( $_GET['boardName'] ) ) ) : '';
+
+            if ( empty( $userName ) || empty( $boardName ) ) {
+                wp_send_json_error( 'Missing board information' );
+            }
+
+            $url = 'https://api.pinterest.com/v3/pidgets/boards/' . rawurlencode( $userName ) . '/' . rawurlencode( $boardName ) . '/pins';
+
             $response = $this->get_pinterest_data($url);
-        
+
             if (is_wp_error($response)) {
                 wp_send_json_error($response->get_error_message());
             } else {
@@ -32,9 +38,8 @@ if( !class_exists( 'bPinterestFeed' ) ){
                 if ($response_code != 200) {
                     wp_send_json_error( $response_code);
                 }
-        
+
                 $body = wp_remote_retrieve_body($response);
-                error_log($body); // Debug: log the raw response
                 $data = json_decode($body, true);
         
                 if (json_last_error() === JSON_ERROR_NONE) {
@@ -64,7 +69,7 @@ if( !class_exists( 'bPinterestFeed' ) ){
 
         public function onInit()
         {
-            wp_register_script('ttp-script', MSFBP_PUBLIC_URL . 'js/ttp_script.js', [], MSFBP_VERSION);
+            wp_register_script('ttp-script', MSFBP_PUBLIC_URL . 'js/ttp_script.js', [], MSFBP_VERSION, true);
 
             wp_localize_script('ttp-script', 'bPinterestData', [
                 'ajaxUrl' => admin_url('admin-ajax.php'),

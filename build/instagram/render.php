@@ -1,9 +1,10 @@
 <?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Variables are local to the block render scope, not truly global.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
- 
-extract( $attributes );
+
+$cId = $attributes['cId'] ?? '';
 $ifbData = json_decode( get_option( 'ifbData' ), true );
 $accounts = $ifbData['iAccounts'] ?? [];
 

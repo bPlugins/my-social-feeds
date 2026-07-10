@@ -15,10 +15,17 @@ class MSFBP_INSTAGRAM_ACCESS_TOKEN_SAVE{
     }
 
     public function msfbp_delete_instagram_access_token(){
-        
+
         check_ajax_referer("msf_authorization_nonce", "nonce");
 
-        $index = intval($_GET['index']);
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error( 'Unauthorized', 403 );
+        }
+
+        $index = isset( $_GET['index'] ) ? absint( $_GET['index'] ) : -1;
+        if ( $index < 0 ) {
+            wp_send_json_error( 'Invalid index' );
+        }
 
         $tokens = get_option('msfbp_instagram_access_tokens', []);
 
@@ -34,17 +41,23 @@ class MSFBP_INSTAGRAM_ACCESS_TOKEN_SAVE{
 
 
     public function msfbp_get_instagram_access_token(){
-        // check nonce 
+        // check nonce
         check_ajax_referer("msf_authorization_nonce", "nonce");
-        $tokens = get_option('msfbp_instagram_access_tokens', []);  
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error( 'Unauthorized', 403 );
+        }
+        $tokens = get_option('msfbp_instagram_access_tokens', []);
         wp_send_json_success($tokens);
     }
 
     public function msfbp_set_instagram_access_token_save(){
         // check nonce
         check_ajax_referer("msf_authorization_nonce", "nonce");
-        $label = isset( $_GET['label'] ) ? sanitize_text_field( $_GET['label'] ) : '';
-        $value = isset( $_GET['value'] ) ? sanitize_text_field( $_GET['value'] ) : '';
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error( 'Unauthorized', 403 );
+        }
+        $label = isset( $_GET['label'] ) ? sanitize_text_field( wp_unslash( $_GET['label'] ) ) : '';
+        $value = isset( $_GET['value'] ) ? sanitize_text_field( wp_unslash( $_GET['value'] ) ) : '';
 
         
         if(!$value){

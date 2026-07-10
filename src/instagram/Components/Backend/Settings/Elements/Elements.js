@@ -5,8 +5,11 @@ import { BControlPro } from '../../../../../../../bpl-tools/ProControls';
 
 const Elements = ({ attributes, setAttributes, isPremium, setProModalOpen, updateObj, isBusiness }) => {
 
-    const { isProfile, profileImg, isFollowBtn, isFollowBtnInFooter, isRemCaptionHash, captionLength, isLoadMore, isCaption, profileInfo } = attributes;
-    const { isFollowers, isFollows, isName, name, isBio, bio } = profileInfo || {};
+    const { isProfile, profileImg, isFollowBtn, isFollowBtnInFooter, isRemCaptionHash, captionLength, isLoadMore, isCaption, profileInfo, loadMore } = attributes;
+    const { isFollowers, isFollows, isName, name, isBio, bio, followBtnText } = profileInfo || {};
+
+    console.log(followBtnText);
+
 
     return <>
         <PanelBody className='bPlPanelBody' title={__('Profile', 'my-social-feeds')}>
@@ -33,9 +36,13 @@ const Elements = ({ attributes, setAttributes, isPremium, setProModalOpen, updat
 
 
         <PanelBody className='bPlPanelBody' title={__('Follow Button', 'my-social-feeds')} initialOpen={false}>
-            <ToggleControl label={__('Show Follow Button', 'my-social-feeds')} checked={isFollowBtn} onChange={val => setAttributes({ isFollowBtn: val })} />
+            <ToggleControl label={__('Show Follow Button', 'my-social-feeds')} checked={isFollowBtn}
+                onChange={val => setAttributes({ isFollowBtn: val })} />
 
             {isFollowBtn && <ToggleControl className='mt10' label={__('Follow Button In Footer', 'my-social-feeds')} checked={isFollowBtnInFooter} onChange={val => setAttributes({ isFollowBtnInFooter: val })} />}
+
+            {isFollowBtn && <TextControl className='mt10' label={__('Follow Button Text', 'my-social-feeds')} value={followBtnText}
+                onChange={val => setAttributes({ profileInfo: { ...profileInfo, followBtnText: val } })} />}
         </PanelBody>
 
 
@@ -54,7 +61,10 @@ const Elements = ({ attributes, setAttributes, isPremium, setProModalOpen, updat
 
 
         <PanelBody className='bPlPanelBody' title={__('Load More Button', 'my-social-feeds')} initialOpen={false}>
-            <ToggleControl label={__('Show Load More', 'my-social-feeds')} checked={isLoadMore} onChange={val => setAttributes({ isLoadMore: val })} />
+            <ToggleControl label={__('Show Load More', 'my-social-feeds')} checked={isLoadMore}
+                onChange={val => setAttributes({ isLoadMore: val })} />
+            <TextControl className='mt10' label={__('Load More Text', 'my-social-feeds')} value={loadMore?.text}
+                onChange={val => setAttributes({ loadMore: { ...loadMore, text: val } })} />
         </PanelBody>
     </>
 }

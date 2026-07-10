@@ -52,7 +52,10 @@ class MSFBPCustomPost{
 	}
 
 	public function onAddShortcode( $atts ) {
-        $post_id = $atts['id'];
+        $post_id = isset( $atts['id'] ) ? absint( $atts['id'] ) : 0;
+        if ( ! $post_id ) {
+            return '';
+        }
         $post = get_post( $post_id );
         if ( !$post ) {
             return '';
@@ -82,6 +85,9 @@ class MSFBPCustomPost{
 	
     public function displayContent( $post ){
         $blocks = parse_blocks( $post->post_content );
+        if ( empty( $blocks ) ) {
+            return '';
+        }
         return render_block( $blocks[0] );
     }
 
@@ -94,10 +100,15 @@ class MSFBPCustomPost{
 
 	function manageBSBPostsCustomColumns( $column_name, $post_ID ) {
 		if ( $column_name == 'shortcode' ) {
-			echo "<div class='bsbFrontShortcode' id='bsbFrontShortcode-$post_ID'>
-				<input value='[msfbp-social-feeds id=$post_ID]' onclick='bsbHandleShortcode( $post_ID )'>
-				<span class='tooltip'>Copy To Clipboard</span>
-			</div>";
+			$post_ID = absint( $post_ID );
+			printf(
+				'<div class="bsbFrontShortcode" id="bsbFrontShortcode-%1$s">
+				<input value="[msfbp-social-feeds id=%1$s]" onclick="bsbHandleShortcode( %1$s )" readonly>
+				<span class="tooltip">%2$s</span>
+			</div>',
+				esc_attr( $post_ID ),
+				esc_html__( 'Copy To Clipboard', 'my-social-feeds' )
+			);
 		}
 	}
 

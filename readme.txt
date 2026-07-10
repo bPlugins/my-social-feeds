@@ -1,13 +1,13 @@
-=== My Social Feeds – Social Feeds Embedder Plugin for WordPress ===
+=== My Social Feeds ===
 Contributors: bplugins, abuhayat, farazi1, btechnologies
 Donate link: https://www.buymeacoffee.com/abuhayat
 Tags: block, instagram feed, tiktok feed, pinterest feed, twitter feed
-Requires at least: 6.5  
-Tested up to: 6.9.4
-Stable tag: 1.0.5
-Requires PHP: 7.1  
-License: GPLv3 or later  
-License URI: http://www.gnu.org/licenses/gpl-3.0.html  
+Requires at least: 6.5
+Tested up to: 7.0
+Stable tag: 1.0.6
+Requires PHP: 7.1
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Embed Instagram, TikTok, Pinterest, and Twitter feeds easily using Gutenberg blocks.
 
@@ -182,6 +182,9 @@ https://wordpress.org/support/plugin/my-social-feeds/
 
 == Changelog ==
 
+= 1.0.6 - 10 June, 2026 =
+* Features to change the text of the 'Follow' and 'Load More' buttons are available.
+
 = 1.0.5 - 24 April, 2026 =
 * Wordfence Security issues fixed:
 
@@ -201,6 +204,9 @@ https://wordpress.org/support/plugin/my-social-feeds/
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.0.6 - 10 June, 2026 =
+* Features to change the text of the 'Follow' and 'Load More' buttons are available.
 
 = 1.0.5 - 24 April, 2026 =
 * Wordfence Security issues fixed:

@@ -1,12 +1,12 @@
 <?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Variables are local to the block render scope, not truly global.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-    extract($attributes);
-
     $id = wp_unique_id( 'ttpTiktok-' );
 
-    $className = $className ?? '';
+    $className = $attributes['className'] ?? '';
+    $align     = $attributes['align'] ?? '';
     $ttpBlockClassName = 'wp-block-ttp-tiktok-player ' . $className . ' align' . $align;
 
     $videos = get_transient('ttp_tiktok_videos');

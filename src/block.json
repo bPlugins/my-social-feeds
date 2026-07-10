@@ -1,6 +1,6 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
+	"apiVersion": 3,
 	"name": "msfbp/my-social-feeds",
 	"title": "my social feeds",
 	"description": "Display your social media feeds in a beautiful way.",

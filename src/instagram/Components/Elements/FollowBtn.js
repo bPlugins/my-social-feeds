@@ -1,8 +1,9 @@
 const FollowBtn = ({ attributes, username }) => {
-	const { isFollowBtn } = attributes;
+	const { isFollowBtn, profileInfo } = attributes;
+	const { followBtnText } = profileInfo;
 
 	const link = `https://www.instagram.com/${username}`;
 
-	return isFollowBtn && <a className='followBtn' href={link} target='_blank' rel='noreferrer'>Follow On Instagram</a>
+	return isFollowBtn && <a className='followBtn' href={link} target='_blank' rel='noreferrer'>{followBtnText}</a>
 }
 export default FollowBtn;

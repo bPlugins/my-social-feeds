@@ -16,6 +16,55 @@ if ( !class_exists( 'KP_Pinterest_Free_Functions' ) ) {
 			add_filter( 'post_updated_messages', array( $this, 'kp_pfree_change_default_post_update_message' ) );
 			add_filter( 'admin_footer_text', array( $this, 'admin_footer' ), 1, 2 );
 			add_action( 'admin_menu', array( $this, 'admin_menu' ), 100 );
+			// Run late so every submenu (incl. the CodeStar "Pinterest Settings" page) is already registered.
+			add_action( 'admin_menu', array( $this, 'reorder_pinterest_submenu' ), 9999 );
+		}
+
+		/**
+		 * Move the "Pinterest Settings" page so it sits directly under the
+		 * "Pinterests" item within the My Social Feeds menu.
+		 */
+		public function reorder_pinterest_submenu() {
+			global $submenu;
+
+			$parent        = 'edit.php?post_type=msfbp';
+			$pinterest_cpt = 'edit.php?post_type=kpp_pinterest';
+			$settings_slug = 'kpp_settings';
+
+			if ( empty( $submenu[ $parent ] ) ) {
+				return;
+			}
+
+			$settings_item = null;
+			foreach ( $submenu[ $parent ] as $key => $item ) {
+				if ( isset( $item[2] ) && $settings_slug === $item[2] ) {
+					$settings_item = $item;
+					unset( $submenu[ $parent ][ $key ] );
+					break;
+				}
+			}
+
+			if ( null === $settings_item ) {
+				return;
+			}
+
+			// Rebuild the submenu, inserting the settings page right after "Pinterests".
+			$reordered = array();
+			$inserted  = false;
+			foreach ( $submenu[ $parent ] as $item ) {
+				$reordered[] = $item;
+				if ( ! $inserted && isset( $item[2] ) && $pinterest_cpt === $item[2] ) {
+					$reordered[] = $settings_item;
+					$inserted    = true;
+				}
+			}
+
+			// Fallback: if the Pinterests CPT item wasn't found, keep the page where it was.
+			if ( ! $inserted ) {
+				$reordered[] = $settings_item;
+			}
+
+			$submenu[ $parent ] = $reordered;
 		}
 
 		/**

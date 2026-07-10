@@ -142,8 +142,10 @@ if ( ! class_exists( 'KP_Pinterest_FREE' ) ) {
 			switch ( $column ) {
 
 				case 'shortcode':
-					$column_field = '<input type="text" onClick="this.select();" readonly="readonly" value="[pinterest ' . 'id=&quot;' . $post_id . '&quot;' . ']"/>';
-					echo $column_field;
+					printf(
+						'<input type="text" onClick="this.select();" readonly="readonly" value="[pinterest id=&quot;%d&quot;]"/>',
+						absint( $post_id )
+					);
 					break;
 				default:
 					break;

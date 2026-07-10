@@ -9,8 +9,7 @@
 if ( ! function_exists( 'kpfpinterest_sanitize_text' ) ):
   function kpfpinterest_sanitize_text( $value ) {
 
-    $text = filter_var( $value, FILTER_SANITIZE_STRING );
-    return $text;
+    return sanitize_text_field( $value );
 
   }
 endif;
@@ -406,7 +405,7 @@ if ( ! function_exists( 'kp_pinterest_shortcode_setup' ) ) :
           <div class="csf-field csf-field-text">
             <div class="csf-title"><h4><?php echo esc_html__( 'Shortcode', 'b-pinterest-feed' ) ?></h4></div>
             <div class="csf-fieldset">
-              <input type='text' id='kp_pinterest_shortcode' onfocus='this.select();' readonly  value='[pinterest id="<?php echo $post->ID; ?>"]' /> 
+              <input type='text' id='kp_pinterest_shortcode' onfocus='this.select();' readonly  value='[pinterest id="<?php echo esc_attr( $post->ID ); ?>"]' />
               <p><?php echo esc_html__( 'Copy this shortcode and paste it into your post, page, or text widget content', 'b-pinterest-feed' ) ?></p>
             </div>
           </div>

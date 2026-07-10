@@ -20,6 +20,7 @@ if (!class_exists('msfbp_AdminMenu')) {
 		}
 
 		public function adminEnqueueScripts($hook) {
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only page detection for asset enqueue.
 			if (empty($_GET['page'])) return;
 
 			$page = sanitize_text_field(wp_unslash($_GET['page']));
@@ -39,6 +40,7 @@ if (!class_exists('msfbp_AdminMenu')) {
 					'postType' => isset($_GET['post_type']) ? sanitize_text_field(wp_unslash($_GET['post_type'])) : '',
 				]);
 			}
+			// phpcs:enable WordPress.Security.NonceVerification.Recommended
 		}
 
 		public function adminMenu() {
@@ -73,19 +75,25 @@ if (!class_exists('msfbp_AdminMenu')) {
 		// }
 
 		public function fixActiveParentMenu($parent_file) {
-			if (!empty($_GET['post_type']) && $_GET['post_type'] === 'msfbp' && !empty($_GET['page'])) {
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only admin menu highlight, no state change.
+			$post_type = isset($_GET['post_type']) ? sanitize_key(wp_unslash($_GET['post_type'])) : '';
+			if ($post_type === 'msfbp' && !empty($_GET['page'])) {
 				return $this->parent_slug; // edit.php?post_type=msfbp
 			}
+			// phpcs:enable WordPress.Security.NonceVerification.Recommended
 			return $parent_file;
 		}
 
 		public function fixActiveSubmenuMenu($submenu_file) {
-			if (!empty($_GET['post_type']) && $_GET['post_type'] === 'msfbp' && !empty($_GET['page'])) {
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only admin menu highlight, no state change.
+			$post_type = isset($_GET['post_type']) ? sanitize_key(wp_unslash($_GET['post_type'])) : '';
+			if ($post_type === 'msfbp' && !empty($_GET['page'])) {
 				$page = sanitize_text_field(wp_unslash($_GET['page']));
 
 				if ($page === 'my-social-feeds-settings') return 'my-social-feeds-settings';
 				if ($page === 'my-social-feeds')         return 'my-social-feeds';
 			}
+			// phpcs:enable WordPress.Security.NonceVerification.Recommended
 			return $submenu_file;
 		}
 

@@ -6,15 +6,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 // pinterest Free shortcode.
 if ( ! function_exists( 'kp_pinterest_free_shortcode' ) ) :
 	function kp_pinterest_free_shortcode( $atts ) {
-		extract(
-			shortcode_atts(
-				array(
-					'id' => null
-				), $atts, 'b-pinterest-feed'
-			)
+		$atts = shortcode_atts(
+			array(
+				'id' => null
+			), $atts, 'b-pinterest-feed'
 		);
 
-		$post_id = $atts['id'];
+		$post_id = absint( $atts['id'] );
+		if ( ! $post_id ) {
+			return '';
+		}
 
 		$html = '';
 
@@ -111,11 +112,11 @@ if ( ! function_exists( 'kp_pinterest_free_shortcode' ) ) :
 				);
 
 				// json encode options
-				$kp_pinterest_options = json_encode($kp_pinterest_args);	
+				$kp_pinterest_options = wp_json_encode($kp_pinterest_args);
 
 				$setting_options 		= get_option( '_kp_pinterest_options', [] );
 
-				$kp_allow_popup 		= $setting_options['kp-pinterest-allow-popup'] ?? true == true ? 'allow-popup' : '';
+				$kp_allow_popup 		= ! empty( $setting_options['kp-pinterest-allow-popup'] ) ? 'allow-popup' : '';
 
 				$ratio = $pinterest_data['ratio'];
 				$border = $pinterest_data['border'];

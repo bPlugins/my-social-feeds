@@ -16,10 +16,17 @@ class MSFBP_PINTEREST_FEED_CREDENTIAL{
     }
 
     public function msfbp_delete_pinterest_credentials(){
-        
+
         check_ajax_referer("msf_authorization_nonce", "nonce");
 
-        $index = intval($_GET['index']);
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error( 'Unauthorized', 403 );
+        }
+
+        $index = isset( $_GET['index'] ) ? absint( $_GET['index'] ) : -1;
+        if ( $index < 0 ) {
+            wp_send_json_error( 'Invalid index' );
+        }
 
         $names = get_option('msfbp_pinterest_feeds_credentials', []);
 
@@ -35,17 +42,23 @@ class MSFBP_PINTEREST_FEED_CREDENTIAL{
 
 
     public function msfbp_get_pinterest_credentials(){
-        // check nonce 
+        // check nonce
         check_ajax_referer("msf_authorization_nonce", "nonce");
-        $tokens = get_option('msfbp_pinterest_feeds_credentials', []);  
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error( 'Unauthorized', 403 );
+        }
+        $tokens = get_option('msfbp_pinterest_feeds_credentials', []);
         wp_send_json_success($tokens);
     }
 
     public function msfbp_set_pinterest_credentials(){
         // check nonce
         check_ajax_referer("msf_authorization_nonce", "nonce");
-        $label = isset( $_GET['label'] ) ? sanitize_text_field( $_GET['label'] ) : '';
-        $value = isset( $_GET['value'] ) ? sanitize_text_field( $_GET['value'] ) : '';
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error( 'Unauthorized', 403 );
+        }
+        $label = isset( $_GET['label'] ) ? sanitize_text_field( wp_unslash( $_GET['label'] ) ) : '';
+        $value = isset( $_GET['value'] ) ? sanitize_text_field( wp_unslash( $_GET['value'] ) ) : '';
         
         if(!$value){
             wp_send_json_error("Name missing");

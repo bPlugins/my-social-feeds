@@ -32,11 +32,14 @@ if( !class_exists( 'IFBInstagramFeed' ) ){
 			add_action( 'init', [$this, 'onInit'] );
 			add_action( 'wp_ajax_ifbAjaxRequest', [$this, 'ajaxRequest'] );
 			add_action( 'wp_ajax_nopriv_ifbAjaxRequest', [$this, 'ajaxRequest'] );
+			// Cache clearing is a privileged, state-changing action - no nopriv handler.
 			add_action( 'wp_ajax_ifbDeleteTransient', [$this, 'deleteTransient'] );
-			add_action( 'wp_ajax_nopriv_ifbDeleteTransient', [$this, 'deleteTransient'] );
 		}
 
 		function ajaxRequest() {
+			// Public feed endpoint - verify the localized nonce (non-fatal for logged-out visitors on cached pages).
+			check_ajax_referer( 'ifb_instagram_nonce', 'nonce' );
+
 			$ifbData = json_decode( get_option( 'ifbData' ), true );
 			$accounts = $ifbData['iAccounts'] ?? [];
 			$cacheTime = $ifbData['iCacheTime'] ?? 1800;
@@ -57,8 +60,10 @@ if( !class_exists( 'IFBInstagramFeed' ) ){
 				$error = '';
 
 				foreach ( $accounts as $account ) {
-					extract( $account );
-					
+					$access_token = $account['access_token'] ?? '';
+					$user_id      = $account['user_id'] ?? '';
+					$connectType  = $account['connectType'] ?? '';
+
 					// Retrieve user data
 					$userURL = $this->getUserURL( $access_token, $user_id, $connectType );
 					$userRes = wp_remote_get( $userURL );
@@ -70,30 +75,17 @@ if( !class_exists( 'IFBInstagramFeed' ) ){
 					$userDataRes = wp_remote_get( $userDataURL );
 					$userData = json_decode( wp_remote_retrieve_body( $userDataRes ), true );
 
-					// Fetch comment count and like count for each media item
-					// foreach ($userData['data'] as $mediaItem) {
-					// 	$mediaID = $mediaItem['id'];
-					// 	$commentsURL = "https://graph.instagram.com/$mediaID/comments?summary=true&access_token=$access_token";
-					// 	$commentsRes = wp_remote_get($commentsURL);
-					// 	$commentsData = json_decode(wp_remote_retrieve_body($commentsRes), true);
-					// 	$mediaItem['comment_count'] = $commentsData['summary']['total_count'];
-		
-					// 	$likesURL = "https://graph.instagram.com/$mediaID/likes?summary=true&access_token=$access_token";
-					// 	$likesRes = wp_remote_get($likesURL);
-					// 	$likesData = json_decode(wp_remote_retrieve_body($likesRes), true);
-					// 	$mediaItem['like_count'] = $likesData['summary']['total_count'];
-					// }
 
 					// Set to array
-					if( $user['username'] ){
+					if( ! empty( $user['username'] ) ){
 						$users[] = $user;
 
 						$username = $user['username'];
 						$usersData[$username] = [
-							'media' => $userData['data'],
-							'page' => $userData['paging']['cursors']
+							'media' => $userData['data'] ?? [],
+							'page' => $userData['paging']['cursors'] ?? []
 						];
-					}else if( $user['error'] ){
+					}else if( ! empty( $user['error'] ) ){
 						$error = $user['error']['message'];
 					}
 				}
@@ -115,9 +107,15 @@ if( !class_exists( 'IFBInstagramFeed' ) ){
 		}
 
 		function deleteTransient() {
+			check_ajax_referer( 'ifb_instagram_nonce', 'nonce' );
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_send_json_error( 'Unauthorized', 403 );
+			}
+
 			delete_transient('ifbInstagramData');
 
-			die();
+			wp_send_json_success();
 		}
 
 		function onInit() {
@@ -127,8 +125,11 @@ if( !class_exists( 'IFBInstagramFeed' ) ){
 			wp_register_script( 'swiper', MSFBP_PUBLIC_URL . 'js/swiper.min.js', [], '9.3.2', true );
 			wp_register_style( 'swiper', MSFBP_PUBLIC_URL . 'css/swiper.min.css', [], '9.3.2' );
 
-			wp_register_script('ttp-script', MSFBP_PUBLIC_URL . 'js/ttp_script.js', [], MSFBP_VERSION);
-			wp_localize_script( 'ttp-script', 'ifbLocal', [ 'ajaxURL' => admin_url( 'admin-ajax.php' ) ] );
+			wp_register_script('ttp-script', MSFBP_PUBLIC_URL . 'js/ttp_script.js', [], MSFBP_VERSION, true);
+			wp_localize_script( 'ttp-script', 'ifbLocal', [
+				'ajaxURL' => admin_url( 'admin-ajax.php' ),
+				'nonce'   => wp_create_nonce( 'ifb_instagram_nonce' ),
+			] );
 
 		}
 	}
