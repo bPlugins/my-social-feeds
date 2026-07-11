@@ -1,3 +1,4 @@
+import { __ } from '@wordpress/i18n';
 import { useState } from "react";
 
 const ClipBoard = ({ shortcode }) => {
@@ -16,9 +17,27 @@ const ClipBoard = ({ shortcode }) => {
     return (
         <section className="clipBoard">
             <div className="clipBtnWrapper">
-                <p>Copy this shortcode and paste it into your post, page, or text widget content</p>
-                <button onClick={handleCopy}>
-                    {hasCopied ? "Copied Shortcode!" : shortcode}
+                <p className="clipBoard__label">{__('Copy this shortcode and paste it into your post, page, or text widget content', 'my-social-feeds')}</p>
+                <button className={`clipBoard__btn${hasCopied ? " is-copied" : ""}`} onClick={handleCopy}>
+                    <code className="clipBoard__code">{shortcode}</code>
+                    <span className="clipBoard__action">
+                        {hasCopied ? (
+                            <>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6 9 17l-5-5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                                {__('Copied!', 'my-social-feeds')}
+                            </>
+                        ) : (
+                            <>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" strokeWidth="1.8" />
+                                    <path d="M5 15V5a2 2 0 0 1 2-2h10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                                </svg>
+                                {__('Copy', 'my-social-feeds')}
+                            </>
+                        )}
+                    </span>
                 </button>
             </div>
         </section>

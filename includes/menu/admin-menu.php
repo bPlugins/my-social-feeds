@@ -102,9 +102,10 @@ if (!class_exists('msfbp_AdminMenu')) {
 				id="msfbpDashboard"
 				data-info="<?php echo esc_attr(wp_json_encode([
 					'version'   => MSFBP_VERSION,
+					'adminUrl'  => admin_url(),
 					'isPremium' => msfbpIsPremium(),
 					'hasPro'    => MSFBP_IS_PRO,
-					'nonce' => wp_create_nonce( 'apbCreatePage' ),
+					'nonce' => wp_create_nonce( 'apbCreatePage' ), 
 		            'licenseActiveNonce' => wp_create_nonce( 'bPlLicenseActivation' )
 				])); ?>"
 			></div>

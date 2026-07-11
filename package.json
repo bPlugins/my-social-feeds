@@ -18,8 +18,7 @@
 		"i18n-mo": "wp i18n make-mo languages/",
 		"i18n": "npm run i18n-pot && npm run i18n-json && npm run i18n-mo",
 		"find-ds": "find . -name '.DS_Store' -delete",
-		"plugin-zip": "wp-scripts plugin-zip",
-		"bundle": "npm run lint && npm run build && npm run i18n && npm run find-ds && npm run plugin-zip"
+		"zip": "npm run build && npm run find-ds && rm -f my-social-feeds.zip && zip -r my-social-feeds.zip index.php my-social-feeds.php readme.txt includes vendor old-pinterest-feed build public assets languages -x '*.DS_Store' -x '*.map'"
 	},
 	"dependencies": {
 		"immer": "^10.1.1",
