@@ -1,7 +1,7 @@
 import { getBackgroundCSS, getBorderCSS, getColorsCSS, getSpaceCSS, getTypoCSS } from '../../../../../bpl-tools/utils/getCSS';
 
 const Style = ({ attributes, clientId }) => {
-	const { cId, columnGap, rowGap, profileInfo, background, padding, border, followBtnColors, followBtnHovColors, captionBG, captionTypo, captionColor } = attributes;
+	const { cId, columnGap, rowGap, profileInfo, background, padding, border, followBtnColors, followBtnHovColors, loadMoreBtnColors, loadMoreBtnHovColors, loadMoreBtnTypo, captionBG, captionTypo, captionColor } = attributes;
 	const { photoSize = '55px', popupPhotoSize = '40px', userNameColor = '#4527a4', followersColor, followsColor, nameColor, bioColor } = profileInfo || {};
 
 	const feedSl = `#ifbInstagramFeed-${clientId} .ifbInstagramFeed`;
@@ -14,6 +14,9 @@ const Style = ({ attributes, clientId }) => {
 		__html: `
 		${getTypoCSS('', captionTypo)?.googleFontLink}
 		${getTypoCSS(`${galleryItemSl} .caption p`, captionTypo)?.styles}
+
+		${getTypoCSS('', loadMoreBtnTypo)?.googleFontLink}
+		${getTypoCSS(`${feedSl} .loadMoreBtn`, loadMoreBtnTypo)?.styles}
 
 		${feedSl}{
 			${getBackgroundCSS(background)}
@@ -58,6 +61,13 @@ const Style = ({ attributes, clientId }) => {
 		}
 		${feedSl} .followBtn:hover{
 			${getColorsCSS(followBtnHovColors || { color: '#fff', bg: '#8344c5' })}
+		}
+
+		${feedSl} .loadMoreBtn{
+			${getColorsCSS(loadMoreBtnColors || { color: '#fff', bg: '#4527a4' })}
+		}
+		${feedSl} .loadMoreBtn:hover{
+			${getColorsCSS(loadMoreBtnHovColors || { color: '#fff', bg: '#8344c5' })}
 		}
 
 		${feedSl} .ifbGallery{

@@ -181,6 +181,24 @@
         "bg": "#8344c5"
       }
     },
+    "loadMoreBtnColors": {
+      "type": "object",
+      "default": {
+        "color": "#fff",
+        "bg": "#4527a4"
+      }
+    },
+    "loadMoreBtnHovColors": {
+      "type": "object",
+      "default": {
+        "color": "#fff",
+        "bg": "#8344c5"
+      }
+    },
+    "loadMoreBtnTypo": {
+      "type": "object",
+      "default": {}
+    },
     "imgHoverEffect": {
       "type": "string",
       "default": "zoomIn"

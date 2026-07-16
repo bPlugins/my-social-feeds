@@ -5,7 +5,7 @@ import { Label } from '../../../bpl-tools/Components';
 const Authorization = ({ isPremium, authorizationProps, options, onChangeAccount, onChangeBoardName, blockType, getData, attributes }) => {
     // const slug = isPremium ? '/wp-admin?page=my-social-feeds#/settings' : '/wp-admin/tools.php?page=my-social-feeds#/settings';
 
-    const slug = '/wp-admin/edit.php?post_type=msfbp&page=my-social-feeds-settings#/settings';
+    const slug = '/wp-admin/edit.php?post_type=msfbp&page=my-social-feeds-settings#/authorization-settings';
 
     const redirect = `${location.origin}${slug}`;
     const { accountInfo } = attributes;

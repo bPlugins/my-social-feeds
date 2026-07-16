@@ -12,7 +12,7 @@ import { BControlPro } from '../../../../../../../bpl-tools/ProControls';
 
 const Style = ({ attributes, setAttributes, updateObj, isPremium, setProModalOpen }) => {
 
-    const { isProfile, profileInfo, isCaption, background, padding, border, followBtnColors, followBtnHovColors, imgHoverEffect, captionStyle, captionBG, captionTypo, captionColor } = attributes;
+    const { isProfile, profileInfo, isCaption, isLoadMore, background, padding, border, followBtnColors, followBtnHovColors, loadMoreBtnColors, loadMoreBtnHovColors, loadMoreBtnTypo, imgHoverEffect, captionStyle, captionBG, captionTypo, captionColor } = attributes;
 
     const { photoSize, popupPhotoSize, userNameColor, followersColor, nameColor, bioColor } = profileInfo || {};
 
@@ -42,6 +42,14 @@ const Style = ({ attributes, setAttributes, updateObj, isPremium, setProModalOpe
 
             <ColorsControl value={followBtnHovColors} onChange={val => setAttributes({ followBtnHovColors: val })} defaults={{ color: '#fff', bg: '#8344c5' }} />
         </PanelBody>
+
+        {isLoadMore && <PanelBody className='bPlPanelBody' title={__('Load More Button', 'my-social-feeds')} initialOpen={false}>
+            <ColorsControl label={__('Colors', 'my-social-feeds')} value={loadMoreBtnColors} onChange={val => setAttributes({ loadMoreBtnColors: val })} defaults={{ color: '#fff', bg: '#4527a4' }} />
+
+            <ColorsControl label={__('Hover Colors', 'my-social-feeds')} value={loadMoreBtnHovColors} onChange={val => setAttributes({ loadMoreBtnHovColors: val })} defaults={{ color: '#fff', bg: '#8344c5' }} />
+
+            <Typography label={__('Typography:', 'my-social-feeds')} value={loadMoreBtnTypo} onChange={val => setAttributes({ loadMoreBtnTypo: val })} defaults={{ fontSize: { desktop: 16, tablet: 15, mobile: 14 } }} produce={produce} />
+        </PanelBody>}
 
         <PanelBody className='bPlPanelBody' title={__('Image', 'my-social-feeds')} initialOpen={false}>
             <PanelRow>
